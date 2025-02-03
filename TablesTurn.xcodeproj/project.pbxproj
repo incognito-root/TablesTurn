@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		D3C03BBD2D50FF5700E5251C /* TablesTurnApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C03BBC2D50FF5700E5251C /* TablesTurnApp.swift */; };
-		D3C03BBF2D50FF5700E5251C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C03BBE2D50FF5700E5251C /* ContentView.swift */; };
 		D3C03BC12D50FF5900E5251C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3C03BC02D50FF5900E5251C /* Assets.xcassets */; };
 		D3C03BC42D50FF5900E5251C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3C03BC32D50FF5900E5251C /* Preview Assets.xcassets */; };
 		D3C03BCE2D50FF5900E5251C /* TablesTurnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C03BCD2D50FF5900E5251C /* TablesTurnTests.swift */; };
 		D3C03BD82D50FF5900E5251C /* TablesTurnUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C03BD72D50FF5900E5251C /* TablesTurnUITests.swift */; };
 		D3C03BDA2D50FF5900E5251C /* TablesTurnUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C03BD92D50FF5900E5251C /* TablesTurnUITestsLaunchTests.swift */; };
+		D3C03BE82D51023400E5251C /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C03BE72D51023400E5251C /* AppConfig.swift */; };
+		D3C03BF72D5106D000E5251C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D3C03BF62D5106D000E5251C /* Alamofire */; };
+		D3C03BFA2D51077400E5251C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = D3C03BF92D51077400E5251C /* Kingfisher */; };
+		D3C03BFD2D510E3700E5251C /* SwiftLintFramework in Frameworks */ = {isa = PBXBuildFile; productRef = D3C03BFC2D510E3700E5251C /* SwiftLintFramework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +39,6 @@
 /* Begin PBXFileReference section */
 		D3C03BB92D50FF5700E5251C /* TablesTurn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TablesTurn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3C03BBC2D50FF5700E5251C /* TablesTurnApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TablesTurnApp.swift; sourceTree = "<group>"; };
-		D3C03BBE2D50FF5700E5251C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D3C03BC02D50FF5900E5251C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3C03BC32D50FF5900E5251C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D3C03BC92D50FF5900E5251C /* TablesTurnTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TablesTurnTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +46,7 @@
 		D3C03BD32D50FF5900E5251C /* TablesTurnUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TablesTurnUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3C03BD72D50FF5900E5251C /* TablesTurnUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TablesTurnUITests.swift; sourceTree = "<group>"; };
 		D3C03BD92D50FF5900E5251C /* TablesTurnUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TablesTurnUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D3C03BE72D51023400E5251C /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +54,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3C03BFA2D51077400E5251C /* Kingfisher in Frameworks */,
+				D3C03BF72D5106D000E5251C /* Alamofire in Frameworks */,
+				D3C03BFD2D510E3700E5251C /* SwiftLintFramework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,10 +100,12 @@
 		D3C03BBB2D50FF5700E5251C /* TablesTurn */ = {
 			isa = PBXGroup;
 			children = (
-				D3C03BBC2D50FF5700E5251C /* TablesTurnApp.swift */,
-				D3C03BBE2D50FF5700E5251C /* ContentView.swift */,
-				D3C03BC02D50FF5900E5251C /* Assets.xcassets */,
+				D3C03BE62D5101F800E5251C /* App */,
+				D3C03BEA2D51026C00E5251C /* Core */,
+				D3C03BE92D51025E00E5251C /* Features */,
 				D3C03BC22D50FF5900E5251C /* Preview Content */,
+				D3C03BEB2D51027400E5251C /* Resources */,
+				D3C03BEC2D51028000E5251C /* SupportingFiles */,
 			);
 			path = TablesTurn;
 			sourceTree = "<group>";
@@ -127,6 +135,92 @@
 			path = TablesTurnUITests;
 			sourceTree = "<group>";
 		};
+		D3C03BE62D5101F800E5251C /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D3C03BBC2D50FF5700E5251C /* TablesTurnApp.swift */,
+				D3C03BE72D51023400E5251C /* AppConfig.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		D3C03BE92D51025E00E5251C /* Features */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		D3C03BEA2D51026C00E5251C /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				D3C03BF02D51035100E5251C /* UIComponents */,
+				D3C03BEF2D51034900E5251C /* Extensions */,
+				D3C03BEE2D51033E00E5251C /* Utilities */,
+				D3C03BED2D51033300E5251C /* Networking */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		D3C03BEB2D51027400E5251C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D3C03BF42D5103A700E5251C /* Fonts */,
+				D3C03BF22D51038D00E5251C /* Localization */,
+				D3C03BC02D50FF5900E5251C /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D3C03BEC2D51028000E5251C /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		D3C03BED2D51033300E5251C /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		D3C03BEE2D51033E00E5251C /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		D3C03BEF2D51034900E5251C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D3C03BF02D51035100E5251C /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		D3C03BF22D51038D00E5251C /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		D3C03BF42D5103A700E5251C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +237,11 @@
 			dependencies = (
 			);
 			name = TablesTurn;
+			packageProductDependencies = (
+				D3C03BF62D5106D000E5251C /* Alamofire */,
+				D3C03BF92D51077400E5251C /* Kingfisher */,
+				D3C03BFC2D510E3700E5251C /* SwiftLintFramework */,
+			);
 			productName = TablesTurn;
 			productReference = D3C03BB92D50FF5700E5251C /* TablesTurn.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +314,11 @@
 				Base,
 			);
 			mainGroup = D3C03BB02D50FF5700E5251C;
+			packageReferences = (
+				D3C03BF52D5106D000E5251C /* XCRemoteSwiftPackageReference "Alamofire" */,
+				D3C03BF82D51077400E5251C /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				D3C03BFB2D510E3700E5251C /* XCRemoteSwiftPackageReference "SwiftLint" */,
+			);
 			productRefGroup = D3C03BBA2D50FF5700E5251C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -257,7 +361,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3C03BBF2D50FF5700E5251C /* ContentView.swift in Sources */,
+				D3C03BE82D51023400E5251C /* AppConfig.swift in Sources */,
 				D3C03BBD2D50FF5700E5251C /* TablesTurnApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -582,6 +686,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D3C03BF52D5106D000E5251C /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
+		D3C03BF82D51077400E5251C /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.1.4;
+			};
+		};
+		D3C03BFB2D510E3700E5251C /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.58.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D3C03BF62D5106D000E5251C /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D3C03BF52D5106D000E5251C /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		D3C03BF92D51077400E5251C /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D3C03BF82D51077400E5251C /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		D3C03BFC2D510E3700E5251C /* SwiftLintFramework */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D3C03BFB2D510E3700E5251C /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = SwiftLintFramework;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D3C03BB12D50FF5700E5251C /* Project object */;
 }

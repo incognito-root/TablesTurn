@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D3255D5F2D51C0E7007E0125 /* GettingStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3255D5E2D51C0E7007E0125 /* GettingStartedView.swift */; };
+		D36959492D52130700483BDB /* ImageCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36959482D52130700483BDB /* ImageCarousel.swift */; };
 		D3C03BBD2D50FF5700E5251C /* TablesTurnApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C03BBC2D50FF5700E5251C /* TablesTurnApp.swift */; };
 		D3C03BC12D50FF5900E5251C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3C03BC02D50FF5900E5251C /* Assets.xcassets */; };
 		D3C03BC42D50FF5900E5251C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3C03BC32D50FF5900E5251C /* Preview Assets.xcassets */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		D3255D5E2D51C0E7007E0125 /* GettingStartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartedView.swift; sourceTree = "<group>"; };
+		D36959482D52130700483BDB /* ImageCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCarousel.swift; sourceTree = "<group>"; };
 		D3C03BB92D50FF5700E5251C /* TablesTurn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TablesTurn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3C03BBC2D50FF5700E5251C /* TablesTurnApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TablesTurnApp.swift; sourceTree = "<group>"; };
 		D3C03BC02D50FF5900E5251C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 		D3C03BF02D51035100E5251C /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				D36959482D52130700483BDB /* ImageCarousel.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				D3C03BE82D51023400E5251C /* AppConfig.swift in Sources */,
 				D3C03BBD2D50FF5700E5251C /* TablesTurnApp.swift in Sources */,
 				D3255D5F2D51C0E7007E0125 /* GettingStartedView.swift in Sources */,
+				D36959492D52130700483BDB /* ImageCarousel.swift in Sources */,
 				D3C03BFF2D5112CB00E5251C /* ApiClient.swift in Sources */,
 				D3C03C012D51142100E5251C /* ApiEndpoints.swift in Sources */,
 			);

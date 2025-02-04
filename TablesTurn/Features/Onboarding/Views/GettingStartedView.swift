@@ -23,13 +23,18 @@ struct GettingStartedView: View {
                     
                     (
                         Text("Connect, Engage,")
-                            .foregroundStyle(.accent)  // This applies the orange/accent color
+                            .foregroundStyle(.accent)
                         + Text(" Bringing People Together")
                     )
                     .font(.system(size: 40))
                     .fontWeight(.medium)
                 }
                 .padding(40)
+                
+                VStack {
+                    ImageCarousel(images: CarouselImages.allCases)
+                }
+                .padding(.top, 250)
             }
             .padding(.top, 20)
         }

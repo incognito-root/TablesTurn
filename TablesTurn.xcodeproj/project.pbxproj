@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D3255D5F2D51C0E7007E0125 /* GettingStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3255D5E2D51C0E7007E0125 /* GettingStartedView.swift */; };
 		D3C03BBD2D50FF5700E5251C /* TablesTurnApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C03BBC2D50FF5700E5251C /* TablesTurnApp.swift */; };
 		D3C03BC12D50FF5900E5251C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3C03BC02D50FF5900E5251C /* Assets.xcassets */; };
 		D3C03BC42D50FF5900E5251C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3C03BC32D50FF5900E5251C /* Preview Assets.xcassets */; };
@@ -16,7 +17,8 @@
 		D3C03BE82D51023400E5251C /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C03BE72D51023400E5251C /* AppConfig.swift */; };
 		D3C03BF72D5106D000E5251C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D3C03BF62D5106D000E5251C /* Alamofire */; };
 		D3C03BFA2D51077400E5251C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = D3C03BF92D51077400E5251C /* Kingfisher */; };
-		D3C03BFD2D510E3700E5251C /* SwiftLintFramework in Frameworks */ = {isa = PBXBuildFile; productRef = D3C03BFC2D510E3700E5251C /* SwiftLintFramework */; };
+		D3C03BFF2D5112CB00E5251C /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C03BFE2D5112CB00E5251C /* ApiClient.swift */; };
+		D3C03C012D51142100E5251C /* ApiEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C03C002D51142100E5251C /* ApiEndpoints.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D3255D5E2D51C0E7007E0125 /* GettingStartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartedView.swift; sourceTree = "<group>"; };
 		D3C03BB92D50FF5700E5251C /* TablesTurn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TablesTurn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3C03BBC2D50FF5700E5251C /* TablesTurnApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TablesTurnApp.swift; sourceTree = "<group>"; };
 		D3C03BC02D50FF5900E5251C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -47,6 +50,8 @@
 		D3C03BD72D50FF5900E5251C /* TablesTurnUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TablesTurnUITests.swift; sourceTree = "<group>"; };
 		D3C03BD92D50FF5900E5251C /* TablesTurnUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TablesTurnUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D3C03BE72D51023400E5251C /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		D3C03BFE2D5112CB00E5251C /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		D3C03C002D51142100E5251C /* ApiEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEndpoints.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +61,6 @@
 			files = (
 				D3C03BFA2D51077400E5251C /* Kingfisher in Frameworks */,
 				D3C03BF72D5106D000E5251C /* Alamofire in Frameworks */,
-				D3C03BFD2D510E3700E5251C /* SwiftLintFramework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +81,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D3255D572D51BCD4007E0125 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				D3255D5D2D51BD59007E0125 /* Models */,
+				D3255D5C2D51BD53007E0125 /* Views */,
+				D3255D5B2D51BD4C007E0125 /* ViewModels */,
+				D3255D5A2D51BD47007E0125 /* Services */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		D3255D5A2D51BD47007E0125 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D3255D5B2D51BD4C007E0125 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D3255D5C2D51BD53007E0125 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D3255D5E2D51C0E7007E0125 /* GettingStartedView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D3255D5D2D51BD59007E0125 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		D3C03BB02D50FF5700E5251C = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +191,7 @@
 		D3C03BE92D51025E00E5251C /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				D3255D572D51BCD4007E0125 /* Onboarding */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -182,6 +227,8 @@
 		D3C03BED2D51033300E5251C /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				D3C03BFE2D5112CB00E5251C /* ApiClient.swift */,
+				D3C03C002D51142100E5251C /* ApiEndpoints.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -240,7 +287,6 @@
 			packageProductDependencies = (
 				D3C03BF62D5106D000E5251C /* Alamofire */,
 				D3C03BF92D51077400E5251C /* Kingfisher */,
-				D3C03BFC2D510E3700E5251C /* SwiftLintFramework */,
 			);
 			productName = TablesTurn;
 			productReference = D3C03BB92D50FF5700E5251C /* TablesTurn.app */;
@@ -317,7 +363,6 @@
 			packageReferences = (
 				D3C03BF52D5106D000E5251C /* XCRemoteSwiftPackageReference "Alamofire" */,
 				D3C03BF82D51077400E5251C /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				D3C03BFB2D510E3700E5251C /* XCRemoteSwiftPackageReference "SwiftLint" */,
 			);
 			productRefGroup = D3C03BBA2D50FF5700E5251C /* Products */;
 			projectDirPath = "";
@@ -363,6 +408,9 @@
 			files = (
 				D3C03BE82D51023400E5251C /* AppConfig.swift in Sources */,
 				D3C03BBD2D50FF5700E5251C /* TablesTurnApp.swift in Sources */,
+				D3255D5F2D51C0E7007E0125 /* GettingStartedView.swift in Sources */,
+				D3C03BFF2D5112CB00E5251C /* ApiClient.swift in Sources */,
+				D3C03C012D51142100E5251C /* ApiEndpoints.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -704,14 +752,6 @@
 				minimumVersion = 8.1.4;
 			};
 		};
-		D3C03BFB2D510E3700E5251C /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/SwiftLint";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.58.2;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -724,11 +764,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D3C03BF82D51077400E5251C /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
-		};
-		D3C03BFC2D510E3700E5251C /* SwiftLintFramework */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D3C03BFB2D510E3700E5251C /* XCRemoteSwiftPackageReference "SwiftLint" */;
-			productName = SwiftLintFramework;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

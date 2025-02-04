@@ -18,7 +18,7 @@ struct GettingStartedView: View {
                     HStack {
                         Image("LogoImage")
                         Text("Tables Turn")
-                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                            .font(.title)
                     }
                     
                     (
@@ -26,15 +26,15 @@ struct GettingStartedView: View {
                             .foregroundStyle(.accent)
                         + Text(" Bringing People Together")
                     )
-                    .font(.system(size: 40))
+                    .font(.system(size: 43))
                     .fontWeight(.medium)
-                }
-                .padding(40)
-                
-                VStack {
+                    
                     ImageCarousel(images: CarouselImages.allCases)
+                    
+                    Button("Get Started".uppercased()) {}
+                        .buttonStyle(PrimaryButtonStyle())
                 }
-                .padding(.top, 250)
+                .padding(30)
             }
             .padding(.top, 20)
         }

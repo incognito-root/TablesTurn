@@ -10,6 +10,8 @@
 		D3255D5F2D51C0E7007E0125 /* GettingStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3255D5E2D51C0E7007E0125 /* GettingStartedView.swift */; };
 		D36959492D52130700483BDB /* ImageCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36959482D52130700483BDB /* ImageCarousel.swift */; };
 		D369594B2D52220900483BDB /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D369594A2D52220900483BDB /* PrimaryButtonStyle.swift */; };
+		D39401B22D5243B200DCFE21 /* SignupFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39401B12D5243B200DCFE21 /* SignupFormView.swift */; };
+		D39401B42D524BF500DCFE21 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39401B32D524BF500DCFE21 /* CustomTextField.swift */; };
 		D3C03BBD2D50FF5700E5251C /* TablesTurnApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C03BBC2D50FF5700E5251C /* TablesTurnApp.swift */; };
 		D3C03BC12D50FF5900E5251C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3C03BC02D50FF5900E5251C /* Assets.xcassets */; };
 		D3C03BC42D50FF5900E5251C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3C03BC32D50FF5900E5251C /* Preview Assets.xcassets */; };
@@ -44,6 +46,8 @@
 		D3255D5E2D51C0E7007E0125 /* GettingStartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartedView.swift; sourceTree = "<group>"; };
 		D36959482D52130700483BDB /* ImageCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCarousel.swift; sourceTree = "<group>"; };
 		D369594A2D52220900483BDB /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
+		D39401B12D5243B200DCFE21 /* SignupFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFormView.swift; sourceTree = "<group>"; };
+		D39401B32D524BF500DCFE21 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		D3C03BB92D50FF5700E5251C /* TablesTurn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TablesTurn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3C03BBC2D50FF5700E5251C /* TablesTurnApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TablesTurnApp.swift; sourceTree = "<group>"; };
 		D3C03BC02D50FF5900E5251C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -125,6 +129,46 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		D39401AB2D52431500DCFE21 /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				D39401AF2D52434D00DCFE21 /* Models */,
+				D39401AE2D52433D00DCFE21 /* Views */,
+				D39401AD2D52433200DCFE21 /* ViewModels */,
+				D39401AC2D52432600DCFE21 /* Services */,
+			);
+			path = Signup;
+			sourceTree = "<group>";
+		};
+		D39401AC2D52432600DCFE21 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D39401AD2D52433200DCFE21 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D39401AE2D52433D00DCFE21 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D39401B12D5243B200DCFE21 /* SignupFormView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D39401AF2D52434D00DCFE21 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		D3C03BB02D50FF5700E5251C = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +239,7 @@
 		D3C03BE92D51025E00E5251C /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				D39401AB2D52431500DCFE21 /* Signup */,
 				D3255D572D51BCD4007E0125 /* Onboarding */,
 			);
 			path = Features;
@@ -256,6 +301,7 @@
 			children = (
 				D36959482D52130700483BDB /* ImageCarousel.swift */,
 				D369594A2D52220900483BDB /* PrimaryButtonStyle.swift */,
+				D39401B32D524BF500DCFE21 /* CustomTextField.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -412,10 +458,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D39401B42D524BF500DCFE21 /* CustomTextField.swift in Sources */,
 				D3C03BE82D51023400E5251C /* AppConfig.swift in Sources */,
 				D3C03BBD2D50FF5700E5251C /* TablesTurnApp.swift in Sources */,
 				D3255D5F2D51C0E7007E0125 /* GettingStartedView.swift in Sources */,
 				D36959492D52130700483BDB /* ImageCarousel.swift in Sources */,
+				D39401B22D5243B200DCFE21 /* SignupFormView.swift in Sources */,
 				D369594B2D52220900483BDB /* PrimaryButtonStyle.swift in Sources */,
 				D3C03BFF2D5112CB00E5251C /* ApiClient.swift in Sources */,
 				D3C03C012D51142100E5251C /* ApiEndpoints.swift in Sources */,

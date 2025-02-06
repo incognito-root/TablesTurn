@@ -48,7 +48,7 @@ class LoginViewModel: ObservableObject {
                         case .invalidResponse:
                             self.alertMessage = "Invalid server response"
                         case .emailNotVerified:
-                            print("email not verified")
+                            self.alertMessage = "Email is not verified. An OTP has been sent on your email."
                         }
                     } else {
                         self.alertMessage = error.localizedDescription

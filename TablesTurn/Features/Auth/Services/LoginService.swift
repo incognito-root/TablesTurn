@@ -20,7 +20,6 @@ class LoginService {
             case .success(let user):
                 completion(.success(user))
             case .failure(let error):
-                print(error)
                 completion(.failure(error))
             }
         }

@@ -68,9 +68,7 @@ class SignupViewModel: ObservableObject {
                 
                 switch result {
                 case .success(let user):
-                    print("Signup successful! User: \(user)")
                     self.signedUp = true
-                    // TODO: take to login from here
                     
                 case .failure(let error):
                     if let apiError = error as? APIError {

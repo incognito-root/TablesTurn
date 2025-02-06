@@ -82,7 +82,7 @@ struct LoginFormView: View {
                             
                             Section {
                                 Button(action: {
-                                    
+                                    viewModel.login()
                                 }) {
                                     Text("Submit".uppercased())
                                 }

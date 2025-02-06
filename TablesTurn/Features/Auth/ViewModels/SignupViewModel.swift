@@ -13,9 +13,10 @@ class SignupViewModel: ObservableObject {
     @Published var linkedinUsername: String = ""
     
     // UI state
-    @Published var currentStep: Int = 2
+    @Published var currentStep: Int = 1
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
+    @Published var signedUp: Bool = false
     
     private let signupService = SignupService()
     private let loginViewModel = LoginViewModel()
@@ -68,17 +69,8 @@ class SignupViewModel: ObservableObject {
                 switch result {
                 case .success(let user):
                     print("Signup successful! User: \(user)")
-                    
-                    self.loginViewModel.loginAfterSignup(email: self.email, password: self.password) { loginResult in
-                        switch loginResult {
-                        case .success(let loggedInUser):
-                            print("Auto-login successful! User: \(loggedInUser)")
-                            
-                        case .failure(let error):
-                            self.alertMessage = "Auto-login failed: \(error.localizedDescription)"
-                            self.showAlert = true
-                        }
-                    }
+                    self.signedUp = true
+                    // TODO: take to login from here
                     
                 case .failure(let error):
                     if let apiError = error as? APIError {

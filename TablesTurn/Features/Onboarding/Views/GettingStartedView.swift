@@ -32,16 +32,28 @@ struct GettingStartedView: View {
                         
                         ImageCarousel(images: CarouselImages.allCases)
                         
-                        NavigationLink(destination: SignupFormView()) {
-                            Text("GET STARTED")
-                                .frame(maxWidth: .infinity)
-                                .padding(12)
-                                .font(.system(size: 25))
-                                .foregroundColor(.black)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 50)
-                                        .fill(Color.accentColor)
-                                )
+                        VStack {
+                            NavigationLink(destination: SignupFormView()) {
+                                Text("GET STARTED")
+                                    .frame(maxWidth: .infinity)
+                                    .padding(12)
+                                    .padding(.bottom, 0)
+                                    .font(.system(size: 25))
+                                    .foregroundColor(.black)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 50)
+                                            .fill(Color.accentColor)
+                                    )
+                            }
+                            
+                            NavigationLink(destination: LoginFormView()) {
+                                Text("ALREADY HAVE AN ACCOUNT")
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.top, 15)
+                                    .font(.system(size: 15))
+                                    .foregroundColor(.white)
+                                    .fontWeight(.bold)
+                            }
                         }
                     }
                     .frame(maxHeight: .infinity)

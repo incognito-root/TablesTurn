@@ -4,6 +4,7 @@ struct SignupFormView: View {
     let radius: CGFloat = 50
     
     @StateObject private var viewModel = SignupViewModel()
+    @StateObject private var loginViewModel = LoginViewModel()
     
     var body: some View {
         NavigationStack {
@@ -190,6 +191,9 @@ struct SignupFormView: View {
             }
         }
         .navigationBarHidden(true)
+        .navigationDestination(isPresented: $viewModel.signedUp) {
+            LoginFormView()
+        }
     }
 }
 

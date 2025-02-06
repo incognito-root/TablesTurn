@@ -106,6 +106,9 @@ struct LoginFormView: View {
                     dismissButton: .default(Text("OK"))
                 )
             }
+            .navigationDestination(isPresented: $viewModel.isEmailNotVerified) {
+                EmailVerificationView()
+            }
         }
         .navigationBarHidden(true)
     }

@@ -21,8 +21,8 @@ struct EmailVerificationView: View {
                     
                     VStack(alignment: .leading, spacing: 40) {
                         (
-                            Text("Enter the code you received\n")
-                            + Text("on your email")
+                            Text("Email Verification\n")
+                            + Text("Enter the code you recieved")
                                 .foregroundStyle(.accent)
                         )
                         .font(.system(size: 43))
@@ -59,7 +59,7 @@ struct EmailVerificationView: View {
                         }
                         .buttonStyle(PrimaryButtonStyle())
                     }
-                    .padding(EdgeInsets(top: 30, leading: 20, bottom: 30, trailing: 20))
+                    .padding(EdgeInsets(top: 45, leading: 20, bottom: 30, trailing: 20))
                 }
                 .padding(.top, 20)
             }

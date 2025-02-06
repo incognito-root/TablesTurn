@@ -6,6 +6,12 @@ struct APIErrorResponse: Decodable, Error {
     let stack: String?
     let errorName: String?
     let errorDetails: ErrorDetails?
+    let data: ErrorData?
+}
+
+struct ErrorData: Decodable {
+    let userId: String
+    let isEmailVerified: Bool?
 }
 
 struct ErrorDetails: Decodable {

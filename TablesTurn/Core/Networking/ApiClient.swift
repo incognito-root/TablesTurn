@@ -5,6 +5,7 @@ enum APIError: Error {
     case invalidResponse
     case decodingError
     case serverError(String)
+    case emailNotVerified
 }
 
 struct ApiResponse<T: Decodable>: Decodable {
@@ -56,8 +57,14 @@ class NetworkManager {
                     if let data = response.data {
                         do {
                             let apiErrorResponse = try JSONDecoder().decode(APIErrorResponse.self, from: data)
-                            let errorMessage = apiErrorResponse.message ?? apiErrorResponse.errorDetails?.message ?? "Unknown error occurred"
-                            completion(.failure(APIError.serverError(errorMessage)))
+                            
+                            // Check if email is not verified
+                            if let isEmailVerified = apiErrorResponse.data?.isEmailVerified, !isEmailVerified {
+                                completion(.failure(APIError.emailNotVerified))
+                            } else {
+                                let errorMessage = apiErrorResponse.message ?? apiErrorResponse.errorDetails?.message ?? "Unknown error occurred"
+                                completion(.failure(APIError.serverError(errorMessage)))
+                            }
                         } catch {
                             completion(.failure(APIError.decodingError))
                         }

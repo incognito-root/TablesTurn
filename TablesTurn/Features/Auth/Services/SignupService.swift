@@ -3,7 +3,7 @@ import Alamofire
 
 class SignupService {
     
-    func signUp(userDetails: UserRegistrationDetails, completion: @escaping (Result<UserLoginResponse, Error>) -> Void) {
+    func signUp(userDetails: UserRegistrationDetails, completion: @escaping (Result<UserSignupResponse, Error>) -> Void) {
         let parameters: [String: Any] = [
             "userDetails": [
                 "first_name": userDetails.firstName,
@@ -21,15 +21,14 @@ class SignupService {
             method: .post,
             parameters: parameters,
             headers: nil
-        ) { (result: Result<UserLoginResponse, Error>) in
+        ) { (result: Result<UserSignupResponse, Error>) in
             switch result {
             case .success(let user):
                 completion(.success(user))
             case .failure(let error):
                 DispatchQueue.main.async {
-                    showAlert(for: error)
+                    completion(.failure(error))
                 }
-                completion(.failure(error))
             }
         }
     }

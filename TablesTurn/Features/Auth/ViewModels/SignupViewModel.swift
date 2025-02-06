@@ -13,11 +13,12 @@ class SignupViewModel: ObservableObject {
     @Published var linkedinUsername: String = ""
     
     // UI state
-    @Published var currentStep: Int = 1
+    @Published var currentStep: Int = 2
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     
     private let signupService = SignupService()
+    private let loginViewModel = LoginViewModel()
     
     // MARK: - Business Logic
     
@@ -60,7 +61,6 @@ class SignupViewModel: ObservableObject {
             linkedinUsername: linkedinUsername.isEmpty ? nil : linkedinUsername
         )
         
-        // Call the signup service.
         signupService.signUp(userDetails: userDetails) { [weak self] result in
             DispatchQueue.main.async {
                 guard let self = self else { return }
@@ -69,11 +69,33 @@ class SignupViewModel: ObservableObject {
                 case .success(let user):
                     print("Signup successful! User: \(user)")
                     
-                case .failure(let error):
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { // Prevent nested state updates
-                        self.alertMessage = error.localizedDescription
-                        self.showAlert = true
+                    self.loginViewModel.loginAfterSignup(email: self.email, password: self.password) { loginResult in
+                        switch loginResult {
+                        case .success(let loggedInUser):
+                            print("Auto-login successful! User: \(loggedInUser)")
+                            
+                        case .failure(let error):
+                            self.alertMessage = "Auto-login failed: \(error.localizedDescription)"
+                            self.showAlert = true
+                        }
                     }
+                    
+                case .failure(let error):
+                    if let apiError = error as? APIError {
+                        switch apiError {
+                        case .serverError(let message):
+                            self.alertMessage = message
+                        case .decodingError:
+                            self.alertMessage = "Failed to process server response."
+                        case .invalidResponse:
+                            self.alertMessage = "Invalid response from server."
+                        case .emailNotVerified:
+                            print("email not verified")
+                        }
+                    } else {
+                        self.alertMessage = error.localizedDescription
+                    }
+                    self.showAlert = true
                 }
             }
         }

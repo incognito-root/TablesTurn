@@ -164,9 +164,6 @@ struct SignupFormView: View {
                                     )
                                     .listRowBackground(Color.clear)
                                     .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 20, trailing: 5))
-                                }
-                                
-                                Section {
                                     Button(action: {
                                         viewModel.signUp()
                                     }) {
@@ -174,7 +171,7 @@ struct SignupFormView: View {
                                     }
                                     .buttonStyle(PrimaryButtonStyle())
                                     .listRowBackground(Color.clear)
-                                    .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 0, trailing: 5))
+                                    .listRowInsets(EdgeInsets(top: 20, leading: 5, bottom: 50, trailing: 5))
                                 }
                             }
                             .scrollContentBackground(.hidden)

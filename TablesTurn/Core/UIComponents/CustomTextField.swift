@@ -1,7 +1,5 @@
 import SwiftUI
 
-import SwiftUI
-
 struct CustomTextField: View {
     var placeholder: String
     @Binding var text: String
@@ -52,11 +50,10 @@ struct CustomTextField: View {
                 }
             }
             .padding(paddingValue)
-            .background(Color.clear)
-            .cornerRadius(borderRadius)
-            .overlay(
-                RoundedRectangle(cornerRadius: borderRadius)
-                    .stroke(showError ? Color.red : Color.accentColor, lineWidth: 1)
+            .background(
+                RoundedRectangle(cornerRadius: max(0, borderRadius))
+                    .stroke(showError ? Color.red : Color.accentColor, lineWidth: 1.5)
+                    .background(Color.clear)
             )
             
             if let error = errorMessage, showError {
@@ -69,17 +66,21 @@ struct CustomTextField: View {
     }
     
     private func handleChange(_ newValue: String) {
+        var updatedText = newValue
+        
+        // Apply formatting if a formatter is provided.
         if let formatter = formatter {
-            let formatted = formatter(newValue)
-            if formatted != newValue {
-                DispatchQueue.main.async {
-                    self.text = formatted
-                }
+            updatedText = formatter(updatedText)
+            // Avoid reassigning if the text is already formatted.
+            if updatedText != text {
+                text = updatedText
+                return // Return early to prevent validation on stale text.
             }
         }
         
+        // Apply validation if provided.
         if let validation = validation {
-            if let error = validation(newValue) {
+            if let error = validation(updatedText) {
                 errorMessage = error
                 showError = true
             } else {

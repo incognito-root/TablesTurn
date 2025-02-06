@@ -2,8 +2,8 @@ import Foundation
 
 struct APIEndpoints {
     // auth APIs
-    static let authPrefix = "auth/"
-    static let signup = authPrefix + "signup"
+    static private let authPrefix = "auth/"
+    static let signupUrl = authPrefix + "register"
     static let login = authPrefix + "login"
 
     static let events = "events"

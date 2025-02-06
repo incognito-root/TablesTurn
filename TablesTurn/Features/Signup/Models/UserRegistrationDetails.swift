@@ -1,7 +1,6 @@
 import Foundation
 
-// Model representing the user details
-struct UserDetails: Codable {
+struct UserRegistrationDetails: Codable {
     let firstName: String
     let lastName: String
     let password: String
@@ -19,8 +18,4 @@ struct UserDetails: Codable {
         case twitterUsername = "twitter_username"
         case linkedinUsername = "linkedin_username"
     }
-}
-
-struct User: Codable {
-    let userDetails: UserDetails
 }

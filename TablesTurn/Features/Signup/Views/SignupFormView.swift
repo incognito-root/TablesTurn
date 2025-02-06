@@ -3,7 +3,7 @@ import SwiftUI
 struct SignupFormView: View {
     let radius: CGFloat = 50
     
-    @StateObject private var viewModel = SignupFormViewModel()
+    @StateObject private var viewModel = SignupViewModel()
     
     var body: some View {
         NavigationStack {
@@ -113,7 +113,7 @@ struct SignupFormView: View {
                                             if input.isEmpty {
                                                 return "Password cannot be empty."
                                             }
-                                            if input.count < 8 {
+                                            if input.count < 7 {
                                                 return "Password must be at least 8 characters."
                                             }
                                             return nil
@@ -132,9 +132,6 @@ struct SignupFormView: View {
                                             if input.isEmpty {
                                                 return "Password cannot be empty."
                                             }
-                                            if input != viewModel.password {
-                                                return "Passwords do not match"
-                                            }
                                             return nil
                                         }
                                     )
@@ -142,7 +139,7 @@ struct SignupFormView: View {
                                     .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 20, trailing: 5))
                                     
                                     CustomTextField(
-                                        placeholder: "Instagram Username",
+                                        placeholder: "Instagram Username (Optional)",
                                         text: $viewModel.instagramUsername,
                                         keyboardType: .default,
                                         iconName: "person"
@@ -151,7 +148,7 @@ struct SignupFormView: View {
                                     .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 20, trailing: 5))
                                     
                                     CustomTextField(
-                                        placeholder: "Twitter Username",
+                                        placeholder: "Twitter Username (Optional)",
                                         text: $viewModel.twitterUsername,
                                         keyboardType: .default,
                                         iconName: "person"
@@ -160,7 +157,7 @@ struct SignupFormView: View {
                                     .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 20, trailing: 5))
                                     
                                     CustomTextField(
-                                        placeholder: "Linkedin Username",
+                                        placeholder: "Linkedin Username (Optional)",
                                         text: $viewModel.linkedinUsername,
                                         keyboardType: .default,
                                         iconName: "person"

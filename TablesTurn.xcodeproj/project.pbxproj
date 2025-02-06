@@ -23,8 +23,12 @@
 		D3C03BFA2D51077400E5251C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = D3C03BF92D51077400E5251C /* Kingfisher */; };
 		D3C03BFF2D5112CB00E5251C /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C03BFE2D5112CB00E5251C /* ApiClient.swift */; };
 		D3C03C012D51142100E5251C /* ApiEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C03C002D51142100E5251C /* ApiEndpoints.swift */; };
-		D3F4EAF12D54BA9600C71FDF /* UserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F4EAF02D54BA9600C71FDF /* UserDetails.swift */; };
-		D3F4EAF32D54BC2A00C71FDF /* SignupFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F4EAF22D54BC2A00C71FDF /* SignupFormViewModel.swift */; };
+		D3F4EAF12D54BA9600C71FDF /* UserRegistrationDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F4EAF02D54BA9600C71FDF /* UserRegistrationDetails.swift */; };
+		D3F4EAF32D54BC2A00C71FDF /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F4EAF22D54BC2A00C71FDF /* SignupViewModel.swift */; };
+		D3F4EAF52D54BF5400C71FDF /* SignupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F4EAF42D54BF5400C71FDF /* SignupService.swift */; };
+		D3F4EAF72D54C63C00C71FDF /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F4EAF62D54C63C00C71FDF /* ApiError.swift */; };
+		D3F4EAF92D54DC7100C71FDF /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F4EAF82D54DC7100C71FDF /* Alerts.swift */; };
+		D3F4EAFB2D54F16000C71FDF /* UserLoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F4EAFA2D54F16000C71FDF /* UserLoginResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,8 +66,12 @@
 		D3C03BE72D51023400E5251C /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		D3C03BFE2D5112CB00E5251C /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		D3C03C002D51142100E5251C /* ApiEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEndpoints.swift; sourceTree = "<group>"; };
-		D3F4EAF02D54BA9600C71FDF /* UserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetails.swift; sourceTree = "<group>"; };
-		D3F4EAF22D54BC2A00C71FDF /* SignupFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFormViewModel.swift; sourceTree = "<group>"; };
+		D3F4EAF02D54BA9600C71FDF /* UserRegistrationDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegistrationDetails.swift; sourceTree = "<group>"; };
+		D3F4EAF22D54BC2A00C71FDF /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
+		D3F4EAF42D54BF5400C71FDF /* SignupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupService.swift; sourceTree = "<group>"; };
+		D3F4EAF62D54C63C00C71FDF /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
+		D3F4EAF82D54DC7100C71FDF /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		D3F4EAFA2D54F16000C71FDF /* UserLoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +155,7 @@
 		D39401AC2D52432600DCFE21 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D3F4EAF42D54BF5400C71FDF /* SignupService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -154,7 +163,7 @@
 		D39401AD2D52433200DCFE21 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				D3F4EAF22D54BC2A00C71FDF /* SignupFormViewModel.swift */,
+				D3F4EAF22D54BC2A00C71FDF /* SignupViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -170,7 +179,8 @@
 		D39401AF2D52434D00DCFE21 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D3F4EAF02D54BA9600C71FDF /* UserDetails.swift */,
+				D3F4EAF02D54BA9600C71FDF /* UserRegistrationDetails.swift */,
+				D3F4EAFA2D54F16000C71FDF /* UserLoginResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -284,6 +294,7 @@
 			children = (
 				D3C03BFE2D5112CB00E5251C /* ApiClient.swift */,
 				D3C03C002D51142100E5251C /* ApiEndpoints.swift */,
+				D3F4EAF62D54C63C00C71FDF /* ApiError.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -291,6 +302,7 @@
 		D3C03BEE2D51033E00E5251C /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				D3F4EAF82D54DC7100C71FDF /* Alerts.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -465,16 +477,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				D39401B42D524BF500DCFE21 /* CustomTextField.swift in Sources */,
+				D3F4EAFB2D54F16000C71FDF /* UserLoginResponse.swift in Sources */,
 				D3C03BE82D51023400E5251C /* AppConfig.swift in Sources */,
 				D3C03BBD2D50FF5700E5251C /* TablesTurnApp.swift in Sources */,
 				D3255D5F2D51C0E7007E0125 /* GettingStartedView.swift in Sources */,
 				D36959492D52130700483BDB /* ImageCarousel.swift in Sources */,
 				D39401B22D5243B200DCFE21 /* SignupFormView.swift in Sources */,
 				D369594B2D52220900483BDB /* PrimaryButtonStyle.swift in Sources */,
-				D3F4EAF32D54BC2A00C71FDF /* SignupFormViewModel.swift in Sources */,
+				D3F4EAF32D54BC2A00C71FDF /* SignupViewModel.swift in Sources */,
 				D3C03BFF2D5112CB00E5251C /* ApiClient.swift in Sources */,
+				D3F4EAF52D54BF5400C71FDF /* SignupService.swift in Sources */,
 				D3C03C012D51142100E5251C /* ApiEndpoints.swift in Sources */,
-				D3F4EAF12D54BA9600C71FDF /* UserDetails.swift in Sources */,
+				D3F4EAF72D54C63C00C71FDF /* ApiError.swift in Sources */,
+				D3F4EAF92D54DC7100C71FDF /* Alerts.swift in Sources */,
+				D3F4EAF12D54BA9600C71FDF /* UserRegistrationDetails.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

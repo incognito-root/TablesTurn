@@ -3,18 +3,7 @@ import SwiftUI
 struct SignupFormView: View {
     let radius: CGFloat = 50
     
-    @State private var name: String = ""
-    @State private var email: String = ""
-    @State private var password: String = ""
-    @State private var confirmPassword: String = ""
-    @State private var instagramUsername: String = ""
-    @State private var twitterUsername: String = ""
-    @State private var linkedinUsername: String = ""
-    
-    @State private var showAlert = false
-    @State private var alertMessage = ""
-    
-    @State private var currentStep = 1
+    @StateObject private var viewModel = SignupFormViewModel()
     
     var body: some View {
         NavigationStack {
@@ -30,7 +19,7 @@ struct SignupFormView: View {
                         .padding(.bottom, -radius)
                     
                     VStack(alignment: .leading, spacing: 0) {
-                        if currentStep == 1 {
+                        if viewModel.currentStep == 1 {
                             (
                                 Text("Enter Your Email\n")
                                 + Text("To Get Started")
@@ -44,7 +33,7 @@ struct SignupFormView: View {
                                 Section {
                                     CustomTextField(
                                         placeholder: "Email",
-                                        text: $email,
+                                        text: $viewModel.email,
                                         keyboardType: .emailAddress,
                                         iconName: "envelope",
                                         validation: { input in
@@ -62,7 +51,9 @@ struct SignupFormView: View {
                                 }
                                 
                                 Section {
-                                    Button(action: validateEmail) {
+                                    Button(action: {
+                                        viewModel.validateEmail()
+                                    }) {
                                         Text("Next".uppercased())
                                     }
                                     .buttonStyle(PrimaryButtonStyle())
@@ -78,13 +69,13 @@ struct SignupFormView: View {
                             )
                             .font(.system(size: 43))
                             .fontWeight(.medium)
-                            .padding(EdgeInsets(top: 20, leading: 32, bottom: 0, trailing: 25))
+                            .padding(EdgeInsets(top: 20, leading: 32, bottom: 5, trailing: 25))
                             
                             Form {
                                 Section {
                                     CustomTextField(
                                         placeholder: "First Name",
-                                        text: $name,
+                                        text: $viewModel.firstName,
                                         keyboardType: .default,
                                         iconName: "person",
                                         validation: { input in
@@ -99,7 +90,7 @@ struct SignupFormView: View {
                                     
                                     CustomTextField(
                                         placeholder: "Last Name",
-                                        text: $name,
+                                        text: $viewModel.lastName,
                                         keyboardType: .default,
                                         iconName: "person",
                                         validation: { input in
@@ -114,7 +105,7 @@ struct SignupFormView: View {
                                     
                                     CustomTextField(
                                         placeholder: "Password",
-                                        text: $password,
+                                        text: $viewModel.password,
                                         isSecure: true,
                                         keyboardType: .default,
                                         iconName: "lock",
@@ -133,7 +124,7 @@ struct SignupFormView: View {
                                     
                                     CustomTextField(
                                         placeholder: "Confirm Password",
-                                        text: $confirmPassword,
+                                        text: $viewModel.confirmPassword,
                                         isSecure: true,
                                         keyboardType: .default,
                                         iconName: "lock",
@@ -141,7 +132,7 @@ struct SignupFormView: View {
                                             if input.isEmpty {
                                                 return "Password cannot be empty."
                                             }
-                                            if input != self.password {
+                                            if input != viewModel.password {
                                                 return "Passwords do not match"
                                             }
                                             return nil
@@ -152,7 +143,7 @@ struct SignupFormView: View {
                                     
                                     CustomTextField(
                                         placeholder: "Instagram Username",
-                                        text: $instagramUsername,
+                                        text: $viewModel.instagramUsername,
                                         keyboardType: .default,
                                         iconName: "person"
                                     )
@@ -161,7 +152,7 @@ struct SignupFormView: View {
                                     
                                     CustomTextField(
                                         placeholder: "Twitter Username",
-                                        text: $twitterUsername,
+                                        text: $viewModel.twitterUsername,
                                         keyboardType: .default,
                                         iconName: "person"
                                     )
@@ -170,7 +161,7 @@ struct SignupFormView: View {
                                     
                                     CustomTextField(
                                         placeholder: "Linkedin Username",
-                                        text: $linkedinUsername,
+                                        text: $viewModel.linkedinUsername,
                                         keyboardType: .default,
                                         iconName: "person"
                                     )
@@ -179,7 +170,9 @@ struct SignupFormView: View {
                                 }
                                 
                                 Section {
-                                    Button(action: signUp) {
+                                    Button(action: {
+                                        viewModel.signUp()
+                                    }) {
                                         Text("Sign Up".uppercased())
                                     }
                                     .buttonStyle(PrimaryButtonStyle())
@@ -196,54 +189,13 @@ struct SignupFormView: View {
                 .padding(.top, 20)
             }
             .foregroundStyle(.primaryText)
-            .alert(isPresented: $showAlert) {
+            .alert(isPresented: $viewModel.showAlert) {
                 Alert(title: Text("Error"),
-                      message: Text(alertMessage),
+                      message: Text(viewModel.alertMessage),
                       dismissButton: .default(Text("OK")))
             }
         }
         .navigationBarHidden(true)
-    }
-    
-    func validateEmail() {
-        guard !email.isEmpty, email.contains("@") else {
-            alertMessage = "Please enter a valid email."
-            showAlert = true
-            return
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            // For demonstration, assume all emails pass.
-            // If the email is already in use, you can set an error message and showAlert.
-            // e.g.,
-            // if emailAlreadyInUse(email) {
-            //     alertMessage = "This email is already in use."
-            //     showAlert = true
-            // } else {
-            //     currentStep = 2
-            // }
-            
-            currentStep = 2
-        }
-    }
-    
-    func signUp() {
-        guard !name.isEmpty,
-              !email.isEmpty,
-              !password.isEmpty,
-              !confirmPassword.isEmpty else {
-            alertMessage = "All fields are required."
-            showAlert = true
-            return
-        }
-        
-        guard password == confirmPassword else {
-            alertMessage = "Passwords do not match."
-            showAlert = true
-            return
-        }
-        
-        print("Signup successful!")
     }
 }
 

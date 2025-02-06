@@ -23,6 +23,8 @@
 		D3C03BFA2D51077400E5251C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = D3C03BF92D51077400E5251C /* Kingfisher */; };
 		D3C03BFF2D5112CB00E5251C /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C03BFE2D5112CB00E5251C /* ApiClient.swift */; };
 		D3C03C012D51142100E5251C /* ApiEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C03C002D51142100E5251C /* ApiEndpoints.swift */; };
+		D3F4EAF12D54BA9600C71FDF /* UserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F4EAF02D54BA9600C71FDF /* UserDetails.swift */; };
+		D3F4EAF32D54BC2A00C71FDF /* SignupFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F4EAF22D54BC2A00C71FDF /* SignupFormViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,8 @@
 		D3C03BE72D51023400E5251C /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		D3C03BFE2D5112CB00E5251C /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		D3C03C002D51142100E5251C /* ApiEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEndpoints.swift; sourceTree = "<group>"; };
+		D3F4EAF02D54BA9600C71FDF /* UserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetails.swift; sourceTree = "<group>"; };
+		D3F4EAF22D54BC2A00C71FDF /* SignupFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFormViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +154,7 @@
 		D39401AD2D52433200DCFE21 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				D3F4EAF22D54BC2A00C71FDF /* SignupFormViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -165,6 +170,7 @@
 		D39401AF2D52434D00DCFE21 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D3F4EAF02D54BA9600C71FDF /* UserDetails.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -465,8 +471,10 @@
 				D36959492D52130700483BDB /* ImageCarousel.swift in Sources */,
 				D39401B22D5243B200DCFE21 /* SignupFormView.swift in Sources */,
 				D369594B2D52220900483BDB /* PrimaryButtonStyle.swift in Sources */,
+				D3F4EAF32D54BC2A00C71FDF /* SignupFormViewModel.swift in Sources */,
 				D3C03BFF2D5112CB00E5251C /* ApiClient.swift in Sources */,
 				D3C03C012D51142100E5251C /* ApiEndpoints.swift in Sources */,
+				D3F4EAF12D54BA9600C71FDF /* UserDetails.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

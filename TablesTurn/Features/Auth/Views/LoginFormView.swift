@@ -107,7 +107,7 @@ struct LoginFormView: View {
                 )
             }
             .navigationDestination(isPresented: $viewModel.isEmailNotVerified) {
-                EmailVerificationView()
+                EmailVerificationView(viewModel: EmailVerificationViewModel(userId: viewModel.id))
             }
         }
         .navigationBarHidden(true)

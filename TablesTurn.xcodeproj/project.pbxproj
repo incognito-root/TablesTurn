@@ -26,6 +26,8 @@
 		D3C03BFA2D51077400E5251C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = D3C03BF92D51077400E5251C /* Kingfisher */; };
 		D3C03BFF2D5112CB00E5251C /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C03BFE2D5112CB00E5251C /* ApiClient.swift */; };
 		D3C03C012D51142100E5251C /* ApiEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C03C002D51142100E5251C /* ApiEndpoints.swift */; };
+		D3C68E872D561040000F3C0C /* EmailVerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C68E862D561040000F3C0C /* EmailVerificationViewModel.swift */; };
+		D3C68E892D5615EC000F3C0C /* EmailVerificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C68E882D5615EC000F3C0C /* EmailVerificationService.swift */; };
 		D3F4EAF12D54BA9600C71FDF /* UserRegistrationDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F4EAF02D54BA9600C71FDF /* UserRegistrationDetails.swift */; };
 		D3F4EAF32D54BC2A00C71FDF /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F4EAF22D54BC2A00C71FDF /* SignupViewModel.swift */; };
 		D3F4EAF52D54BF5400C71FDF /* SignupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F4EAF42D54BF5400C71FDF /* SignupService.swift */; };
@@ -76,6 +78,8 @@
 		D3C03BE72D51023400E5251C /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		D3C03BFE2D5112CB00E5251C /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		D3C03C002D51142100E5251C /* ApiEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEndpoints.swift; sourceTree = "<group>"; };
+		D3C68E862D561040000F3C0C /* EmailVerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationViewModel.swift; sourceTree = "<group>"; };
+		D3C68E882D5615EC000F3C0C /* EmailVerificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationService.swift; sourceTree = "<group>"; };
 		D3F4EAF02D54BA9600C71FDF /* UserRegistrationDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegistrationDetails.swift; sourceTree = "<group>"; };
 		D3F4EAF22D54BC2A00C71FDF /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		D3F4EAF42D54BF5400C71FDF /* SignupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupService.swift; sourceTree = "<group>"; };
@@ -171,6 +175,7 @@
 			children = (
 				D3F4EAF42D54BF5400C71FDF /* SignupService.swift */,
 				D3F4EAFE2D54F60800C71FDF /* LoginService.swift */,
+				D3C68E882D5615EC000F3C0C /* EmailVerificationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 			children = (
 				D3F4EAF22D54BC2A00C71FDF /* SignupViewModel.swift */,
 				D3F4EAFC2D54F45000C71FDF /* LoginViewModel.swift */,
+				D3C68E862D561040000F3C0C /* EmailVerificationViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -499,8 +505,10 @@
 			files = (
 				D3F4EAFF2D54F60800C71FDF /* LoginService.swift in Sources */,
 				D3F4EB012D54F64B00C71FDF /* UserLoginDetails.swift in Sources */,
+				D3C68E872D561040000F3C0C /* EmailVerificationViewModel.swift in Sources */,
 				D39401B42D524BF500DCFE21 /* CustomTextField.swift in Sources */,
 				D3F4EB032D54F70200C71FDF /* UserLoginResponse.swift in Sources */,
+				D3C68E892D5615EC000F3C0C /* EmailVerificationService.swift in Sources */,
 				D3F4EAFB2D54F16000C71FDF /* UserSignupResponse.swift in Sources */,
 				D3C03BE82D51023400E5251C /* AppConfig.swift in Sources */,
 				D3B68C9A2D554BCD00BF6CD3 /* EmailVerificationDetails.swift in Sources */,

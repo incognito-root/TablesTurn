@@ -1,35 +1,34 @@
 import Foundation
-import Combine
 
-class LoginViewModel: ObservableObject {
-    @Published var email: String = ""
-    @Published var password: String = ""
-    @Published var id: String = ""
-    @Published var staySignedIn: Bool = false
+class EmailVerificationViewModel: ObservableObject {
+    @Published var otp: [String] = Array(repeating: "", count: 6)
+    @Published var focusedField: Int?
+    @Published var userId: String?
     
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     
-    @Published var isEmailNotVerified: Bool = false
+    private let emailVerificationService = EmailVerificationService()
     
-    private let loginService = LoginService()
+    init(userId: String? = nil) {
+        self.userId = userId
+    }
     
-    func login() {
-        guard  !email.isEmpty,
-               !password.isEmpty
-        else {
-            alertMessage = "All fields are required."
+    func verifyOTP() {
+        let enteredOTP = otp.joined()
+        
+        if enteredOTP.count < 6 {
+            alertMessage = "Please enter 6 digits"
             showAlert = true
             return
         }
         
-        let userDetails = UserLoginDetails(
-            email: email,
-            password: password,
-            staySignedIn: staySignedIn
+        let verificationDetails = EmailVerificationDetails(
+            userId: self.userId ?? "",
+            otp: enteredOTP
         )
         
-        loginService.login(userDetails: userDetails) { [weak self] result in
+        emailVerificationService.verifyOtp(details: verificationDetails) { [weak self] result in
             DispatchQueue.main.async {
                 guard let self = self else { return }
                 
@@ -38,7 +37,6 @@ class LoginViewModel: ObservableObject {
                     print("Login successful! User: \(user)")
                     
                 case .failure(let error):
-                    // Handle specific error types
                     if let apiError = error as? APIError {
                         switch apiError {
                         case .serverError(let message):
@@ -47,19 +45,25 @@ class LoginViewModel: ObservableObject {
                             self.alertMessage = "Failed to process server response"
                         case .invalidResponse:
                             self.alertMessage = "Invalid server response"
-                        case .emailNotVerified(let userId):
-                            self.id = userId ?? ""
-                            self.isEmailNotVerified = true
+                        case .emailNotVerified:
+                            print("email not verified")
                         }
                     } else {
                         self.alertMessage = error.localizedDescription
                     }
                     
-                    if self.isEmailNotVerified == false {
-                        self.showAlert = true
-                    }
+                    self.showAlert = true
                 }
             }
+        }
+    }
+    
+    func handleOTPChange(index: Int, newValue: String) {
+        if newValue.count > 1 {
+            otp[index] = String(newValue.prefix(1))
+        }
+        if newValue.count == 1 && index < 5 {
+            focusedField = index + 1
         }
     }
 }

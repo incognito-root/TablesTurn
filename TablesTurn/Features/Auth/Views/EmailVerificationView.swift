@@ -2,9 +2,9 @@ import SwiftUI
 
 struct EmailVerificationView: View {
     let radius: CGFloat = 50
-    
-    @State private var otp: [String] = Array(repeating: "", count: 6)
     @FocusState private var focusedField: Int?
+    
+    @StateObject var viewModel = EmailVerificationViewModel()
     
     var body: some View {
         NavigationStack {
@@ -30,30 +30,29 @@ struct EmailVerificationView: View {
                         
                         HStack(spacing: 10) {
                             ForEach(0..<6, id: \.self) { index in
-                                TextField("", text: $otp[index])
+                                TextField("", text: $viewModel.otp[index])
                                     .frame(width: 50, height: 50)
-                                    .background(Color.clear) // Transparent background
+                                    .background(Color.clear)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 10)
-                                            .stroke(Color.accent, lineWidth: 2) // Add a border
+                                            .stroke(Color.accent, lineWidth: 2)
                                     )
                                     .multilineTextAlignment(.center)
                                     .keyboardType(.numberPad)
                                     .focused($focusedField, equals: index)
-                                    .onChange(of: otp[index]) { oldValue, newValue in
+                                    .onChange(of: viewModel.otp[index]) { oldValue, newValue in
                                         if newValue.count > 1 {
-                                            otp[index] = String(newValue.prefix(1))
+                                            viewModel.otp[index] = String(newValue.prefix(1))
                                         }
                                         if newValue.count == 1 && index < 5 {
-                                            focusedField = index + 1
+                                            viewModel.focusedField = index + 1
                                         }
                                     }
                             }
                         }
                         
                         Button(action: {
-                            let enteredOTP = otp.joined()
-                            print("Entered OTP: \(enteredOTP)")
+                            viewModel.verifyOTP()
                         }) {
                             Text("Verify".uppercased())
                         }
@@ -62,6 +61,13 @@ struct EmailVerificationView: View {
                     .padding(EdgeInsets(top: 45, leading: 20, bottom: 30, trailing: 20))
                 }
                 .padding(.top, 20)
+            }
+            .alert(isPresented: $viewModel.showAlert) {
+                Alert(
+                    title: Text("Error"),
+                    message: Text(viewModel.alertMessage),
+                    dismissButton: .default(Text("OK"))
+                )
             }
             .foregroundStyle(.primaryText)
         }

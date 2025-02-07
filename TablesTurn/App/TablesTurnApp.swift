@@ -1,17 +1,13 @@
-//
-//  TablesTurnApp.swift
-//  TablesTurn
-//
-//  Created by Ayaan Ali on 03/02/2025.
-//
-
 import SwiftUI
 
 @main
 struct TablesTurnApp: App {
+    @StateObject private var userManager = UserManager.shared
+    
     var body: some Scene {
         WindowGroup {
-           GettingStartedView()
+           RootView()
+                .environmentObject(userManager)
         }
     }
 }

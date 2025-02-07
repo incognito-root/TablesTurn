@@ -34,7 +34,8 @@ class EmailVerificationViewModel: ObservableObject {
                 
                 switch result {
                 case .success(let user):
-                    print("Login successful! User: \(user)")
+                    let userToSave = User(id: user.id)
+                    UserManager.shared.currentUser = userToSave
                     
                 case .failure(let error):
                     if let apiError = error as? APIError {

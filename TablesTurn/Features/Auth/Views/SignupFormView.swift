@@ -57,7 +57,7 @@ struct SignupFormView: View {
                                     }) {
                                         Text("Next".uppercased())
                                     }
-                                    .buttonStyle(PrimaryButtonStyle())
+                                    .buttonStyle(MainButtonStyle())
                                     .listRowBackground(Color.clear)
                                     .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 0, trailing: 5))
                                 }
@@ -170,7 +170,7 @@ struct SignupFormView: View {
                                     }) {
                                         Text("Sign Up".uppercased())
                                     }
-                                    .buttonStyle(PrimaryButtonStyle())
+                                    .buttonStyle(MainButtonStyle())
                                     .listRowBackground(Color.clear)
                                     .listRowInsets(EdgeInsets(top: 20, leading: 5, bottom: 50, trailing: 5))
                                 }

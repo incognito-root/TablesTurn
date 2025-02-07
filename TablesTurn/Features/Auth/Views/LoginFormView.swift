@@ -86,7 +86,7 @@ struct LoginFormView: View {
                                 }) {
                                     Text("Submit".uppercased())
                                 }
-                                .buttonStyle(PrimaryButtonStyle())
+                                .buttonStyle(MainButtonStyle())
                                 .listRowBackground(Color.clear)
                                 .listRowInsets(EdgeInsets(top: 15, leading: 5, bottom: 0, trailing: 5))
                             }

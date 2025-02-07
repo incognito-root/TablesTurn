@@ -9,9 +9,12 @@
 /* Begin PBXBuildFile section */
 		D3255D5F2D51C0E7007E0125 /* GettingStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3255D5E2D51C0E7007E0125 /* GettingStartedView.swift */; };
 		D36959492D52130700483BDB /* ImageCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36959482D52130700483BDB /* ImageCarousel.swift */; };
-		D369594B2D52220900483BDB /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D369594A2D52220900483BDB /* PrimaryButtonStyle.swift */; };
+		D369594B2D52220900483BDB /* MainButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D369594A2D52220900483BDB /* MainButtonStyle.swift */; };
 		D39401B22D5243B200DCFE21 /* SignupFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39401B12D5243B200DCFE21 /* SignupFormView.swift */; };
 		D39401B42D524BF500DCFE21 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39401B32D524BF500DCFE21 /* CustomTextField.swift */; };
+		D396248E2D56366200A3E310 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D396248D2D56366200A3E310 /* HomeView.swift */; };
+		D39624902D5636F100A3E310 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D396248F2D5636F100A3E310 /* HomeViewModel.swift */; };
+		D39624922D564D6300A3E310 /* CircularButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39624912D564D6300A3E310 /* CircularButtonStyle.swift */; };
 		D3B68C9A2D554BCD00BF6CD3 /* EmailVerificationDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B68C992D554BCD00BF6CD3 /* EmailVerificationDetails.swift */; };
 		D3B68C9C2D554CBD00BF6CD3 /* EmailVerificationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B68C9B2D554CBD00BF6CD3 /* EmailVerificationResponse.swift */; };
 		D3B68C9E2D5553CC00BF6CD3 /* LoginFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B68C9D2D5553CC00BF6CD3 /* LoginFormView.swift */; };
@@ -62,9 +65,12 @@
 /* Begin PBXFileReference section */
 		D3255D5E2D51C0E7007E0125 /* GettingStartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartedView.swift; sourceTree = "<group>"; };
 		D36959482D52130700483BDB /* ImageCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCarousel.swift; sourceTree = "<group>"; };
-		D369594A2D52220900483BDB /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
+		D369594A2D52220900483BDB /* MainButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButtonStyle.swift; sourceTree = "<group>"; };
 		D39401B12D5243B200DCFE21 /* SignupFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFormView.swift; sourceTree = "<group>"; };
 		D39401B32D524BF500DCFE21 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		D396248D2D56366200A3E310 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		D396248F2D5636F100A3E310 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		D39624912D564D6300A3E310 /* CircularButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularButtonStyle.swift; sourceTree = "<group>"; };
 		D3B68C992D554BCD00BF6CD3 /* EmailVerificationDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationDetails.swift; sourceTree = "<group>"; };
 		D3B68C9B2D554CBD00BF6CD3 /* EmailVerificationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationResponse.swift; sourceTree = "<group>"; };
 		D3B68C9D2D5553CC00BF6CD3 /* LoginFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormView.swift; sourceTree = "<group>"; };
@@ -288,6 +294,7 @@
 		D3C03BE92D51025E00E5251C /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				D3C68E8E2D562312000F3C0C /* Home */,
 				D39401AB2D52431500DCFE21 /* Auth */,
 				D3255D572D51BCD4007E0125 /* Onboarding */,
 			);
@@ -351,8 +358,9 @@
 			isa = PBXGroup;
 			children = (
 				D36959482D52130700483BDB /* ImageCarousel.swift */,
-				D369594A2D52220900483BDB /* PrimaryButtonStyle.swift */,
+				D369594A2D52220900483BDB /* MainButtonStyle.swift */,
 				D39401B32D524BF500DCFE21 /* CustomTextField.swift */,
+				D39624912D564D6300A3E310 /* CircularButtonStyle.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -369,6 +377,47 @@
 			children = (
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		D3C68E8E2D562312000F3C0C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D3C68E922D5623DF000F3C0C /* Models */,
+				D3C68E912D5623D5000F3C0C /* Views */,
+				D3C68E902D5623CC000F3C0C /* ViewModels */,
+				D3C68E8F2D5623C5000F3C0C /* Services */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		D3C68E8F2D5623C5000F3C0C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D3C68E902D5623CC000F3C0C /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D396248F2D5636F100A3E310 /* HomeViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D3C68E912D5623D5000F3C0C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D396248D2D56366200A3E310 /* HomeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D3C68E922D5623DF000F3C0C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -509,6 +558,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D396248E2D56366200A3E310 /* HomeView.swift in Sources */,
 				D3F4EAFF2D54F60800C71FDF /* LoginService.swift in Sources */,
 				D3F4EB012D54F64B00C71FDF /* UserLoginDetails.swift in Sources */,
 				D3C68E872D561040000F3C0C /* EmailVerificationViewModel.swift in Sources */,
@@ -522,15 +572,17 @@
 				D3F4EAFD2D54F45000C71FDF /* LoginViewModel.swift in Sources */,
 				D3255D5F2D51C0E7007E0125 /* GettingStartedView.swift in Sources */,
 				D36959492D52130700483BDB /* ImageCarousel.swift in Sources */,
+				D39624922D564D6300A3E310 /* CircularButtonStyle.swift in Sources */,
 				D39401B22D5243B200DCFE21 /* SignupFormView.swift in Sources */,
 				D3B68C9C2D554CBD00BF6CD3 /* EmailVerificationResponse.swift in Sources */,
 				D3B68C9E2D5553CC00BF6CD3 /* LoginFormView.swift in Sources */,
-				D369594B2D52220900483BDB /* PrimaryButtonStyle.swift in Sources */,
+				D369594B2D52220900483BDB /* MainButtonStyle.swift in Sources */,
 				D3F4EAF32D54BC2A00C71FDF /* SignupViewModel.swift in Sources */,
 				D3C68E8B2D561D42000F3C0C /* UserManager.swift in Sources */,
 				D3F4EB052D55410600C71FDF /* EmailVerificationView.swift in Sources */,
 				D3C03BFF2D5112CB00E5251C /* ApiClient.swift in Sources */,
 				D3F4EAF52D54BF5400C71FDF /* SignupService.swift in Sources */,
+				D39624902D5636F100A3E310 /* HomeViewModel.swift in Sources */,
 				D3C68E8D2D5621C3000F3C0C /* RootView.swift in Sources */,
 				D3C03C012D51142100E5251C /* ApiEndpoints.swift in Sources */,
 				D3F4EAF72D54C63C00C71FDF /* ApiError.swift in Sources */,

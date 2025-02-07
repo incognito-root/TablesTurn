@@ -56,7 +56,7 @@ struct EmailVerificationView: View {
                         }) {
                             Text("Verify".uppercased())
                         }
-                        .buttonStyle(PrimaryButtonStyle())
+                        .buttonStyle(MainButtonStyle())
                     }
                     .padding(EdgeInsets(top: 45, leading: 20, bottom: 30, trailing: 20))
                 }

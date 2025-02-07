@@ -156,6 +156,8 @@ struct HomeView: View {
                     
                     VStack {
                         EventCard(imageUrl: URL(string: "https://plus.unsplash.com/premium_photo-1686783007953-4fcb40669dd8?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDV8fGV2ZW50c3xlbnwwfHwwfHx8MA%3D%3D")!)
+                        
+                        EventCard(imageUrl: URL(string: "https://images.pexels.com/photos/976866/pexels-photo-976866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")!)
                     }
                     
                 }

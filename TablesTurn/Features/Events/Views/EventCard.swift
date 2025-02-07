@@ -17,26 +17,64 @@ struct EventCard: View {
                 }
             }
             
-            Color.black.opacity(0.50)
+            Color.black.opacity(0.60)
             
-            VStack(alignment: .leading) {
-                Text("Event Title")
-                    .font(.title)
-                    .foregroundColor(.white)
-                    .shadow(color: .black, radius: 2)
-                
-                Spacer()
-                
-                Text("Event Date")
-                    .font(.subheadline)
-                    .foregroundColor(.white)
-                    .shadow(color: .black, radius: 2)
+            VStack {
+                HStack {
+                    Image(systemName: "ticket")
+                        .foregroundColor(.white)
+                    Text("Tickets Available")
+                        .font(.system(size: 14))
+                }
             }
-            .padding()
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+            .padding(20)
+            
+            VStack(alignment: .trailing) {
+                Text("80%")
+                    .font(.system(size: 26))
+                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                Text("Tickets Booked")
+                    .font(.system(size: 14))
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+            .padding(17)
+            
+            VStack(alignment: .leading, spacing: 10) {
+                Text("Dinner")
+                    .font(.system(size: 26))
+                    .fontWeight(.medium)
+                HStack {
+                    Image(systemName: "mappin.circle")
+                        .foregroundColor(.white)
+                    Text("Jakarta Hall")
+                        .font(.system(size: 14))
+                        .foregroundColor(.white)
+                }
+                .padding(.horizontal, 12)
+                .padding(.vertical, 8)
+                .background(
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(Color.gray.opacity(0.7))
+                )
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
+            .padding(20)
+            
+            // Bottom Right Corner
+            VStack(alignment: .trailing) {
+                Text("18\nOCT")
+                    .font(.system(size: 26, weight: .bold))
+                    .foregroundColor(.black)
+                    .multilineTextAlignment(.center)
+                    .padding(14)
+                    .background(Circle().fill(Color.accent))
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+            .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 13))
         }
-        .frame(width: .infinity, height: 230)
+        .frame(height: 230)
         .clipShape(RoundedRectangle(cornerRadius: 35))
-        .shadow(radius: 5)
     }
 }
 

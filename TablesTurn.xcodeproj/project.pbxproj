@@ -10,6 +10,7 @@
 		D3255D5F2D51C0E7007E0125 /* GettingStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3255D5E2D51C0E7007E0125 /* GettingStartedView.swift */; };
 		D36959492D52130700483BDB /* ImageCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36959482D52130700483BDB /* ImageCarousel.swift */; };
 		D369594B2D52220900483BDB /* MainButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D369594A2D52220900483BDB /* MainButtonStyle.swift */; };
+		D38BDE2D2D56AF3300206D28 /* EventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38BDE2C2D56AF3300206D28 /* EventCard.swift */; };
 		D39401B22D5243B200DCFE21 /* SignupFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39401B12D5243B200DCFE21 /* SignupFormView.swift */; };
 		D39401B42D524BF500DCFE21 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39401B32D524BF500DCFE21 /* CustomTextField.swift */; };
 		D396248E2D56366200A3E310 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D396248D2D56366200A3E310 /* HomeView.swift */; };
@@ -66,6 +67,7 @@
 		D3255D5E2D51C0E7007E0125 /* GettingStartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartedView.swift; sourceTree = "<group>"; };
 		D36959482D52130700483BDB /* ImageCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCarousel.swift; sourceTree = "<group>"; };
 		D369594A2D52220900483BDB /* MainButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButtonStyle.swift; sourceTree = "<group>"; };
+		D38BDE2C2D56AF3300206D28 /* EventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCard.swift; sourceTree = "<group>"; };
 		D39401B12D5243B200DCFE21 /* SignupFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFormView.swift; sourceTree = "<group>"; };
 		D39401B32D524BF500DCFE21 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		D396248D2D56366200A3E310 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -163,6 +165,46 @@
 			sourceTree = "<group>";
 		};
 		D3255D5D2D51BD59007E0125 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D38BDE272D56AEFC00206D28 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				D38BDE2B2D56AF2300206D28 /* Models */,
+				D38BDE2A2D56AF1800206D28 /* Views */,
+				D38BDE292D56AF0F00206D28 /* ViewModels */,
+				D38BDE282D56AF0700206D28 /* Services */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		D38BDE282D56AF0700206D28 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D38BDE292D56AF0F00206D28 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D38BDE2A2D56AF1800206D28 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D38BDE2C2D56AF3300206D28 /* EventCard.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D38BDE2B2D56AF2300206D28 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -294,6 +336,7 @@
 		D3C03BE92D51025E00E5251C /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				D38BDE272D56AEFC00206D28 /* Events */,
 				D3C68E8E2D562312000F3C0C /* Home */,
 				D39401AB2D52431500DCFE21 /* Auth */,
 				D3255D572D51BCD4007E0125 /* Onboarding */,
@@ -562,6 +605,7 @@
 				D3F4EAFF2D54F60800C71FDF /* LoginService.swift in Sources */,
 				D3F4EB012D54F64B00C71FDF /* UserLoginDetails.swift in Sources */,
 				D3C68E872D561040000F3C0C /* EmailVerificationViewModel.swift in Sources */,
+				D38BDE2D2D56AF3300206D28 /* EventCard.swift in Sources */,
 				D39401B42D524BF500DCFE21 /* CustomTextField.swift in Sources */,
 				D3F4EB032D54F70200C71FDF /* UserLoginResponse.swift in Sources */,
 				D3C68E892D5615EC000F3C0C /* EmailVerificationService.swift in Sources */,

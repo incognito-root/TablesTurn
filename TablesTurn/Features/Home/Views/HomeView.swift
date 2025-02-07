@@ -27,19 +27,21 @@ struct HomeView: View {
                 VStack(alignment: .leading, spacing: 20) {
                     HStack(alignment: .top) {
                         Image("LogoImage")
+                            .resizable()
+                            .frame(width: 25, height: 25)
                         Text("Tables Turn")
-                            .font(.title)
+                            .font(.title2)
                     }
                     
                     HStack {
                         VStack {
                             Text(formattedDate.day)
-                                .font(.system(size: 40))
+                                .font(.system(size: 35))
                                 .fontWeight(.semibold)
                                 .fixedSize(horizontal: false, vertical: true)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             Text(formattedDate.date)
-                                .font(.system(size: 40))
+                                .font(.system(size: 35))
                                 .fontWeight(.semibold)
                                 .fixedSize(horizontal: false, vertical: true)
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -47,10 +49,10 @@ struct HomeView: View {
                         
                         Spacer()
                         
-                        VStack(spacing: 20) {
+                        VStack(spacing: 10) {
                             Image("LogoImage")
                                 .resizable()
-                                .frame(width: 50, height: 50)
+                                .frame(width: 40, height: 40)
                                 .frame(maxWidth: .infinity, alignment: .trailing)
                             
                             HStack(spacing: 3) {
@@ -67,8 +69,8 @@ struct HomeView: View {
                                 Button("Today".uppercased()) {}
                                     .buttonStyle(MainButtonStyle(
                                         maxWidth: 80,
-                                        padding: 16,
-                                        fontSize: 15,
+                                        padding: 12,
+                                        fontSize: 13,
                                         cornerRadius: 30,
                                         backgroundColor: .black,
                                         foregroundColor: .white,
@@ -79,8 +81,8 @@ struct HomeView: View {
                                 Button("Calendar".uppercased()) {}
                                     .buttonStyle(MainButtonStyle(
                                         maxWidth: 80,
-                                        padding: 16,
-                                        fontSize: 15,
+                                        padding: 12,
+                                        fontSize: 13,
                                         cornerRadius: 30,
                                         backgroundColor: .clear,
                                         foregroundColor: .white,
@@ -136,7 +138,28 @@ struct HomeView: View {
                         .frame(maxWidth: 50, alignment: .trailing)
                     }
                     
+                    Text("Visit ")
+                        .font(.system(size: 35)) +
+                    Text("events")
+                        .font(.system(size: 35, weight: .bold))
+                        +
+                    Text(" based on your interest")
+                        .font(.system(size: 35))
+                    
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("All")
+                                .underline()
+                                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                        }
+                    }
+                    
+                    VStack {
+                        EventCard(imageUrl: URL(string: "https://plus.unsplash.com/premium_photo-1686783007953-4fcb40669dd8?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDV8fGV2ZW50c3xlbnwwfHwwfHx8MA%3D%3D")!)
+                    }
+                    
                 }
+                .frame(maxHeight: .infinity, alignment: .top)
                 .ignoresSafeArea()
                 .padding(20)
             }

@@ -51,7 +51,7 @@ struct HomeView: View {
                             Spacer()
                             
                             VStack(spacing: 10) {
-                                Image("LogoImage")
+                                Image("ProfileAvatar")
                                     .resizable()
                                     .frame(width: 40, height: 40)
                                     .frame(maxWidth: .infinity, alignment: .trailing)
@@ -79,7 +79,9 @@ struct HomeView: View {
                                             borderWidth: 2
                                         ))
                                     
-                                    Button("Calendar".uppercased()) {}
+                                    Button("Calendar".uppercased()) {
+                                        UserManager.shared.logout()
+                                    }
                                         .buttonStyle(MainButtonStyle(
                                             maxWidth: 80,
                                             padding: 12,

@@ -1,11 +1,17 @@
 import SwiftUI
 
 struct EventCard: View {
-    let imageUrl: URL
+    let event: Event
+    
+    var formattedDate: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd\nMMM"
+        return dateFormatter.string(from: event.dateTime)
+    }
     
     var body: some View {
         ZStack {
-            AsyncImage(url: imageUrl) { phase in
+            AsyncImage(url: URL(string: event.image ?? "")) { phase in
                 if let image = phase.image {
                     image
                         .resizable()
@@ -16,6 +22,7 @@ struct EventCard: View {
                     Color.gray
                 }
             }
+            
             
             Color.black.opacity(0.60)
             
@@ -33,7 +40,7 @@ struct EventCard: View {
             VStack(alignment: .trailing) {
                 Text("80%")
                     .font(.system(size: 26))
-                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    .fontWeight(.bold)
                 Text("Tickets Booked")
                     .font(.system(size: 14))
             }
@@ -41,13 +48,16 @@ struct EventCard: View {
             .padding(17)
             
             VStack(alignment: .leading, spacing: 10) {
-                Text("Dinner")
+                Text(event.title)
                     .font(.system(size: 26))
                     .fontWeight(.medium)
+                    .frame(maxWidth: 150, alignment: .leading)
+                    .lineLimit(2)
+                    .truncationMode(.tail)
                 HStack {
                     Image(systemName: "mappin.circle")
                         .foregroundColor(.white)
-                    Text("Jakarta Hall")
+                    Text(event.location)
                         .font(.system(size: 14))
                         .foregroundColor(.white)
                 }
@@ -63,7 +73,7 @@ struct EventCard: View {
             
             // Bottom Right Corner
             VStack(alignment: .trailing) {
-                Text("18\nOCT")
+                Text(formattedDate)
                     .font(.system(size: 26, weight: .bold))
                     .foregroundColor(.black)
                     .multilineTextAlignment(.center)
@@ -77,7 +87,7 @@ struct EventCard: View {
         .clipShape(RoundedRectangle(cornerRadius: 35))
     }
 }
-
-#Preview {
-    EventCard(imageUrl: URL(string: "https://plus.unsplash.com/premium_photo-1686783007953-4fcb40669dd8?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDV8fGV2ZW50c3xlbnwwfHwwfHx8MA%3D%3D")!)
-}
+//
+//#Preview {
+//    EventCard(imageUrl: URL(string: "https://plus.unsplash.com/premium_photo-1686783007953-4fcb40669dd8?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDV8fGV2ZW50c3xlbnwwfHwwfHx8MA%3D%3D")!)
+//}

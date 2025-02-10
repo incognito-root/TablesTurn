@@ -27,6 +27,28 @@ class NetworkManager {
         return Session(configuration: configuration)
     }()
     
+    private func configuredDecoder() -> JSONDecoder {
+        let decoder = JSONDecoder()
+        // Create an ISO8601DateFormatter that supports fractional seconds.
+        let isoFormatter = ISO8601DateFormatter()
+        isoFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        
+        decoder.dateDecodingStrategy = .custom { decoder in
+            let container = try decoder.singleValueContainer()
+            let dateString = try container.decode(String.self)
+            
+            if let date = isoFormatter.date(from: dateString) {
+                return date
+            }
+            
+            // Throw an error if the date string cannot be parsed.
+            throw DecodingError.dataCorruptedError(in: container,
+                                                   debugDescription: "Cannot decode date string: \(dateString)")
+        }
+        return decoder
+    }
+
+    
     func request<T: Decodable>(
         endpoint: String,
         method: HTTPMethod = .get,
@@ -42,7 +64,8 @@ class NetworkManager {
                 switch response.result {
                 case .success(let data):
                     do {
-                        let apiResponse = try JSONDecoder().decode(ApiResponse<T>.self, from: data)
+                        let decoder = self.configuredDecoder()
+                        let apiResponse = try decoder.decode(ApiResponse<T>.self, from: data)
                         if let responseData = apiResponse.data {
                             completion(.success(responseData))
                         } else {
@@ -50,6 +73,7 @@ class NetworkManager {
                             completion(.failure(APIError.serverError(errorMessage)))
                         }
                     } catch {
+                        print(error)
                         completion(.failure(APIError.decodingError))
                     }
                     

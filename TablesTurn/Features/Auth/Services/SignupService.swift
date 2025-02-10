@@ -3,7 +3,7 @@ import Alamofire
 
 class SignupService {
     
-    func signUp(userDetails: UserRegistrationDetails, completion: @escaping (Result<UserSignupResponse, Error>) -> Void) {
+    func signUp(userDetails: UserSignupDetails, completion: @escaping (Result<UserSignupResponse, Error>) -> Void) {
         let parameters: [String: Any] = [
             "userDetails": [
                 "first_name": userDetails.firstName,
@@ -17,7 +17,7 @@ class SignupService {
         ]
         
         NetworkManager.shared.request(
-            endpoint: APIEndpoints.signupUrl,
+            endpoint: APIEndpoints.signup,
             method: .post,
             parameters: parameters,
             headers: nil

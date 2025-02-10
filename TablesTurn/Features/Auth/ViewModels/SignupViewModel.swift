@@ -52,7 +52,7 @@ class SignupViewModel: ObservableObject {
             return
         }
         
-        let userDetails = UserRegistrationDetails(
+        let userDetails = UserSignupDetails(
             firstName: firstName,
             lastName: lastName,
             password: password,

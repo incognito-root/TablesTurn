@@ -82,16 +82,16 @@ struct HomeView: View {
                                     Button("Calendar".uppercased()) {
                                         UserManager.shared.logout()
                                     }
-                                        .buttonStyle(MainButtonStyle(
-                                            maxWidth: 80,
-                                            padding: 12,
-                                            fontSize: 13,
-                                            cornerRadius: 30,
-                                            backgroundColor: .clear,
-                                            foregroundColor: .white,
-                                            borderColor: .white,
-                                            borderWidth: 2
-                                        ))
+                                    .buttonStyle(MainButtonStyle(
+                                        maxWidth: 80,
+                                        padding: 12,
+                                        fontSize: 13,
+                                        cornerRadius: 30,
+                                        backgroundColor: .clear,
+                                        foregroundColor: .white,
+                                        borderColor: .white,
+                                        borderWidth: 2
+                                    ))
                                 }
                                 
                                 HStack {
@@ -145,7 +145,7 @@ struct HomeView: View {
                             .font(.system(size: 35)) +
                         Text("events")
                             .font(.system(size: 35, weight: .bold))
-                            +
+                        +
                         Text(" based on your interest")
                             .font(.system(size: 35))
                         
@@ -158,9 +158,18 @@ struct HomeView: View {
                         }
                         
                         VStack(spacing: 20) {
-                            EventCard(imageUrl: URL(string: "https://plus.unsplash.com/premium_photo-1686783007953-4fcb40669dd8?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDV8fGV2ZW50c3xlbnwwfHwwfHx8MA%3D%3D")!)
-                            
-                            EventCard(imageUrl: URL(string: "https://images.pexels.com/photos/976866/pexels-photo-976866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")!)
+                            if viewModel.isLoading {
+                                ProgressView()
+                                    .frame(height: 230)
+                            } else if viewModel.events.isEmpty {
+                                Text("No events found")
+                                    .frame(height: 230)
+                            } else {
+                                ForEach(viewModel.events) { event in
+                                    EventCard(event: event)
+                                        .padding(.bottom, 20)
+                                }
+                            }
                         }
                         
                     }
@@ -178,6 +187,9 @@ struct HomeView: View {
             }
         }
         .navigationBarHidden(true)
+        .onAppear {
+            viewModel.getAllEvents()
+        }
     }
 }
 

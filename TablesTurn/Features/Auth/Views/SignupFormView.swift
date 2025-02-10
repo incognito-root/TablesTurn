@@ -190,7 +190,7 @@ struct SignupFormView: View {
                       dismissButton: .default(Text("OK")))
             }
         }
-        .navigationBarHidden(true)
+        .toolbar(.hidden, for: .navigationBar)
         .navigationDestination(isPresented: $viewModel.signedUp) {
             LoginFormView()
         }

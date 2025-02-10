@@ -20,7 +20,6 @@ class HomeViewModel: ObservableObject {
                 switch result {
                 case .success(let events):
                     self.events = events
-                    print(self.events)
                     self.isLoading = false
                     
                 case .failure(let error):

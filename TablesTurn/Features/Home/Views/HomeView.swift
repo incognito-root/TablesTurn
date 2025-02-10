@@ -120,7 +120,7 @@ struct HomeView: View {
                             Spacer()
                             
                             VStack(spacing: 15) {
-                                Button(action: {}) {
+                                NavigationLink(destination: AddEventView()) {
                                     Image(systemName: "plus")
                                         .font(.system(size: 20))
                                 }

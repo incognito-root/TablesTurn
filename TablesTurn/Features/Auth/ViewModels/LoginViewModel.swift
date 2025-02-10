@@ -32,7 +32,6 @@ class LoginViewModel: ObservableObject {
         loginService.login(userDetails: userDetails) { [weak self] result in
             DispatchQueue.main.async {
                 guard let self = self else { return }
-                print(result)
                 switch result {
                 case .success(let user):
                     let userToSave = User(id: user.id)

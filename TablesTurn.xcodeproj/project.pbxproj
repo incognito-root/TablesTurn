@@ -12,6 +12,7 @@
 		D346CB8A2D5A0FC500F897BF /* SharedServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D346CB892D5A0FC500F897BF /* SharedServiceProtocol.swift */; };
 		D346CB8C2D5A38E800F897BF /* AddEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D346CB8B2D5A38E800F897BF /* AddEventView.swift */; };
 		D346CB942D5A39D200F897BF /* AddEditEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D346CB932D5A39D200F897BF /* AddEditEventViewModel.swift */; };
+		D356D2162D5A51E60091DD7C /* UserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D356D2152D5A51E60091DD7C /* UserDetails.swift */; };
 		D36959492D52130700483BDB /* ImageCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36959482D52130700483BDB /* ImageCarousel.swift */; };
 		D369594B2D52220900483BDB /* MainButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D369594A2D52220900483BDB /* MainButtonStyle.swift */; };
 		D38BDE2D2D56AF3300206D28 /* EventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38BDE2C2D56AF3300206D28 /* EventCard.swift */; };
@@ -75,6 +76,7 @@
 		D346CB892D5A0FC500F897BF /* SharedServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedServiceProtocol.swift; sourceTree = "<group>"; };
 		D346CB8B2D5A38E800F897BF /* AddEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventView.swift; sourceTree = "<group>"; };
 		D346CB932D5A39D200F897BF /* AddEditEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditEventViewModel.swift; sourceTree = "<group>"; };
+		D356D2152D5A51E60091DD7C /* UserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetails.swift; sourceTree = "<group>"; };
 		D36959482D52130700483BDB /* ImageCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCarousel.swift; sourceTree = "<group>"; };
 		D369594A2D52220900483BDB /* MainButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButtonStyle.swift; sourceTree = "<group>"; };
 		D38BDE2C2D56AF3300206D28 /* EventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCard.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				D346CB872D5A0D9900F897BF /* Event.swift */,
+				D356D2152D5A51E60091DD7C /* UserDetails.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -666,6 +669,7 @@
 				D3B68C9C2D554CBD00BF6CD3 /* EmailVerificationResponse.swift in Sources */,
 				D3B68C9E2D5553CC00BF6CD3 /* LoginFormView.swift in Sources */,
 				D369594B2D52220900483BDB /* MainButtonStyle.swift in Sources */,
+				D356D2162D5A51E60091DD7C /* UserDetails.swift in Sources */,
 				D3F4EAF32D54BC2A00C71FDF /* SignupViewModel.swift in Sources */,
 				D3C68E8B2D561D42000F3C0C /* UserManager.swift in Sources */,
 				D3B20B292D58D0D900A52937 /* SharedService.swift in Sources */,

@@ -21,4 +21,22 @@ class SharedService: SharedServiceProtocol {
             }
         }
     }
+    
+    func getUserDetails(completion: @escaping (Result<UserDetails, any Error>) -> Void) {
+        NetworkManager.shared.request(
+            endpoint: APIEndpoints.getUserDetails,
+            method: .get,
+            headers: nil
+        ) { (result: Result<UserDetails, Error>) in
+            switch result {
+            case .success(let userDetails):
+                print(userDetails)
+                completion(.success(userDetails))
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
 }

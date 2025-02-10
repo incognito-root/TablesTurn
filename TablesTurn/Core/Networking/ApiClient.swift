@@ -87,6 +87,11 @@ class NetworkManager {
                                 completion(.failure(APIError.emailNotVerified(userId: id)))
                             } else {
                                 let errorMessage = apiErrorResponse.message ?? apiErrorResponse.errorDetails?.message ?? "Unknown error occurred"
+                                
+                                if errorMessage == "Access denied. No token provided." {
+                                    UserManager.shared.logout()
+                                }
+                                
                                 completion(.failure(APIError.serverError(errorMessage)))
                             }
                         } catch {

@@ -189,6 +189,7 @@ struct HomeView: View {
         .navigationBarHidden(true)
         .onAppear {
             viewModel.getAllEvents()
+            viewModel.getUserDetails()
         }
     }
 }

@@ -137,7 +137,7 @@ struct AddEventView: View {
                                         }
                                         .frame(width: .infinity)
                                         .listRowBackground(Color.clear)
-                                        .listRowInsets(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
+                                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                                     }
                                     
                                     Section {

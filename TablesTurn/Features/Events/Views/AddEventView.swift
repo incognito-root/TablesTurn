@@ -3,7 +3,7 @@ import SwiftUI
 struct AddEventView: View {
     let radius: CGFloat = 50
     
-    @StateObject private var viewModel = AddEditEventViewModel()
+    @StateObject private var viewModel = AddEventViewModel()
     
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(.white)]
@@ -31,6 +31,13 @@ struct AddEventView: View {
                         .padding(.bottom, -radius)
                     
                     VStack(alignment: .leading, spacing: 0) {
+                        ZStack {
+                            ProgressTrackerView()
+                        }
+                        .padding(30)
+                        .frame(height: 150)
+                        
+                        
                         if viewModel.currentStep == 1 {
                             (
                                 Text("Enter Your Email\n")

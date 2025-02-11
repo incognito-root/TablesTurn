@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct CircularButtonStyle: ButtonStyle {
-    var size: CGFloat // Diameter of the button
+    var size: CGFloat
     var backgroundColor: Color
     var foregroundColor: Color
     var borderColor: Color?

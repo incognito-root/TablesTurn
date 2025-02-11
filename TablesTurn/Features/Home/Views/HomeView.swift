@@ -51,14 +51,35 @@ struct HomeView: View {
                             Spacer()
                             
                             VStack(spacing: 10) {
-                                Image("ProfileAvatar")
-                                    .resizable()
-                                    .frame(width: 40, height: 40)
+                                if viewModel.userDetails?.profileImage != nil {
+                                    AsyncImage(url: URL(string: viewModel.userDetails?.profileImage ?? "")) { phase in
+                                        if let image = phase.image {
+                                            image
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fill)
+                                                .frame(width: 40, height: 40, alignment: .center)
+                                                .clipShape(Circle())
+                                        } else if phase.error != nil {
+                                            Color.red
+                                                .frame(width: 40, height: 40)
+                                                .clipShape(Circle())
+                                        } else {
+                                            Color.gray
+                                                .frame(width: 40, height: 40)
+                                                .clipShape(Circle())
+                                        }
+                                    }
                                     .frame(maxWidth: .infinity, alignment: .trailing)
+                                } else {
+                                    Image("ProfileAvatar")
+                                        .resizable()
+                                        .frame(width: 40, height: 40)
+                                        .frame(maxWidth: .infinity, alignment: .trailing)
+                                }
                                 
                                 HStack(spacing: 3) {
                                     Image(systemName: "location.fill")
-                                    Text("Tables Turn")
+                                    Text("location")
                                 }
                                 .frame(maxWidth: .infinity, alignment: .trailing)
                             }

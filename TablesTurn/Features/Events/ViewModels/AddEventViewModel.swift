@@ -1,7 +1,7 @@
 import Foundation
 import Combine
 
-class AddEditEventViewModel: ObservableObject {
+class AddEventViewModel: ObservableObject {
     // Input fields
     @Published var title: String = ""
     @Published var timezone: String = ""
@@ -12,7 +12,7 @@ class AddEditEventViewModel: ObservableObject {
     @Published var dateTime: String = ""
     
     // UI state
-    @Published var currentStep: Int = 1
+    @Published var currentStep: Int = 0
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     @Published var editing: Bool = false

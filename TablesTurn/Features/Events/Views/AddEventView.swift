@@ -133,30 +133,11 @@ struct AddEventView: View {
                                 Form {
                                     Section {
                                         VStack(alignment: .leading, spacing: 0) {
-                                            Text("Event Title/Headline")
-                                                .font(.caption)
-                                                .foregroundColor(.gray)
-                                                .padding(.leading, 4)
-                                            
-                                            CustomTextField(
-                                                placeholder: "Title",
-                                                text: $viewModel.title,
-                                                keyboardType: .emailAddress,
-                                                borderRadius: 0,
-                                                paddingValue: 10,
-                                                borderColor: .gray,
-                                                borderEdges: [.bottom],
-                                                borderWidth: 1,
-                                                validation: { input in
-                                                    if input.isEmpty {
-                                                        return "Email cannot be empty."
-                                                    }
-                                                    return nil
-                                                }
-                                            )
+                                            ImagePickerView()
                                         }
+                                        .frame(width: .infinity)
                                         .listRowBackground(Color.clear)
-                                        .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 0, trailing: 5))
+                                        .listRowInsets(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
                                     }
                                     
                                     Section {

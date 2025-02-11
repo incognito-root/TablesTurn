@@ -10,6 +10,9 @@
 		D312BE182D5B7A5E00C43023 /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D312BE172D5B7A5E00C43023 /* EventService.swift */; };
 		D312BE1A2D5B7AA200C43023 /* AddEventDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D312BE192D5B7AA200C43023 /* AddEventDetails.swift */; };
 		D3255D5F2D51C0E7007E0125 /* GettingStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3255D5E2D51C0E7007E0125 /* GettingStartedView.swift */; };
+		D33DF8CD2D5BB44000ACF1D4 /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33DF8CC2D5BB44000ACF1D4 /* ProfileImage.swift */; };
+		D33DF8D12D5BB46000ACF1D4 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33DF8D02D5BB46000ACF1D4 /* ImagePickerView.swift */; };
+		D33DF8D52D5BB47A00ACF1D4 /* ImagePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33DF8D42D5BB47A00ACF1D4 /* ImagePickerViewModel.swift */; };
 		D346CB882D5A0D9900F897BF /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D346CB872D5A0D9900F897BF /* Event.swift */; };
 		D346CB8A2D5A0FC500F897BF /* SharedServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D346CB892D5A0FC500F897BF /* SharedServiceProtocol.swift */; };
 		D346CB8C2D5A38E800F897BF /* AddEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D346CB8B2D5A38E800F897BF /* AddEventView.swift */; };
@@ -77,6 +80,9 @@
 		D312BE172D5B7A5E00C43023 /* EventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
 		D312BE192D5B7AA200C43023 /* AddEventDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventDetails.swift; sourceTree = "<group>"; };
 		D3255D5E2D51C0E7007E0125 /* GettingStartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartedView.swift; sourceTree = "<group>"; };
+		D33DF8CC2D5BB44000ACF1D4 /* ProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
+		D33DF8D02D5BB46000ACF1D4 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
+		D33DF8D42D5BB47A00ACF1D4 /* ImagePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerViewModel.swift; sourceTree = "<group>"; };
 		D346CB872D5A0D9900F897BF /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		D346CB892D5A0FC500F897BF /* SharedServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedServiceProtocol.swift; sourceTree = "<group>"; };
 		D346CB8B2D5A38E800F897BF /* AddEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventView.swift; sourceTree = "<group>"; };
@@ -187,6 +193,40 @@
 		D3255D5D2D51BD59007E0125 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D33DF8C72D5BB2F500ACF1D4 /* ImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				D33DF8CB2D5BB41900ACF1D4 /* Models */,
+				D33DF8CA2D5BB3F300ACF1D4 /* Views */,
+				D33DF8C92D5BB3EA00ACF1D4 /* ViewModels */,
+			);
+			path = ImagePicker;
+			sourceTree = "<group>";
+		};
+		D33DF8C92D5BB3EA00ACF1D4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D33DF8D42D5BB47A00ACF1D4 /* ImagePickerViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D33DF8CA2D5BB3F300ACF1D4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D33DF8D02D5BB46000ACF1D4 /* ImagePickerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D33DF8CB2D5BB41900ACF1D4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D33DF8CC2D5BB44000ACF1D4 /* ProfileImage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -387,6 +427,7 @@
 		D3C03BE92D51025E00E5251C /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				D33DF8C72D5BB2F500ACF1D4 /* ImagePicker */,
 				D3B20B252D58D08900A52937 /* Shared */,
 				D38BDE272D56AEFC00206D28 /* Events */,
 				D3C68E8E2D562312000F3C0C /* Home */,
@@ -666,7 +707,9 @@
 				D39401B42D524BF500DCFE21 /* CustomTextField.swift in Sources */,
 				D3F4EB032D54F70200C71FDF /* UserLoginResponse.swift in Sources */,
 				D356D2182D5A6F500091DD7C /* ProgressTrackerView.swift in Sources */,
+				D33DF8D52D5BB47A00ACF1D4 /* ImagePickerViewModel.swift in Sources */,
 				D3C68E892D5615EC000F3C0C /* EmailVerificationService.swift in Sources */,
+				D33DF8D12D5BB46000ACF1D4 /* ImagePickerView.swift in Sources */,
 				D3F4EAFB2D54F16000C71FDF /* UserSignupResponse.swift in Sources */,
 				D3C03BE82D51023400E5251C /* AppConfig.swift in Sources */,
 				D3B68C9A2D554BCD00BF6CD3 /* EmailVerificationDetails.swift in Sources */,
@@ -685,6 +728,7 @@
 				D3F4EAF32D54BC2A00C71FDF /* SignupViewModel.swift in Sources */,
 				D3C68E8B2D561D42000F3C0C /* UserManager.swift in Sources */,
 				D3B20B292D58D0D900A52937 /* SharedService.swift in Sources */,
+				D33DF8CD2D5BB44000ACF1D4 /* ProfileImage.swift in Sources */,
 				D3F4EB052D55410600C71FDF /* EmailVerificationView.swift in Sources */,
 				D3C03BFF2D5112CB00E5251C /* ApiClient.swift in Sources */,
 				D3B20B242D58CF7F00A52937 /* HomeService.swift in Sources */,

@@ -5,6 +5,8 @@ struct AddEventView: View {
     
     @StateObject private var viewModel = AddEventViewModel()
     
+    @State private var date = Date()
+    
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(.white)]
         UINavigationBar.appearance().titleTextAttributes = [
@@ -31,70 +33,99 @@ struct AddEventView: View {
                         .padding(.bottom, -radius)
                     
                     VStack(alignment: .leading, spacing: 0) {
-                        ZStack {
+                        HStack(alignment: .center, spacing: 0) {
+                            Spacer()
                             ProgressTrackerView()
+                            Spacer()
                         }
-                        .padding(30)
+                        .padding(.top, 10)
                         .frame(height: 150)
                         
-                        
-                        if viewModel.currentStep == 1 {
-                            (
-                                Text("Enter Your Email\n")
-                                + Text("To Get Started")
-                                    .foregroundStyle(.accent)
-                            )
-                            .font(.system(size: 43))
-                            .fontWeight(.medium)
-                            .padding(EdgeInsets(top: 20, leading: 25, bottom: 0, trailing: 25))
-                            
-                            Form {
-                                Section {
-                                    CustomTextField(
-                                        placeholder: "Email",
-                                        text: $viewModel.title,
-                                        keyboardType: .emailAddress,
-                                        iconName: "envelope",
-                                        validation: { input in
-                                            if input.isEmpty {
-                                                return "Email cannot be empty."
-                                            }
-                                            if !input.contains("@") {
-                                                return "Please enter a valid email."
-                                            }
-                                            return nil
+                        VStack(spacing: 0) {
+                            if viewModel.currentStep == 0 {
+                                Text("Basic Details")
+                                    .font(.system(size: 43))
+                                    .fontWeight(.medium)
+                                    .padding(EdgeInsets(top: 20, leading: 25, bottom: 0, trailing: 25))
+                                
+                                Form {
+                                    Section {
+                                        VStack(alignment: .leading, spacing: 0) {
+                                            Text("Event Title/Headline")
+                                                .font(.caption)
+                                                .foregroundColor(.gray)
+                                                .padding(.leading, 4)
+                                            
+                                            CustomTextField(
+                                                placeholder: "Title",
+                                                text: $viewModel.title,
+                                                keyboardType: .emailAddress,
+                                                borderRadius: 0,
+                                                paddingValue: 10,
+                                                borderColor: .gray,
+                                                borderEdges: [.bottom],
+                                                borderWidth: 1,
+                                                validation: { input in
+                                                    if input.isEmpty {
+                                                        return "Email cannot be empty."
+                                                    }
+                                                    return nil
+                                                }
+                                            )
                                         }
-                                    )
-                                    .listRowBackground(Color.clear)
-                                    .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 20, trailing: 5))
-                                }
-                                
-                                Section {
-                                    Button(action: {
-                                    }) {
-                                        Text("Next".uppercased())
+                                        .listRowBackground(Color.clear)
+                                        .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 0, trailing: 5))
                                     }
-                                    .buttonStyle(MainButtonStyle())
-                                    .listRowBackground(Color.clear)
-                                    .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 0, trailing: 5))
+                                    
+                                    Section {
+                                        VStack(alignment: .leading) {
+                                            DatePicker(
+                                                "Event Date",
+                                                selection: $viewModel.date,
+                                                in: viewModel.minDate...,
+                                                displayedComponents: [.date]
+                                            )
+                                            
+                                        }
+                                        .listRowBackground(
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .fill(Color.gray.opacity(0.7))
+                                        )
+                                        .listRowInsets(EdgeInsets(top: 20, leading: 10, bottom: 20, trailing: 10))
+                                    }
+                                    
+                                    Section {
+                                        VStack(alignment: .leading) {
+                                            DatePicker(
+                                                "Event Time",
+                                                selection: $viewModel.time,
+                                                in: viewModel.minDate...,
+                                                displayedComponents: [.hourAndMinute]
+                                            )
+                                        }
+                                        .listRowBackground(
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .fill(Color.gray.opacity(0.7))
+                                        )
+                                        .listRowInsets(EdgeInsets(top: 20, leading: 10, bottom: 20, trailing: 10))
+                                    }
+                                    
+                                    Section {
+                                        Button(action: {
+                                            
+                                        }) {
+                                            Text("Next".uppercased())
+                                        }
+                                        .buttonStyle(MainButtonStyle())
+                                        .listRowBackground(Color.clear)
+                                        .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 0, trailing: 5))
+                                    }
                                 }
+                                .scrollContentBackground(.hidden)
+                                .background(Color.clear)
                             }
-                            .scrollContentBackground(.hidden)
-                            .background(Color.clear)
-                        } else {
-                            (
-                                Text("Almost There!")
-                            )
-                            .font(.system(size: 43))
-                            .fontWeight(.medium)
-                            .padding(EdgeInsets(top: 20, leading: 32, bottom: 5, trailing: 25))
-                            
-                            Form {
-                                
-                            }
-                            .scrollContentBackground(.hidden)
-                            .background(Color.clear)
                         }
+                        .padding(.top, -30)
                     }
                     .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
                 }
@@ -109,7 +140,7 @@ struct AddEventView: View {
             .navigationTitle("Craft Event")
             .navigationBarTitleDisplayMode(.inline)
         }
-
+        
     }
 }
 

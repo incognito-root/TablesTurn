@@ -13,22 +13,21 @@ struct ProgressTrackerView: View {
                         Rectangle()
                             .fill(index <= viewModel.currentStep ? Color.orange : Color.gray)
                             .frame(height: 4)
-                            .frame(width: .infinity)
+                            .frame(width: 80)
                             .padding(.bottom, 20)
-                            .offset(x: 2)
                     }
                     
                     VStack(spacing: 8) {
                         ZStack {
                             Circle()
                                 .fill(Color.orange)
-                                .frame(width: 36, height: 36)
+                                .frame(width: 50, height: 50)
                             
                             if index == viewModel.currentStep {
                                 Circle()
                                     .fill(.tertiaryBackground)
                                     .stroke(Color.orange, lineWidth: 3)
-                                    .frame(width: 60, height: 60)
+                                    .frame(width: 65, height: 65)
                             }
                             
                             if index < viewModel.currentStep {
@@ -42,7 +41,6 @@ struct ProgressTrackerView: View {
                                     .fontWeight(.bold)
                             }
                         }
-                        .frame(width: .infinity)
                         
                         Text(steps[index])
                             .foregroundColor(.white)

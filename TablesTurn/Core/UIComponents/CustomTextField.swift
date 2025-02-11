@@ -1,5 +1,29 @@
 import SwiftUI
 
+struct EdgeBorder: Shape {
+    var width: CGFloat
+    var edges: [Edge]
+    
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        
+        for edge in edges {
+            switch edge {
+            case .top:
+                path.addRect(CGRect(x: rect.minX, y: rect.minY, width: rect.width, height: width))
+            case .bottom:
+                path.addRect(CGRect(x: rect.minX, y: rect.maxY - width, width: rect.width, height: width))
+            case .leading:
+                path.addRect(CGRect(x: rect.minX, y: rect.minY, width: width, height: rect.height))
+            case .trailing:
+                path.addRect(CGRect(x: rect.maxX - width, y: rect.minY, width: width, height: rect.height))
+            }
+        }
+        
+        return path
+    }
+}
+
 struct CustomTextField: View {
     var placeholder: String
     @Binding var text: String
@@ -13,6 +37,8 @@ struct CustomTextField: View {
     var iconColor: Color? = nil
     var textColor: Color? = nil
     var placeHolderColor: Color? = nil
+    var borderEdges: [Edge]? = nil
+    var borderWidth: CGFloat? = nil
     
     var validation: ((String) -> String?)? = nil
     
@@ -59,11 +85,18 @@ struct CustomTextField: View {
             .padding(paddingValue)
             .background(
                 RoundedRectangle(cornerRadius: borderRadius)
-                    .fill(backgroundColor ?? .clear) // Apply background properly
+                    .fill(backgroundColor ?? .clear)
             )
             .overlay(
-                RoundedRectangle(cornerRadius: borderRadius)
-                    .stroke(showError ? Color.red : borderColor ?? Color.accentColor, lineWidth: 1.5)
+                Group {
+                    if let edges = borderEdges {
+                        EdgeBorder(width: borderWidth ?? 1.5, edges: edges)
+                            .foregroundColor(showError ? Color.red : borderColor ?? Color.accentColor)
+                    } else {
+                        RoundedRectangle(cornerRadius: borderRadius)
+                            .stroke(showError ? Color.red : borderColor ?? Color.accentColor, lineWidth: borderWidth ?? 1.5)
+                    }
+                }
             )
             .clipShape(RoundedRectangle(cornerRadius: borderRadius))
             

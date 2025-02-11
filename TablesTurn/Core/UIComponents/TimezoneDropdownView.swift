@@ -11,6 +11,7 @@ struct TimezoneDropdownView: View {
             }
         }
         .pickerStyle(MenuPickerStyle())
+        .tint(.white)
         .frame(maxWidth: .infinity)
         .background(Color.clear)
     }

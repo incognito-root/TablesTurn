@@ -127,15 +127,13 @@ struct AddEventView: View {
                                 
                                 Form {
                                     Section {
-                                        VStack(alignment: .leading, spacing: 0) {
+                                        VStack(alignment: .leading) {
                                             ImagePickerView()
                                         }
                                         .frame(maxWidth: .infinity)
                                         .listRowBackground(Color.clear)
                                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                                    }
-                                    
-                                    Section {
+
                                         VStack(alignment: .leading, spacing: 0) {
                                             Text("Event Description")
                                                 .font(.caption)
@@ -193,6 +191,7 @@ struct AddEventView: View {
                                         }
                                         .listRowBackground(Color.clear)
                                         .listRowInsets(EdgeInsets(top: 5, leading: 10, bottom: 25, trailing: 10))
+                                        .listRowSeparator(.hidden)
 
                                         VStack(alignment: .leading) {
                                             DatePicker(

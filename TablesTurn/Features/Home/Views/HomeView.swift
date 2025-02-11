@@ -39,13 +39,12 @@ struct HomeView: View {
                                 Text(formattedDate.day)
                                     .font(.system(size: 35))
                                     .fontWeight(.semibold)
-                                    .fixedSize(horizontal: false, vertical: true)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .frame(width: 190, alignment: .leading)
                                 Text(formattedDate.date)
                                     .font(.system(size: 35))
                                     .fontWeight(.semibold)
                                     .fixedSize(horizontal: false, vertical: true)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .frame(width: 190, alignment: .leading)
                             }
                             
                             Spacer()

@@ -44,7 +44,7 @@ struct AddEventView: View {
                         VStack(spacing: 0) {
                             if viewModel.currentStep == 0 {
                                 Text("Basic Details")
-                                    .font(.system(size: 43))
+                                    .font(.system(size: 35))
                                     .fontWeight(.medium)
                                     .padding(EdgeInsets(top: 20, leading: 25, bottom: 0, trailing: 25))
                                 
@@ -87,10 +87,7 @@ struct AddEventView: View {
                                             )
                                             
                                         }
-                                        .listRowBackground(
-                                            RoundedRectangle(cornerRadius: 10)
-                                                .fill(Color.gray.opacity(0.7))
-                                        )
+                                        .listRowBackground(Color.clear)
                                         .listRowInsets(EdgeInsets(top: 20, leading: 10, bottom: 20, trailing: 10))
                                     }
                                     
@@ -103,10 +100,7 @@ struct AddEventView: View {
                                                 displayedComponents: [.hourAndMinute]
                                             )
                                         }
-                                        .listRowBackground(
-                                            RoundedRectangle(cornerRadius: 10)
-                                                .fill(Color.gray.opacity(0.7))
-                                        )
+                                        .listRowBackground(Color.clear)
                                         .listRowInsets(EdgeInsets(top: 20, leading: 10, bottom: 20, trailing: 10))
                                     }
                                     
@@ -123,10 +117,11 @@ struct AddEventView: View {
                                 }
                                 .scrollContentBackground(.hidden)
                                 .background(Color.clear)
+                                .environment(\.colorScheme, .dark)
                             }
                             else if viewModel.currentStep == 1 {
                                 Text("More Details")
-                                    .font(.system(size: 43))
+                                    .font(.system(size: 35))
                                     .fontWeight(.medium)
                                     .padding(EdgeInsets(top: 20, leading: 25, bottom: 0, trailing: 25))
                                 
@@ -135,42 +130,82 @@ struct AddEventView: View {
                                         VStack(alignment: .leading, spacing: 0) {
                                             ImagePickerView()
                                         }
-                                        .frame(width: .infinity)
+                                        .frame(maxWidth: .infinity)
                                         .listRowBackground(Color.clear)
                                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                                     }
                                     
                                     Section {
+                                        VStack(alignment: .leading, spacing: 0) {
+                                            Text("Event Description")
+                                                .font(.caption)
+                                                .foregroundColor(.gray)
+                                                .padding(.leading, 4)
+                                            
+                                            CustomTextField(
+                                                placeholder: "Description",
+                                                text: $viewModel.description,
+                                                keyboardType: .default,
+                                                borderRadius: 0,
+                                                paddingValue: 10,
+                                                borderColor: .gray,
+                                                borderEdges: [.bottom],
+                                                borderWidth: 1,
+                                                validation: { input in
+                                                    if input.isEmpty {
+                                                        return "Description cannot be empty."
+                                                    }
+                                                    return nil
+                                                }
+                                            )
+                                        }
+                                        .listRowBackground(Color.clear)
+                                        .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 15, trailing: 5))
+
+                                        VStack(alignment: .leading, spacing: 0) {
+                                            Text("Event Location")
+                                                .font(.caption)
+                                                .foregroundColor(.gray)
+                                                .padding(.leading, 4)
+                                            
+                                            CustomTextField(
+                                                placeholder: "Location",
+                                                text: $viewModel.location,
+                                                keyboardType: .default,
+                                                borderRadius: 0,
+                                                paddingValue: 10,
+                                                borderColor: .gray,
+                                                borderEdges: [.bottom],
+                                                borderWidth: 1,
+                                                validation: { input in
+                                                    if input.isEmpty {
+                                                        return "Description cannot be empty."
+                                                    }
+                                                    return nil
+                                                }
+                                            )
+                                        }
+                                        .listRowBackground(Color.clear)
+                                        .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 25, trailing: 5))
+
+                                        VStack(alignment: .leading, spacing: 0) {
+                                            TimezoneDropdownView()
+                                        }
+                                        .listRowBackground(Color.clear)
+                                        .listRowInsets(EdgeInsets(top: 5, leading: 10, bottom: 25, trailing: 10))
+
                                         VStack(alignment: .leading) {
                                             DatePicker(
-                                                "Event Date",
-                                                selection: $viewModel.date,
+                                                "RSVP Deadline",
+                                                selection: $viewModel.rsvpDeadlineDate,
                                                 in: viewModel.minDate...,
                                                 displayedComponents: [.date]
                                             )
-                                            
+                                            .foregroundStyle(Color.white)
                                         }
-                                        .listRowBackground(
-                                            RoundedRectangle(cornerRadius: 10)
-                                                .fill(Color.gray.opacity(0.7))
-                                        )
+                                        .listRowBackground(Color.clear)
                                         .listRowInsets(EdgeInsets(top: 20, leading: 10, bottom: 20, trailing: 10))
-                                    }
-                                    
-                                    Section {
-                                        VStack(alignment: .leading) {
-                                            DatePicker(
-                                                "Event Time",
-                                                selection: $viewModel.time,
-                                                in: viewModel.minDate...,
-                                                displayedComponents: [.hourAndMinute]
-                                            )
-                                        }
-                                        .listRowBackground(
-                                            RoundedRectangle(cornerRadius: 10)
-                                                .fill(Color.gray.opacity(0.7))
-                                        )
-                                        .listRowInsets(EdgeInsets(top: 20, leading: 10, bottom: 20, trailing: 10))
+                                        .environment(\.colorScheme, .dark)
                                     }
                                     
                                     Section {

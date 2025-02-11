@@ -13,6 +13,7 @@
 		D33DF8CD2D5BB44000ACF1D4 /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33DF8CC2D5BB44000ACF1D4 /* ProfileImage.swift */; };
 		D33DF8D12D5BB46000ACF1D4 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33DF8D02D5BB46000ACF1D4 /* ImagePickerView.swift */; };
 		D33DF8D52D5BB47A00ACF1D4 /* ImagePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33DF8D42D5BB47A00ACF1D4 /* ImagePickerViewModel.swift */; };
+		D33DF8D72D5BC1BE00ACF1D4 /* TimezoneDropdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33DF8D62D5BC1BE00ACF1D4 /* TimezoneDropdownView.swift */; };
 		D346CB882D5A0D9900F897BF /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D346CB872D5A0D9900F897BF /* Event.swift */; };
 		D346CB8A2D5A0FC500F897BF /* SharedServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D346CB892D5A0FC500F897BF /* SharedServiceProtocol.swift */; };
 		D346CB8C2D5A38E800F897BF /* AddEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D346CB8B2D5A38E800F897BF /* AddEventView.swift */; };
@@ -83,6 +84,7 @@
 		D33DF8CC2D5BB44000ACF1D4 /* ProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
 		D33DF8D02D5BB46000ACF1D4 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		D33DF8D42D5BB47A00ACF1D4 /* ImagePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerViewModel.swift; sourceTree = "<group>"; };
+		D33DF8D62D5BC1BE00ACF1D4 /* TimezoneDropdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezoneDropdownView.swift; sourceTree = "<group>"; };
 		D346CB872D5A0D9900F897BF /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		D346CB892D5A0FC500F897BF /* SharedServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedServiceProtocol.swift; sourceTree = "<group>"; };
 		D346CB8B2D5A38E800F897BF /* AddEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventView.swift; sourceTree = "<group>"; };
@@ -498,6 +500,7 @@
 				D39401B32D524BF500DCFE21 /* CustomTextField.swift */,
 				D39624912D564D6300A3E310 /* CircularButtonStyle.swift */,
 				D356D2172D5A6F500091DD7C /* ProgressTrackerView.swift */,
+				D33DF8D62D5BC1BE00ACF1D4 /* TimezoneDropdownView.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -720,6 +723,7 @@
 				D39624922D564D6300A3E310 /* CircularButtonStyle.swift in Sources */,
 				D39401B22D5243B200DCFE21 /* SignupFormView.swift in Sources */,
 				D312BE1A2D5B7AA200C43023 /* AddEventDetails.swift in Sources */,
+				D33DF8D72D5BC1BE00ACF1D4 /* TimezoneDropdownView.swift in Sources */,
 				D3B68C9C2D554CBD00BF6CD3 /* EmailVerificationResponse.swift in Sources */,
 				D3B68C9E2D5553CC00BF6CD3 /* LoginFormView.swift in Sources */,
 				D369594B2D52220900483BDB /* MainButtonStyle.swift in Sources */,

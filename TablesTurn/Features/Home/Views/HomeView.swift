@@ -196,10 +196,10 @@ struct HomeView: View {
                     }
                     .frame(maxHeight: .infinity, alignment: .top)
                     .ignoresSafeArea()
+                    .padding(.top, 20)
+                    .padding(.horizontal, 20)
                 }
                 .frame(maxHeight: .infinity)
-                .padding(.top, 20)
-                .padding(.horizontal, 20)
             }
             .foregroundStyle(.primaryText)
             .alert(isPresented: $viewModel.showAlert) {

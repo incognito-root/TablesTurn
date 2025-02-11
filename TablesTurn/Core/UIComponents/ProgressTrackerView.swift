@@ -3,7 +3,7 @@ import SwiftUI
 struct ProgressTrackerView: View {
     let steps = ["Intro", "Details", "Publish"]
     
-    @StateObject private var viewModel = AddEventViewModel()
+    @ObservedObject var viewModel: AddEventViewModel
     
     var body: some View {
         HStack(alignment: .center, spacing: 0) {
@@ -52,9 +52,9 @@ struct ProgressTrackerView: View {
         }
     }
 }
-
-struct ProgressTrackerView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProgressTrackerView()
-    }
-}
+//
+//struct ProgressTrackerView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ProgressTrackerView()
+//    }
+//}

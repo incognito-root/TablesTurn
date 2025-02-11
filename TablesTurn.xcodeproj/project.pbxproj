@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D312BE182D5B7A5E00C43023 /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D312BE172D5B7A5E00C43023 /* EventService.swift */; };
+		D312BE1A2D5B7AA200C43023 /* AddEventDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D312BE192D5B7AA200C43023 /* AddEventDetails.swift */; };
 		D3255D5F2D51C0E7007E0125 /* GettingStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3255D5E2D51C0E7007E0125 /* GettingStartedView.swift */; };
 		D346CB882D5A0D9900F897BF /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D346CB872D5A0D9900F897BF /* Event.swift */; };
 		D346CB8A2D5A0FC500F897BF /* SharedServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D346CB892D5A0FC500F897BF /* SharedServiceProtocol.swift */; };
@@ -72,6 +74,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D312BE172D5B7A5E00C43023 /* EventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
+		D312BE192D5B7AA200C43023 /* AddEventDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventDetails.swift; sourceTree = "<group>"; };
 		D3255D5E2D51C0E7007E0125 /* GettingStartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartedView.swift; sourceTree = "<group>"; };
 		D346CB872D5A0D9900F897BF /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		D346CB892D5A0FC500F897BF /* SharedServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedServiceProtocol.swift; sourceTree = "<group>"; };
@@ -201,6 +205,7 @@
 		D38BDE282D56AF0700206D28 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D312BE172D5B7A5E00C43023 /* EventService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -225,6 +230,7 @@
 		D38BDE2B2D56AF2300206D28 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D312BE192D5B7AA200C43023 /* AddEventDetails.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -670,9 +676,11 @@
 				D36959492D52130700483BDB /* ImageCarousel.swift in Sources */,
 				D39624922D564D6300A3E310 /* CircularButtonStyle.swift in Sources */,
 				D39401B22D5243B200DCFE21 /* SignupFormView.swift in Sources */,
+				D312BE1A2D5B7AA200C43023 /* AddEventDetails.swift in Sources */,
 				D3B68C9C2D554CBD00BF6CD3 /* EmailVerificationResponse.swift in Sources */,
 				D3B68C9E2D5553CC00BF6CD3 /* LoginFormView.swift in Sources */,
 				D369594B2D52220900483BDB /* MainButtonStyle.swift in Sources */,
+				D312BE182D5B7A5E00C43023 /* EventService.swift in Sources */,
 				D356D2162D5A51E60091DD7C /* UserDetails.swift in Sources */,
 				D3F4EAF32D54BC2A00C71FDF /* SignupViewModel.swift in Sources */,
 				D3C68E8B2D561D42000F3C0C /* UserManager.swift in Sources */,

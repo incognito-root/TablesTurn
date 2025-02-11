@@ -35,7 +35,7 @@ struct AddEventView: View {
                     VStack(alignment: .leading, spacing: 0) {
                         HStack(alignment: .center, spacing: 0) {
                             Spacer()
-                            ProgressTrackerView()
+                            ProgressTrackerView(viewModel: viewModel)
                             Spacer()
                         }
                         .padding(.top, 10)
@@ -112,7 +112,89 @@ struct AddEventView: View {
                                     
                                     Section {
                                         Button(action: {
+                                            viewModel.changeStep()
+                                        }) {
+                                            Text("Next".uppercased())
+                                        }
+                                        .buttonStyle(MainButtonStyle())
+                                        .listRowBackground(Color.clear)
+                                        .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 0, trailing: 5))
+                                    }
+                                }
+                                .scrollContentBackground(.hidden)
+                                .background(Color.clear)
+                            }
+                            else if viewModel.currentStep == 1 {
+                                Text("More Details")
+                                    .font(.system(size: 43))
+                                    .fontWeight(.medium)
+                                    .padding(EdgeInsets(top: 20, leading: 25, bottom: 0, trailing: 25))
+                                
+                                Form {
+                                    Section {
+                                        VStack(alignment: .leading, spacing: 0) {
+                                            Text("Event Title/Headline")
+                                                .font(.caption)
+                                                .foregroundColor(.gray)
+                                                .padding(.leading, 4)
                                             
+                                            CustomTextField(
+                                                placeholder: "Title",
+                                                text: $viewModel.title,
+                                                keyboardType: .emailAddress,
+                                                borderRadius: 0,
+                                                paddingValue: 10,
+                                                borderColor: .gray,
+                                                borderEdges: [.bottom],
+                                                borderWidth: 1,
+                                                validation: { input in
+                                                    if input.isEmpty {
+                                                        return "Email cannot be empty."
+                                                    }
+                                                    return nil
+                                                }
+                                            )
+                                        }
+                                        .listRowBackground(Color.clear)
+                                        .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 0, trailing: 5))
+                                    }
+                                    
+                                    Section {
+                                        VStack(alignment: .leading) {
+                                            DatePicker(
+                                                "Event Date",
+                                                selection: $viewModel.date,
+                                                in: viewModel.minDate...,
+                                                displayedComponents: [.date]
+                                            )
+                                            
+                                        }
+                                        .listRowBackground(
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .fill(Color.gray.opacity(0.7))
+                                        )
+                                        .listRowInsets(EdgeInsets(top: 20, leading: 10, bottom: 20, trailing: 10))
+                                    }
+                                    
+                                    Section {
+                                        VStack(alignment: .leading) {
+                                            DatePicker(
+                                                "Event Time",
+                                                selection: $viewModel.time,
+                                                in: viewModel.minDate...,
+                                                displayedComponents: [.hourAndMinute]
+                                            )
+                                        }
+                                        .listRowBackground(
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .fill(Color.gray.opacity(0.7))
+                                        )
+                                        .listRowInsets(EdgeInsets(top: 20, leading: 10, bottom: 20, trailing: 10))
+                                    }
+                                    
+                                    Section {
+                                        Button(action: {
+                                            viewModel.changeStep()
                                         }) {
                                             Text("Next".uppercased())
                                         }

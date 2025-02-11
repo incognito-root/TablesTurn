@@ -13,7 +13,7 @@ struct Event: Codable, Identifiable {
     let dateTime: Date
     let createdAt: Date?
     let fkUserId: String
-
+    
     enum CodingKeys: String, CodingKey {
         case id, title, timezone, location, image, description, status
         case rsvpDeadline = "rsvp_deadline"

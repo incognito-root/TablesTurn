@@ -10,6 +10,7 @@ struct APIEndpoints {
     // events APIs
     static private let eventsPrefix = "events/"
     static let getAllEvents = eventsPrefix
+    static let createNewEvent = eventsPrefix
     static let rsvp = "events/rsvp"
     
     // user APIs

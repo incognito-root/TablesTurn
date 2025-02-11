@@ -13,7 +13,7 @@ class SignupViewModel: ObservableObject {
     @Published var linkedinUsername: String = ""
     
     // UI state
-    @Published var currentStep: Int = 1
+    @Published var currentStep: Int = 0
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     @Published var signedUp: Bool = false

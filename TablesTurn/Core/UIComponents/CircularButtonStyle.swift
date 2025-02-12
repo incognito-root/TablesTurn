@@ -24,7 +24,7 @@ struct CircularButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(width: size, height: size) // Make it a circle
-            .foregroundColor(foregroundColor)
+            .foregroundStyle(foregroundColor)
             .background(
                 Circle()
                     .fill(configuration.isPressed

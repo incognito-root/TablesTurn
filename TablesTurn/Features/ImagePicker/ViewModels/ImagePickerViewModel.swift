@@ -27,6 +27,7 @@ final class ImagePickerViewModel: ObservableObject {
             handleImageSelection(imageSelection)
         }
     }
+    static var underlyingImage: UIImage?
     
     private var currentProgress: Progress?
     private var cancellables = Set<AnyCancellable>()
@@ -67,20 +68,31 @@ private extension ImagePickerViewModel {
     }
     
     func loadTransferable(from imageSelection: PhotosPickerItem) -> Progress {
-        return imageSelection.loadTransferable(type: ProfileImage.self) { [weak self] result in
+        return imageSelection.loadTransferable(type: Data.self) { [weak self] result in
             DispatchQueue.main.async {
-                guard let self else { return }
-                
+                guard let self = self else { return }
                 guard imageSelection == self.imageSelection else {
                     self.imageState = .failure("Selection changed during load")
                     return
                 }
-                
                 switch result {
-                case .success(let profileImage?):
-                    self.imageState = .success(profileImage.image)
-                case .success(nil):
-                    self.imageState = .empty
+                case .success(let optionalData):
+                    // Unwrap the optional Data
+                    guard let data = optionalData else {
+                        self.imageState = .failure("No image data was returned.")
+                        return
+                    }
+                    #if canImport(UIKit)
+                    guard let uiImage = UIImage(data: data) else {
+                        self.imageState = .failure("Could not convert data to UIImage")
+                        return
+                    }
+                    ImagePickerViewModel.underlyingImage = uiImage
+                    self.imageState = .success(Image(uiImage: uiImage))
+                    #else
+                    // Handle macOS conversion as needed.
+                    #endif
+                    
                 case .failure(let error):
                     self.handleError(error)
                 }

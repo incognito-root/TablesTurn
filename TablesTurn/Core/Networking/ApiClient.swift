@@ -103,4 +103,45 @@ class NetworkManager {
                 }
             }
     }
+    
+    func upload<T: Decodable>(
+        endpoint: String,
+        method: HTTPMethod = .post,
+        imageData: Data,
+        imageFieldName: String,
+        fileName: String,
+        mimeType: String = "image/jpeg",
+        headers: HTTPHeaders? = nil,
+        completion: @escaping (Result<T, Error>) -> Void
+    ) {
+        let url = "\(baseURL)\(endpoint)"
+        session.upload(multipartFormData: { multipartFormData in
+            
+            multipartFormData.append(imageData,
+                                     withName: imageFieldName,
+                                     fileName: fileName,
+                                     mimeType: mimeType)
+        }, to: url, method: method, headers: headers)
+        .validate()
+        .responseData { response in
+            switch response.result {
+            case .success(let data):
+                do {
+                    let decoder = self.configuredDecoder()
+                    let apiResponse = try decoder.decode(ApiResponse<T>.self, from: data)
+                    if let responseData = apiResponse.data {
+                        completion(.success(responseData))
+                    } else {
+                        let errorMessage = apiResponse.message ?? "Unknown server error"
+                        completion(.failure(APIError.serverError(errorMessage)))
+                    }
+                } catch {
+                    completion(.failure(APIError.decodingError))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
 }

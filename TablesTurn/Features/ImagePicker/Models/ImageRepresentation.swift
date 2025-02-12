@@ -1,7 +1,6 @@
-// ProfileImage.swift
 import SwiftUI
 
-struct ProfileImage: Transferable {
+struct ImageRepresentation: Transferable {
     let image: Image
     
     static var transferRepresentation: some TransferRepresentation {
@@ -10,12 +9,12 @@ struct ProfileImage: Transferable {
             guard let nsImage = NSImage(data: data) else {
                 throw TransferError.importFailed
             }
-            return ProfileImage(image: Image(nsImage: nsImage))
+            return ImageRepresentation(image: Image(nsImage: nsImage))
 #elseif canImport(UIKit)
             guard let uiImage = UIImage(data: data) else {
                 throw TransferError.importFailed
             }
-            return ProfileImage(image: Image(uiImage: uiImage))
+            return ImageRepresentation(image: Image(uiImage: uiImage))
 #else
             throw TransferError.importFailed
 #endif

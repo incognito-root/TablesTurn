@@ -35,7 +35,7 @@ struct MainButtonStyle: ButtonStyle {
             .frame(maxWidth: maxWidth)
             .padding(padding)
             .font(.system(size: fontSize))
-            .foregroundColor(foregroundColor)
+            .foregroundStyle(foregroundColor)
             .background(
                 RoundedRectangle(cornerRadius: cornerRadius)
                     .fill(configuration.isPressed

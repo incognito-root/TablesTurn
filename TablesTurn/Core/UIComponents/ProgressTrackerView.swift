@@ -32,18 +32,18 @@ struct ProgressTrackerView: View {
                             
                             if index < viewModel.currentStep {
                                 Image(systemName: "checkmark")
-                                    .foregroundColor(.primaryBackground)
+                                    .foregroundStyle(.primaryBackground)
                                     .fontWeight(.bold)
                             } else {
                                 Text("\(index + 1)")
-                                    .foregroundColor(index == viewModel.currentStep ? .white : .black)
+                                    .foregroundStyle(index == viewModel.currentStep ? .white : .black)
                                     .font(.system(size: index == viewModel.currentStep ? 30 : 16))
                                     .fontWeight(.bold)
                             }
                         }
                         
                         Text(steps[index])
-                            .foregroundColor(.white)
+                            .foregroundStyle(.white)
                             .font(.caption)
                     }
                     .frame(maxHeight: .infinity)

@@ -2,7 +2,13 @@ import SwiftUI
 import PhotosUI
 
 struct ImagePickerView: View {
-    @StateObject private var viewModel = ImagePickerViewModel()
+    @StateObject private var viewModel: ImagePickerViewModel
+    var allowEdit: Bool = true
+    
+    init(viewModel: ImagePickerViewModel, allowEdit: Bool = true) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+        self.allowEdit = allowEdit
+    }
     
     var body: some View {
         VStack(alignment: .center, spacing: 20) {
@@ -20,13 +26,13 @@ struct ImagePickerView: View {
             case .success(let image):
                 image
                     .resizable()
-                    .frame(height: 180)
-                    .scaledToFit()
+                    .aspectRatio(16/9, contentMode: .fill)
+                    .clipped()
                     .cornerRadius(10)
                 
             case .failure(let errorMessage):
                 Text("Error: \(errorMessage)")
-                    .foregroundColor(.red)
+                    .foregroundStyle(Color.red)
             }
             
             if case .empty = viewModel.imageState {
@@ -39,14 +45,16 @@ struct ImagePickerView: View {
                         .cornerRadius(10)
                 }
             } else {
-                Button(action: {
-                    viewModel.cancelLoading()
-                }) {
-                    Text("Reset Image")
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.red.opacity(0.2))
-                        .cornerRadius(10)
+                if self.allowEdit {
+                    Button(action: {
+                        viewModel.cancelLoading()
+                    }) {
+                        Text("Reset Image")
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.red.opacity(0.2))
+                            .cornerRadius(10)
+                    }
                 }
             }
         }

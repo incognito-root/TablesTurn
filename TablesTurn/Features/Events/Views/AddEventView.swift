@@ -53,7 +53,7 @@ struct AddEventView: View {
                                         VStack(alignment: .leading, spacing: 0) {
                                             Text("Event Title/Headline")
                                                 .font(.caption)
-                                                .foregroundColor(.gray)
+                                                .foregroundStyle(.gray)
                                                 .padding(.leading, 4)
                                             
                                             CustomTextField(
@@ -128,7 +128,7 @@ struct AddEventView: View {
                                 Form {
                                     Section {
                                         VStack(alignment: .leading) {
-                                            ImagePickerView()
+                                            ImagePickerView(viewModel: viewModel.imagePickerViewModel)
                                         }
                                         .frame(maxWidth: .infinity)
                                         .listRowBackground(Color.clear)
@@ -137,7 +137,7 @@ struct AddEventView: View {
                                         VStack(alignment: .leading, spacing: 0) {
                                             Text("Event Description")
                                                 .font(.caption)
-                                                .foregroundColor(.gray)
+                                                .foregroundStyle(.gray)
                                                 .padding(.leading, 4)
                                             
                                             CustomTextField(
@@ -163,7 +163,7 @@ struct AddEventView: View {
                                         VStack(alignment: .leading, spacing: 0) {
                                             Text("Event Location")
                                                 .font(.caption)
-                                                .foregroundColor(.gray)
+                                                .foregroundStyle(.gray)
                                                 .padding(.leading, 4)
                                             
                                             CustomTextField(
@@ -187,7 +187,7 @@ struct AddEventView: View {
                                         .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 25, trailing: 5))
 
                                         VStack(alignment: .leading, spacing: 0) {
-                                            TimezoneDropdownView()
+                                            TimezoneDropdownView(viewModel: viewModel)
                                         }
                                         .listRowBackground(Color.clear)
                                         .listRowInsets(EdgeInsets(top: 5, leading: 10, bottom: 25, trailing: 10))
@@ -220,6 +220,71 @@ struct AddEventView: View {
                                 }
                                 .scrollContentBackground(.hidden)
                                 .background(Color.clear)
+                            }
+                            else if viewModel.currentStep == 2 {
+                                VStack() {
+                                    Text("Preview Details")
+                                        .font(.system(size: 35))
+                                        .fontWeight(.medium)
+                                        .padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0))
+                                    
+                                    if ImagePickerViewModel.underlyingImage != nil {
+                                        VStack {
+                                            ImagePickerView(viewModel: viewModel.imagePickerViewModel, allowEdit: false)
+                                        }
+                                        .frame(width: 340, height: 200)
+                                    }
+
+                                    VStack(alignment: .leading, spacing: 20) {
+                                        VStack(alignment: .leading, spacing: 3) {
+                                            Text("Title")
+                                                .foregroundStyle(.gray)
+                                            Text(viewModel.title.isEmpty ? "-" : viewModel.title)
+                                        }
+                                        
+                                        VStack(alignment: .leading, spacing: 3) {
+                                            Text("Event Date")
+                                                .foregroundStyle(.gray)
+                                            Text(viewModel.date, style: .date)
+                                        }
+                                        
+                                        VStack(alignment: .leading, spacing: 3) {
+                                            Text("Event Time")
+                                                .foregroundStyle(.gray)
+                                            Text(viewModel.time, style: .time)
+                                        }
+                                        
+                                        VStack(alignment: .leading, spacing: 3) {
+                                            Text("Event Location")
+                                                .foregroundStyle(.gray)
+                                            Text(viewModel.location)
+                                        }
+                                        
+                                        VStack(alignment: .leading, spacing: 3) {
+                                            Text("RSVP Deadline")
+                                                .foregroundStyle(.gray)
+                                            Text(viewModel.rsvpDeadlineDate, style: .date)
+                                        }
+                                        
+                                        VStack(alignment: .leading, spacing: 3) {
+                                            Text("Description")
+                                                .foregroundStyle(.gray)
+                                            Text(viewModel.description.isEmpty ? "-" : viewModel.description)
+                                        }
+                                        
+                                        Section {
+                                            Button(action: {
+                                                viewModel.addEvent()
+                                            }) {
+                                                Text("submit".uppercased())
+                                            }
+                                            .buttonStyle(MainButtonStyle())
+                                            .listRowBackground(Color.clear)
+                                        }
+                                    }
+                                    .padding(.top, 10)
+                                }
+                                .padding(EdgeInsets(top: 20, leading: 25, bottom: 0, trailing: 25))
                             }
                         }
                         .padding(.top, -30)

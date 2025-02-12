@@ -29,7 +29,7 @@ struct EventCard: View {
             VStack {
                 HStack {
                     Image(systemName: "ticket")
-                        .foregroundColor(.white)
+                        .foregroundStyle(.white)
                     Text("Tickets Available")
                         .font(.system(size: 14))
                 }
@@ -56,10 +56,10 @@ struct EventCard: View {
                     .truncationMode(.tail)
                 HStack {
                     Image(systemName: "mappin.circle")
-                        .foregroundColor(.white)
+                        .foregroundStyle(.white)
                     Text(event.location)
                         .font(.system(size: 14))
-                        .foregroundColor(.white)
+                        .foregroundStyle(.white)
                 }
                 .padding(.horizontal, 12)
                 .padding(.vertical, 8)
@@ -75,7 +75,7 @@ struct EventCard: View {
             VStack(alignment: .trailing) {
                 Text(formattedDate)
                     .font(.system(size: 26, weight: .bold))
-                    .foregroundColor(.black)
+                    .foregroundStyle(.black)
                     .multilineTextAlignment(.center)
                     .padding(14)
                     .background(Circle().fill(Color.accent))

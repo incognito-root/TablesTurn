@@ -32,7 +32,7 @@ struct LoginFormView: View {
                             Text("CREATE A NEW ACCOUNT")
                                 .padding(.leading, 27)
                                 .font(.system(size: 15))
-                                .foregroundColor(.gray)
+                                .foregroundStyle(.gray)
                                 .fontWeight(.bold)
                         }
                         

@@ -52,20 +52,20 @@ struct CustomTextField: View {
             HStack {
                 if let iconName = iconName {
                     Image(systemName: iconName)
-                        .foregroundColor(iconColor ?? .gray)
+                        .foregroundStyle(iconColor ?? .gray)
                 }
                 
                 if isSecure {
                     SecureField("", text: $text, prompt: Text(placeholder).foregroundStyle(placeHolderColor ?? .gray))
                         .keyboardType(keyboardType)
-                        .foregroundColor(textColor ?? .white)
+                        .foregroundStyle(textColor ?? .white)
                         .onChange(of: text) { newValue, _ in
                             handleChange(newValue)
                         }
                 } else {
                     TextField("", text: $text, prompt: Text(placeholder).foregroundStyle(placeHolderColor ?? .gray))
                         .keyboardType(keyboardType)
-                        .foregroundColor(textColor ?? .white)
+                        .foregroundStyle(textColor ?? .white)
                         .onChange(of: text) { newValue, _ in
                             handleChange(newValue)
                         }
@@ -78,7 +78,7 @@ struct CustomTextField: View {
                         showError = false
                     }) {
                         Image(systemName: "multiply.circle.fill")
-                            .foregroundColor(iconColor ?? .gray)
+                            .foregroundStyle(iconColor ?? .gray)
                     }
                 }
             }
@@ -91,7 +91,7 @@ struct CustomTextField: View {
                 Group {
                     if let edges = borderEdges {
                         EdgeBorder(width: borderWidth ?? 1.5, edges: edges)
-                            .foregroundColor(showError ? Color.red : borderColor ?? Color.accentColor)
+                            .foregroundStyle(showError ? Color.red : borderColor ?? Color.accentColor)
                     } else {
                         RoundedRectangle(cornerRadius: borderRadius)
                             .stroke(showError ? Color.red : borderColor ?? Color.accentColor, lineWidth: borderWidth ?? 1.5)
@@ -102,7 +102,7 @@ struct CustomTextField: View {
             
             if let error = errorMessage, showError {
                 Text(error)
-                    .foregroundColor(.red)
+                    .foregroundStyle(.red)
                     .font(.caption)
                     .padding(.leading, 20)
             }

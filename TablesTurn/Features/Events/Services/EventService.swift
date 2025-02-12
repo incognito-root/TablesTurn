@@ -10,7 +10,8 @@ class EventService {
             "rsvp_deadline": eventDetails.rsvpDeadline ?? "",
             "image": "",
             "description": eventDetails.description,
-            "date_time": eventDetails.dateTime
+            "date_time": eventDetails.dateTime,
+            "location": eventDetails.location
         ]
         
         NetworkManager.shared.request(

@@ -39,7 +39,7 @@ struct GettingStartedView: View {
                                     .padding(12)
                                     .padding(.bottom, 0)
                                     .font(.system(size: 25))
-                                    .foregroundColor(.black)
+                                    .foregroundStyle(.black)
                                     .background(
                                         RoundedRectangle(cornerRadius: 50)
                                             .fill(Color.accentColor)
@@ -51,7 +51,7 @@ struct GettingStartedView: View {
                                     .frame(maxWidth: .infinity)
                                     .padding(.top, 15)
                                     .font(.system(size: 15))
-                                    .foregroundColor(.white)
+                                    .foregroundStyle(.white)
                                     .fontWeight(.bold)
                             }
                         }

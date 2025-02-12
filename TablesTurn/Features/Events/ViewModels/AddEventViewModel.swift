@@ -4,23 +4,22 @@ import Combine
 class AddEventViewModel: ObservableObject {
     // Input fields
     @Published var title: String = ""
-    @Published var timezone: String = ""
-    @Published var rsvpDeadline: Date = Date()
+    @Published var timezone: String = "UTC-12"
     @Published var location: String = ""
     @Published var image: String = ""
     @Published var description: String = ""
-    @Published var dateTime: Date = Date()
     @Published var date: Date = Date()
     @Published var time: Date = Date()
     @Published var rsvpDeadlineDate: Date = Date()
     
     // UI state
-    @Published var currentStep: Int = 0
+    @Published var currentStep: Int = 2
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     @Published var editing: Bool = false
     
     private let eventService = EventService()
+    let imagePickerViewModel = ImagePickerViewModel()
     
     // MARK: - Business Logic
     
@@ -174,4 +173,6 @@ class AddEventViewModel: ObservableObject {
             }
         }
     }
+    
+    
 }

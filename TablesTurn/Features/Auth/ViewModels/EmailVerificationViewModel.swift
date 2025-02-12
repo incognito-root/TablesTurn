@@ -1,64 +1,73 @@
 import Foundation
 
+@MainActor
 class EmailVerificationViewModel: ObservableObject {
     @Published var otp: [String] = Array(repeating: "", count: 6)
     @Published var focusedField: Int?
     @Published var userId: String?
+    @Published var showAlert = false
+    @Published var alertMessage = ""
     
-    @Published var showAlert: Bool = false
-    @Published var alertMessage: String = ""
-    
-    private let emailVerificationService = EmailVerificationService()
+    private let service = EmailVerificationService()
     
     init(userId: String? = nil) {
         self.userId = userId
     }
     
     func verifyOTP() {
-        let enteredOTP = otp.joined()
-        
-        if enteredOTP.count < 6 {
-            alertMessage = "Please enter 6 digits"
-            showAlert = true
-            return
-        }
-        
-        let verificationDetails = EmailVerificationDetails(
-            userId: self.userId ?? "",
-            otp: enteredOTP
-        )
-        
-        emailVerificationService.verifyOtp(details: verificationDetails) { [weak self] result in
-            DispatchQueue.main.async {
-                guard let self = self else { return }
-                
-                switch result {
-                case .success(let user):
-                    let userToSave = User(id: user.id)
-                    UserManager.shared.currentUser = userToSave
-                    
-                case .failure(let error):
-                    if let apiError = error as? APIError {
-                        switch apiError {
-                        case .serverError(let message):
-                            self.alertMessage = message
-                        case .decodingError:
-                            self.alertMessage = "Failed to process server response"
-                        case .invalidResponse:
-                            self.alertMessage = "Invalid server response"
-                        case .emailNotVerified:
-                            print("email not verified")
-                        }
-                    } else {
-                        self.alertMessage = error.localizedDescription
-                    }
-                    
-                    self.showAlert = true
-                }
+        Task {
+            let enteredOTP = otp.joined()
+            
+            guard enteredOTP.count == 6 else {
+                showAlert(message: "Please enter 6 digits")
+                return
+            }
+            
+            guard let userId = userId else {
+                showAlert(message: "Missing user ID")
+                return
+            }
+            
+            let verificationDetails = EmailVerificationDetails(
+                userId: userId,
+                otp: enteredOTP
+            )
+            
+            do {
+                let response = try await service.verifyOtp(details: verificationDetails)
+                await handleSuccess(response: response)
+            } catch let error as APIError {
+                handleAPIError(error: error)
+            } catch {
+                showAlert(message: error.localizedDescription)
             }
         }
     }
     
+    private func handleSuccess(response: EmailVerificationResponse) async {
+        let userToSave = User(id: response.id)
+        UserManager.shared.currentUser = userToSave
+    }
+    
+    private func handleAPIError(error: APIError) {
+        switch error {
+        case .serverError(let message):
+            showAlert(message: message)
+        case .decodingError:
+            showAlert(message: "Failed to process server response")
+        case .invalidResponse:
+            showAlert(message: "Invalid server response")
+        case .emailNotVerified:
+            showAlert(message: "Email verification required")
+        }
+    }
+    
+    private func showAlert(message: String) {
+        alertMessage = message
+        showAlert = true
+    }
+    
+    // UI handling remains unchanged
     func handleOTPChange(index: Int, newValue: String) {
         if newValue.count > 1 {
             otp[index] = String(newValue.prefix(1))

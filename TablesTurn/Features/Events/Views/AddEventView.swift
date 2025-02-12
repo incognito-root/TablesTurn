@@ -274,7 +274,9 @@ struct AddEventView: View {
                                         
                                         Section {
                                             Button(action: {
-                                                viewModel.addEvent()
+                                                Task {
+                                                    await viewModel.addEvent()
+                                                }
                                             }) {
                                                 Text("submit".uppercased())
                                             }

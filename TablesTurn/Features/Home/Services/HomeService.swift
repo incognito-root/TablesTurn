@@ -1,6 +1,6 @@
 import Foundation
-import Alamofire
 
+@MainActor
 class HomeService {
     private let sharedService: SharedServiceProtocol
     
@@ -8,7 +8,7 @@ class HomeService {
         self.sharedService = sharedService
     }
     
-    func getAllEvents(completion: @escaping (Result<[Event], Error>) -> Void) {
-        sharedService.getAllEvents(completion: completion)
+    func getAllEvents() async throws -> [Event] {
+        try await sharedService.getAllEvents()
     }
 }

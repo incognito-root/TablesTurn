@@ -199,6 +199,9 @@ struct HomeView: View {
                     .padding(.horizontal, 20)
                 }
                 .frame(maxHeight: .infinity)
+                .refreshable {
+                    await viewModel.getAllEvents()
+                }
             }
             .foregroundStyle(.primaryText)
             .alert(isPresented: $viewModel.showAlert) {
@@ -209,8 +212,10 @@ struct HomeView: View {
         }
         .navigationBarHidden(true)
         .onAppear {
-            viewModel.getAllEvents()
-            viewModel.getUserDetails()
+            Task {
+                await viewModel.getAllEvents()
+                await viewModel.getUserDetails()
+            }
         }
     }
 }

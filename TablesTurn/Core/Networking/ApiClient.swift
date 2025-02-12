@@ -47,36 +47,28 @@ class NetworkManager {
         }
         return decoder
     }
-
     
     func request<T: Decodable>(
         endpoint: String,
         method: HTTPMethod = .get,
         parameters: [String: Any]? = nil,
-        headers: HTTPHeaders? = nil,
-        completion: @escaping (Result<T, Error>) -> Void
-    ) {
+        headers: HTTPHeaders? = nil
+    ) async throws -> T {
         let url = "\(baseURL)\(endpoint)"
         
-        session.request(url, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+        return try await withCheckedThrowingContinuation { continuation in
+            session.request(url, method: method, parameters: parameters,
+                            encoding: JSONEncoding.default, headers: headers)
             .validate()
-            .responseData { response in
+            .responseDecodable(of: ApiResponse<T>.self, decoder: configuredDecoder()) { response in
                 switch response.result {
-                case .success(let data):
-                    do {
-                        let decoder = self.configuredDecoder()
-                        let apiResponse = try decoder.decode(ApiResponse<T>.self, from: data)
-                        if let responseData = apiResponse.data {
-                            completion(.success(responseData))
-                        } else {
-                            let errorMessage = apiResponse.message ?? "Unknown server error"
-                            completion(.failure(APIError.serverError(errorMessage)))
-                        }
-                    } catch {
-                        print(error)
-                        completion(.failure(APIError.decodingError))
+                case .success(let apiResponse):
+                    if let data = apiResponse.data {
+                        continuation.resume(returning: data)
+                    } else {
+                        let errorMessage = apiResponse.message ?? "Unknown server error"
+                        continuation.resume(throwing: APIError.serverError(errorMessage))
                     }
-                    
                 case .failure(let error):
                     if let data = response.data {
                         do {
@@ -84,26 +76,29 @@ class NetworkManager {
                             
                             if let isEmailVerified = apiErrorResponse.data?.isEmailVerified, !isEmailVerified {
                                 let id = apiErrorResponse.data?.userId
-                                completion(.failure(APIError.emailNotVerified(userId: id)))
+                                continuation.resume(throwing: APIError.emailNotVerified(userId: id))
                             } else {
-                                let errorMessage = apiErrorResponse.message ?? apiErrorResponse.errorDetails?.message ?? "Unknown error occurred"
+                                let errorMessage = apiErrorResponse.message ??
+                                apiErrorResponse.errorDetails?.message ?? "Unknown error occurred"
                                 
                                 if errorMessage == "Access denied. No token provided." {
                                     UserManager.shared.logout()
                                 }
                                 
-                                completion(.failure(APIError.serverError(errorMessage)))
+                                continuation.resume(throwing: APIError.serverError(errorMessage))
                             }
                         } catch {
-                            completion(.failure(APIError.decodingError))
+                            continuation.resume(throwing: APIError.decodingError)
                         }
                     } else {
-                        completion(.failure(error))
+                        continuation.resume(throwing: error)
                     }
                 }
             }
+        }
     }
     
+    // Async version of upload
     func upload<T: Decodable>(
         endpoint: String,
         method: HTTPMethod = .post,
@@ -111,37 +106,31 @@ class NetworkManager {
         imageFieldName: String,
         fileName: String,
         mimeType: String = "image/jpeg",
-        headers: HTTPHeaders? = nil,
-        completion: @escaping (Result<T, Error>) -> Void
-    ) {
+        headers: HTTPHeaders? = nil
+    ) async throws -> T {
         let url = "\(baseURL)\(endpoint)"
-        session.upload(multipartFormData: { multipartFormData in
-            
-            multipartFormData.append(imageData,
-                                     withName: imageFieldName,
-                                     fileName: fileName,
-                                     mimeType: mimeType)
-        }, to: url, method: method, headers: headers)
-        .validate()
-        .responseData { response in
-            switch response.result {
-            case .success(let data):
-                do {
-                    let decoder = self.configuredDecoder()
-                    let apiResponse = try decoder.decode(ApiResponse<T>.self, from: data)
-                    if let responseData = apiResponse.data {
-                        completion(.success(responseData))
+        
+        return try await withCheckedThrowingContinuation { continuation in
+            session.upload(multipartFormData: { multipartFormData in
+                multipartFormData.append(imageData,
+                                         withName: imageFieldName,
+                                         fileName: fileName,
+                                         mimeType: mimeType)
+            }, to: url, method: method, headers: headers)
+            .validate()
+            .responseDecodable(of: ApiResponse<T>.self, decoder: configuredDecoder()) { response in
+                switch response.result {
+                case .success(let apiResponse):
+                    if let data = apiResponse.data {
+                        continuation.resume(returning: data)
                     } else {
                         let errorMessage = apiResponse.message ?? "Unknown server error"
-                        completion(.failure(APIError.serverError(errorMessage)))
+                        continuation.resume(throwing: APIError.serverError(errorMessage))
                     }
-                } catch {
-                    completion(.failure(APIError.decodingError))
+                case .failure(let error):
+                    continuation.resume(throwing: error)
                 }
-            case .failure(let error):
-                completion(.failure(error))
             }
         }
     }
-
 }

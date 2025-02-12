@@ -1,6 +1,6 @@
 import Foundation
-import Combine
 
+@MainActor
 class SignupViewModel: ObservableObject {
     // Input fields
     @Published var firstName: String = ""
@@ -18,76 +18,86 @@ class SignupViewModel: ObservableObject {
     @Published var alertMessage: String = ""
     @Published var signedUp: Bool = false
     
-    private let signupService = SignupService()
+    private let service = SignupService()
     private let loginViewModel = LoginViewModel()
-    
-    // MARK: - Business Logic
-    
+
     func validateEmail() {
         guard !email.isEmpty, email.contains("@") else {
-            alertMessage = "Please enter a valid email."
-            showAlert = true
+            showAlert(message: "Please enter a valid email.")
             return
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.currentStep = 2
+        Task {
+            try await Task.sleep(nanoseconds: 1_000_000_000)
+            currentStep = 2
         }
     }
     
     func signUp() {
+        Task {
+            guard validateFields() else { return }
+            
+            let userDetails = UserSignupDetails(
+                firstName: firstName,
+                lastName: lastName,
+                password: password,
+                email: email,
+                instagramUsername: instagramUsername.nilIfEmpty,
+                twitterUsername: twitterUsername.nilIfEmpty,
+                linkedinUsername: linkedinUsername.nilIfEmpty
+            )
+            
+            do {
+                _ = try await service.signUp(userDetails: userDetails)
+                signedUp = true
+            } catch let error as APIError {
+                handleAPIError(error: error)
+            } catch {
+                showAlert(message: error.localizedDescription)
+            }
+        }
+    }
+    
+    private func validateFields() -> Bool {
         guard !firstName.isEmpty,
               !lastName.isEmpty,
               !email.isEmpty,
               !password.isEmpty,
               !confirmPassword.isEmpty else {
-            alertMessage = "All fields are required."
-            showAlert = true
-            return
+            showAlert(message: "All fields are required.")
+            return false
         }
         
         guard password == confirmPassword else {
-            alertMessage = "Passwords do not match."
-            showAlert = true
-            return
+            showAlert(message: "Passwords do not match.")
+            return false
         }
         
-        let userDetails = UserSignupDetails(
-            firstName: firstName,
-            lastName: lastName,
-            password: password,
-            email: email,
-            instagramUsername: instagramUsername.isEmpty ? nil : instagramUsername,
-            twitterUsername: twitterUsername.isEmpty ? nil : twitterUsername,
-            linkedinUsername: linkedinUsername.isEmpty ? nil : linkedinUsername
-        )
-        
-        signupService.signUp(userDetails: userDetails) { [weak self] result in
-            DispatchQueue.main.async {
-                guard let self = self else { return }
-                
-                switch result {
-                case .success(let user):
-                    self.signedUp = true
-                    
-                case .failure(let error):
-                    if let apiError = error as? APIError {
-                        switch apiError {
-                        case .serverError(let message):
-                            self.alertMessage = message
-                        case .decodingError:
-                            self.alertMessage = "Failed to process server response."
-                        case .invalidResponse:
-                            self.alertMessage = "Invalid response from server."
-                        case .emailNotVerified:
-                            print("email not verified")
-                        }
-                    } else {
-                        self.alertMessage = error.localizedDescription
-                    }
-                    self.showAlert = true
-                }
-            }
+        return true
+    }
+    
+    private func handleAPIError(error: APIError) {
+        switch error {
+        case .serverError(let message):
+            showAlert(message: message)
+        case .decodingError:
+            showAlert(message: "Failed to process server response.")
+        case .invalidResponse:
+            showAlert(message: "Invalid response from server.")
+        case .emailNotVerified:
+            showAlert(message: "Email verification required")
         }
+    }
+    
+    private func showAlert(message: String) {
+        alertMessage = message
+        showAlert = true
+    }
+}
+
+// Helper extension
+extension String {
+    var nilIfEmpty: String? {
+        self.isEmpty ? nil : self
     }
 }

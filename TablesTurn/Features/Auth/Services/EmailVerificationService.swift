@@ -1,26 +1,17 @@
 import Foundation
-import Alamofire
 
+@MainActor
 class EmailVerificationService {
-    
-    func verifyOtp(details: EmailVerificationDetails, completion: @escaping (Result<EmailVerificationResponse, Error>) -> Void) {
+    func verifyOtp(details: EmailVerificationDetails) async throws -> EmailVerificationResponse {
         let parameters: [String: Any] = [
             "userId": details.userId,
             "otp": details.otp
         ]
         
-        NetworkManager.shared.request(
+        return try await NetworkManager.shared.request(
             endpoint: APIEndpoints.emailVerification,
             method: .post,
-            parameters: parameters,
-            headers: nil
-        ) { (result: Result<EmailVerificationResponse, Error>) in
-            switch result {
-            case .success(let user):
-                completion(.success(user))
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
+            parameters: parameters
+        )
     }
 }

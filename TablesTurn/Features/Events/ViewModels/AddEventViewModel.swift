@@ -1,6 +1,7 @@
 import Foundation
 import Combine
 
+@MainActor
 class AddEventViewModel: ObservableObject {
     // Input fields
     @Published var title: String = ""
@@ -118,61 +119,69 @@ class AddEventViewModel: ObservableObject {
         currentStep += 1
     }
     
-    func addEvent() {
-        if iso8601DateString == nil {
-            alertMessage = "All fields are required."
-            showAlert = true
-            return
-        }
+    func addEvent() async {
+        // Validation checks
+        guard validateFields() else { return }
         
-        guard !title.isEmpty,
-              !timezone.isEmpty,
-              !location.isEmpty,
-              !description.isEmpty
-        else {
-            alertMessage = "All fields are required."
-            showAlert = true
-            return
-        }
-        
+        // Create event payload
         let eventData = AddEventDetails(
             title: self.title,
             timezone: self.timezone,
             rsvpDeadline: self.iso8601RsvpDateString ?? "",
             location: self.location,
-            image: "",
+            image: self.image,
             description: self.description,
             dateTime: self.iso8601DateString ?? ""
         )
         
-        eventService.createEvent(eventDetails: eventData) { [weak self] result in
-            DispatchQueue.main.async {
-                guard let self = self else { return }
-                
-                switch result {
-                case .success(let event):
-                    print(event)
-                    
-                case .failure(let error):
-                    if let apiError = error as? APIError {
-                        switch apiError {
-                        case .serverError(let message):
-                            self.alertMessage = message
-                        case .decodingError:
-                            self.alertMessage = "Failed to process server response."
-                        case .invalidResponse:
-                            self.alertMessage = "Invalid response from server."
-                        case .emailNotVerified:
-                            print("email not verified")
-                        }
-                    } else {
-                        self.alertMessage = error.localizedDescription
-                    }
-                    self.showAlert = true
-                }
-            }
+        do {
+            let event = try await eventService.createEvent(eventDetails: eventData)
+            handleSuccess(event: event)
+        } catch let error as APIError {
+            handleAPIError(error: error)
+        } catch {
+            handleGenericError(error: error)
         }
     }
     
+    private func validateFields() -> Bool {
+        guard let _ = iso8601DateString,
+              !title.isEmpty,
+              !timezone.isEmpty,
+              !location.isEmpty,
+              !description.isEmpty
+        else {
+            setAlert(message: "All fields are required.")
+            return false
+        }
+        return true
+    }
     
+    private func handleSuccess(event: Event) {
+        print("Event created successfully:", event)
+        // Add any success state updates here
+    }
+    
+    private func handleAPIError(error: APIError) {
+        switch error {
+        case .serverError(let message):
+            setAlert(message: message)
+        case .decodingError:
+            setAlert(message: "Failed to process server response.")
+        case .invalidResponse:
+            setAlert(message: "Invalid response from server.")
+        case .emailNotVerified:
+            print("Email not verified")
+            // Handle email verification flow
+        }
+    }
+    
+    private func handleGenericError(error: Error) {
+        setAlert(message: error.localizedDescription)
+    }
+    
+    private func setAlert(message: String) {
+        alertMessage = message
+        showAlert = true
+    }
 }

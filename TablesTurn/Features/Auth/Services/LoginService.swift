@@ -1,27 +1,18 @@
 import Foundation
-import Alamofire
 
+@MainActor
 class LoginService {
-    
-    func login(userDetails: UserLoginDetails, completion: @escaping (Result<UserLoginResponse, Error>) -> Void) {
+    func login(userDetails: UserLoginDetails) async throws -> UserLoginResponse {
         let parameters: [String: Any] = [
             "email": userDetails.email,
             "password": userDetails.password,
             "staySignedIn": userDetails.staySignedIn
         ]
         
-        NetworkManager.shared.request(
+        return try await NetworkManager.shared.request(
             endpoint: APIEndpoints.login,
             method: .post,
-            parameters: parameters,
-            headers: nil
-        ) { (result: Result<UserLoginResponse, Error>) in
-            switch result {
-            case .success(let user):
-                completion(.success(user))
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
+            parameters: parameters
+        )
     }
 }

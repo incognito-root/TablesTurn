@@ -1,9 +1,8 @@
 import Foundation
-import Alamofire
 
+@MainActor
 class SignupService {
-    
-    func signUp(userDetails: UserSignupDetails, completion: @escaping (Result<UserSignupResponse, Error>) -> Void) {
+    func signUp(userDetails: UserSignupDetails) async throws -> UserSignupResponse {
         let parameters: [String: Any] = [
             "userDetails": [
                 "first_name": userDetails.firstName,
@@ -16,20 +15,10 @@ class SignupService {
             ]
         ]
         
-        NetworkManager.shared.request(
+        return try await NetworkManager.shared.request(
             endpoint: APIEndpoints.signup,
             method: .post,
-            parameters: parameters,
-            headers: nil
-        ) { (result: Result<UserSignupResponse, Error>) in
-            switch result {
-            case .success(let user):
-                completion(.success(user))
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    completion(.failure(error))
-                }
-            }
-        }
+            parameters: parameters
+        )
     }
 }

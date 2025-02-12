@@ -1,9 +1,16 @@
 import Foundation
 import Alamofire
 
+@MainActor
 class EventService {
+    private let sharedService: SharedServiceProtocol
     
-    func createEvent(eventDetails: AddEventDetails, completion: @escaping (Result<Event, Error>) -> Void) {
+    init(sharedService: SharedServiceProtocol = SharedService.shared) {
+        self.sharedService = sharedService
+    }
+    
+    // Async version
+    func createEvent(eventDetails: AddEventDetails) async throws -> Event {
         let parameters: [String: Any] = [
             "title": eventDetails.title,
             "timezone": eventDetails.timezone,
@@ -14,20 +21,21 @@ class EventService {
             "location": eventDetails.location
         ]
         
-        NetworkManager.shared.request(
+        return try await NetworkManager.shared.request(
             endpoint: APIEndpoints.createNewEvent,
             method: .post,
-            parameters: parameters,
-            headers: nil
-        ) { (result: Result<Event, Error>) in
-            switch result {
-            case .success(let user):
-                completion(.success(user))
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    completion(.failure(error))
-                }
-            }
-        }
+            parameters: parameters
+        )
+    }
+    
+    // Async version of image upload
+    func uploadEventImage(event: Event, imageData: Data) async throws -> String {
+//        try await withCheckedThrowingContinuation { continuation in
+//            sharedService.uploadEventImage(event: event) { result in
+//                continuation.resume(with: result)
+//            }
+//        }
+        
+        return "abc"
     }
 }

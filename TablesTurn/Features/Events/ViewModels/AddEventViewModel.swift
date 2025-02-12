@@ -14,7 +14,7 @@ class AddEventViewModel: ObservableObject {
     @Published var rsvpDeadlineDate: Date = Date()
     
     // UI state
-    @Published var currentStep: Int = 2
+    @Published var currentStep: Int = 0
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     @Published var editing: Bool = false
@@ -136,7 +136,17 @@ class AddEventViewModel: ObservableObject {
         
         do {
             let event = try await eventService.createEvent(eventDetails: eventData)
-            handleSuccess(event: event)
+            await uploadImage(eventData: event)
+        } catch let error as APIError {
+            handleAPIError(error: error)
+        } catch {
+            handleGenericError(error: error)
+        }
+    }
+    
+    func uploadImage(eventData: Event) async {
+        do {
+            let result: String = try await eventService.uploadEventImage(event: eventData)
         } catch let error as APIError {
             handleAPIError(error: error)
         } catch {
@@ -157,11 +167,6 @@ class AddEventViewModel: ObservableObject {
         return true
     }
     
-    private func handleSuccess(event: Event) {
-        print("Event created successfully:", event)
-        // Add any success state updates here
-    }
-    
     private func handleAPIError(error: APIError) {
         switch error {
         case .serverError(let message):
@@ -172,7 +177,6 @@ class AddEventViewModel: ObservableObject {
             setAlert(message: "Invalid response from server.")
         case .emailNotVerified:
             print("Email not verified")
-            // Handle email verification flow
         }
     }
     

@@ -27,15 +27,8 @@ class EventService {
             parameters: parameters
         )
     }
-    
-    // Async version of image upload
-    func uploadEventImage(event: Event, imageData: Data) async throws -> String {
-//        try await withCheckedThrowingContinuation { continuation in
-//            sharedService.uploadEventImage(event: event) { result in
-//                continuation.resume(with: result)
-//            }
-//        }
-        
-        return "abc"
+
+    func uploadEventImage(event: Event) async throws -> String {
+        try await sharedService.uploadEventImage(event: event)
     }
 }

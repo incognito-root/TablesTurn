@@ -98,7 +98,6 @@ class NetworkManager {
         }
     }
     
-    // Async version of upload
     func upload<T: Decodable>(
         endpoint: String,
         method: HTTPMethod = .post,

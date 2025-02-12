@@ -25,7 +25,7 @@ struct HomeView: View {
                 .ignoresSafeArea()
                 
                 ScrollView {
-                    VStack(alignment: .leading, spacing: 20) {
+                    LazyVStack(alignment: .leading, spacing: 20) {
                         HStack(alignment: .top) {
                             Image("LogoImage")
                                 .resizable()

@@ -25,50 +25,16 @@ class SharedService: SharedServiceProtocol {
             throw ImageError.invalidImage
         }
         
-        let boundary = "Boundary-\(UUID().uuidString)"
-        let body = createMultipartBody(
-            imageData: imageData,
-            boundary: boundary
-        )
-        
         return try await NetworkManager.shared.upload(
             endpoint: APIEndpoints.uploadEventImage + event.id,
             method: .post,
-            imageData: body,
-            imageFieldName: "event_image",
-            fileName: "image_name"
+            imageData: imageData,
+            imageFieldName: "file",
+            fileName: "image_\(Date().timeIntervalSince1970).jpg"
         )
     }
-    
-    internal func createMultipartBody(
-        imageData: Data,
-        boundary: String,
-        fileFieldName: String = "image",
-        fileName: String = "image.jpg",
-        mimeType: String = "image/jpeg") -> Data {
-            let lineBreak = "\r\n"
-            var body = Data()
-            
-            body.append("--\(boundary)\(lineBreak)")
-            body.append("Content-Disposition: form-data; name=\"\(fileFieldName)\"; filename=\"\(fileName)\"\(lineBreak)")
-            body.append("Content-Type: \(mimeType)\(lineBreak + lineBreak)")
-            body.append(imageData)
-            body.append(lineBreak)
-            
-            body.append("--\(boundary)--\(lineBreak)")
-            
-            return body
-        }
 }
 
 enum ImageError: Error {
     case invalidImage
-}
-
-extension Data {
-    mutating func append(_ string: String) {
-        if let data = string.data(using: .utf8) {
-            append(data)
-        }
-    }
 }

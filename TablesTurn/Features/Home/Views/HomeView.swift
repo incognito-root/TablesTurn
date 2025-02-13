@@ -120,18 +120,13 @@ struct HomeView: View {
                                         text: $viewModel.searchKey,
                                         isSecure: false,
                                         keyboardType: .default,
-                                        iconName: "lock",
+                                        iconName: "magnifyingglass",
                                         backgroundColor: Color.inputField,
                                         borderColor: .black,
                                         iconColor: .black,
                                         textColor: .black,
                                         placeHolderColor: .black,
-                                        validation: { input in
-                                            if input.isEmpty {
-                                                return "Password cannot be empty."
-                                            }
-                                            return nil
-                                        }
+                                        validation: { _ in nil }
                                     )
                                     .frame(maxWidth: .infinity)
                                 }
@@ -180,7 +175,7 @@ struct HomeView: View {
                             
                             PaginationView(currentPage: $viewModel.currentPage, totalPages: viewModel.totalPages)
                                 .onChange(of: viewModel.currentPage) { _, _ in
-                                    Task { await viewModel.getAllEvents() }
+                                    viewModel.getAllEvents()
                                 }
                         }
                         
@@ -207,7 +202,7 @@ struct HomeView: View {
                 }
                 .frame(maxHeight: .infinity)
                 .refreshable {
-                    await viewModel.getAllEvents()
+                    viewModel.getAllEvents()
                 }
             }
             .foregroundStyle(.primaryText)
@@ -220,7 +215,7 @@ struct HomeView: View {
         .navigationBarHidden(true)
         .onAppear {
             Task {
-                await viewModel.getAllEvents()
+                viewModel.getAllEvents()
                 await viewModel.getUserDetails()
             }
         }

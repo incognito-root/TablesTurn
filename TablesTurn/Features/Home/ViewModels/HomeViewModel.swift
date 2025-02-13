@@ -1,9 +1,8 @@
 import Foundation
+import Combine
 
 @MainActor
 class HomeViewModel: ObservableObject {
-    @Published var searchKey: String = ""
-    @Published var allEventsResponse: GetAllEventsResponse? = nil
     @Published var events: [Event] = []
     @Published var userDetails: UserDetails?
     @Published var showAlert: Bool = false
@@ -13,24 +12,56 @@ class HomeViewModel: ObservableObject {
     @Published var totalPages = 1
     let pageSize = 5
     
+    @Published var searchKey = "" {
+        didSet {
+            if searchKey.count < 3 && !searchKey.isEmpty {
+                // Show message or handle minimum characters
+            }
+        }
+    }
+    
+    private var cancellables = Set<AnyCancellable>()
+
     private let homeService = HomeService()
     private let sharedService: SharedServiceProtocol = SharedService.shared
     
-    func getAllEvents() async {
-        isLoading = true
-        defer { isLoading = false }
-        
-        do {
-            allEventsResponse = try await homeService.getAllEvents(page: currentPage, pageSize: pageSize)
-            
-            if allEventsResponse != nil && allEventsResponse?.data != nil {
-                events = allEventsResponse?.data ?? []
-                totalPages = allEventsResponse?.pagination.totalPages ?? 0
+    
+    init() {
+        setupSearchPublisher()
+    }
+    
+    private func setupSearchPublisher() {
+        $searchKey
+            .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
+            .removeDuplicates()
+            .sink { [weak self] _ in
+                self?.currentPage = 1
+                self?.getAllEvents()
             }
-        } catch let error as APIError {
-            handleAPIError(error: error)
-        } catch {
-            handleGenericError(error: error)
+            .store(in: &cancellables)
+    }
+    
+    func getAllEvents() {
+        guard !isLoading else { return }
+        
+        isLoading = true
+        
+        Task { @MainActor in
+            do {
+                let response = try await SharedService.shared.getAllEvents(
+                    searchKey: searchKey,
+                    sortByDate: "asc",
+                    page: currentPage,
+                    pageSize: self.pageSize
+                )
+                
+                events = response.data
+                totalPages = response.pagination.totalPages
+            } catch {
+                alertMessage = error.localizedDescription
+                showAlert = true
+            }
+            isLoading = false
         }
     }
     

@@ -173,8 +173,15 @@ struct HomeView: View {
                             VStack(alignment: .leading) {
                                 Text("All")
                                     .underline()
-                                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                    .fontWeight(.bold)
                             }
+                            
+                            Spacer()
+                            
+                            PaginationView(currentPage: $viewModel.currentPage, totalPages: viewModel.totalPages)
+                                .onChange(of: viewModel.currentPage) { _, _ in
+                                    Task { await viewModel.getAllEvents() }
+                                }
                         }
                         
                         VStack(spacing: 20) {

@@ -3,11 +3,15 @@ import Foundation
 @MainActor
 class HomeViewModel: ObservableObject {
     @Published var searchKey: String = ""
+    @Published var allEventsResponse: GetAllEventsResponse? = nil
     @Published var events: [Event] = []
     @Published var userDetails: UserDetails?
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     @Published var isLoading = false
+    @Published var currentPage = 1
+    @Published var totalPages = 1
+    let pageSize = 5
     
     private let homeService = HomeService()
     private let sharedService: SharedServiceProtocol = SharedService.shared
@@ -17,7 +21,12 @@ class HomeViewModel: ObservableObject {
         defer { isLoading = false }
         
         do {
-            events = try await homeService.getAllEvents()
+            allEventsResponse = try await homeService.getAllEvents(page: currentPage, pageSize: pageSize)
+            
+            if allEventsResponse != nil && allEventsResponse?.data != nil {
+                events = allEventsResponse?.data ?? []
+                totalPages = allEventsResponse?.pagination.totalPages ?? 0
+            }
         } catch let error as APIError {
             handleAPIError(error: error)
         } catch {

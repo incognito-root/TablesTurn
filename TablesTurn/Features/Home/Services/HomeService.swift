@@ -8,7 +8,13 @@ class HomeService {
         self.sharedService = sharedService
     }
     
-    func getAllEvents() async throws -> [Event] {
-        try await sharedService.getAllEvents()
+    func getAllEvents(searchKey: String? = nil,
+                      sortByDate: String? = nil,
+                      page: Int? = nil,
+                      pageSize: Int? = nil) async throws -> GetAllEventsResponse {
+        try await sharedService.getAllEvents(searchKey: searchKey,
+                                             sortByDate: sortByDate,
+                                             page: page,
+                                             pageSize: pageSize)
     }
 }

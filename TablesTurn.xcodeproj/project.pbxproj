@@ -22,6 +22,8 @@
 		D356D2182D5A6F500091DD7C /* ProgressTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D356D2172D5A6F500091DD7C /* ProgressTrackerView.swift */; };
 		D36959492D52130700483BDB /* ImageCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36959482D52130700483BDB /* ImageCarousel.swift */; };
 		D369594B2D52220900483BDB /* MainButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D369594A2D52220900483BDB /* MainButtonStyle.swift */; };
+		D36F20B32D5E92D000DE1FD3 /* PaginationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36F20B22D5E92D000DE1FD3 /* PaginationView.swift */; };
+		D36F20B52D5E955C00DE1FD3 /* GetAllEventsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36F20B42D5E955C00DE1FD3 /* GetAllEventsResponse.swift */; };
 		D38BDE2D2D56AF3300206D28 /* EventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38BDE2C2D56AF3300206D28 /* EventCard.swift */; };
 		D39401B22D5243B200DCFE21 /* SignupFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39401B12D5243B200DCFE21 /* SignupFormView.swift */; };
 		D39401B42D524BF500DCFE21 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39401B32D524BF500DCFE21 /* CustomTextField.swift */; };
@@ -93,6 +95,8 @@
 		D356D2172D5A6F500091DD7C /* ProgressTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTrackerView.swift; sourceTree = "<group>"; };
 		D36959482D52130700483BDB /* ImageCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCarousel.swift; sourceTree = "<group>"; };
 		D369594A2D52220900483BDB /* MainButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButtonStyle.swift; sourceTree = "<group>"; };
+		D36F20B22D5E92D000DE1FD3 /* PaginationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationView.swift; sourceTree = "<group>"; };
+		D36F20B42D5E955C00DE1FD3 /* GetAllEventsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllEventsResponse.swift; sourceTree = "<group>"; };
 		D38BDE2C2D56AF3300206D28 /* EventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCard.swift; sourceTree = "<group>"; };
 		D39401B12D5243B200DCFE21 /* SignupFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFormView.swift; sourceTree = "<group>"; };
 		D39401B32D524BF500DCFE21 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -354,6 +358,7 @@
 			children = (
 				D346CB872D5A0D9900F897BF /* Event.swift */,
 				D356D2152D5A51E60091DD7C /* UserDetails.swift */,
+				D36F20B42D5E955C00DE1FD3 /* GetAllEventsResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -501,6 +506,7 @@
 				D39624912D564D6300A3E310 /* CircularButtonStyle.swift */,
 				D356D2172D5A6F500091DD7C /* ProgressTrackerView.swift */,
 				D33DF8D62D5BC1BE00ACF1D4 /* TimezoneDropdownView.swift */,
+				D36F20B22D5E92D000DE1FD3 /* PaginationView.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -717,6 +723,7 @@
 				D3C03BE82D51023400E5251C /* AppConfig.swift in Sources */,
 				D3B68C9A2D554BCD00BF6CD3 /* EmailVerificationDetails.swift in Sources */,
 				D3C03BBD2D50FF5700E5251C /* TablesTurnApp.swift in Sources */,
+				D36F20B32D5E92D000DE1FD3 /* PaginationView.swift in Sources */,
 				D3F4EAFD2D54F45000C71FDF /* LoginViewModel.swift in Sources */,
 				D3255D5F2D51C0E7007E0125 /* GettingStartedView.swift in Sources */,
 				D36959492D52130700483BDB /* ImageCarousel.swift in Sources */,
@@ -728,6 +735,7 @@
 				D3B68C9E2D5553CC00BF6CD3 /* LoginFormView.swift in Sources */,
 				D369594B2D52220900483BDB /* MainButtonStyle.swift in Sources */,
 				D312BE182D5B7A5E00C43023 /* EventService.swift in Sources */,
+				D36F20B52D5E955C00DE1FD3 /* GetAllEventsResponse.swift in Sources */,
 				D356D2162D5A51E60091DD7C /* UserDetails.swift in Sources */,
 				D3F4EAF32D54BC2A00C71FDF /* SignupViewModel.swift in Sources */,
 				D3C68E8B2D561D42000F3C0C /* UserManager.swift in Sources */,

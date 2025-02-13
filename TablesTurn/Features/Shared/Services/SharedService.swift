@@ -5,10 +5,30 @@ class SharedService: SharedServiceProtocol {
     static let shared = SharedService()
     private init() {}
     
-    func getAllEvents() async throws -> [Event] {
-        try await NetworkManager.shared.request(
+    func getAllEvents(
+        searchKey: String? = nil,
+        sortByDate: String? = nil,
+        page: Int? = nil,
+        pageSize: Int? = nil
+    ) async throws -> GetAllEventsResponse {
+        var parameters: [String: Any] = [:]
+        if let searchKey = searchKey {
+            parameters["searchKey"] = searchKey
+        }
+        if let sortByDate = sortByDate {
+            parameters["sortByDate"] = sortByDate
+        }
+        if let page = page {
+            parameters["page"] = page
+        }
+        if let pageSize = pageSize {
+            parameters["pageSize"] = pageSize
+        }
+        
+        return try await NetworkManager.shared.request(
             endpoint: APIEndpoints.getAllEvents,
-            method: .get
+            method: .get,
+            parameters: parameters.isEmpty ? nil : parameters
         )
     }
     

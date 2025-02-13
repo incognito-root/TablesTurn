@@ -56,9 +56,11 @@ class NetworkManager {
     ) async throws -> T {
         let url = "\(baseURL)\(endpoint)"
         
+        let encoding: ParameterEncoding = method == .get ? URLEncoding.default : JSONEncoding.default
+        
         return try await withCheckedThrowingContinuation { continuation in
             session.request(url, method: method, parameters: parameters,
-                            encoding: JSONEncoding.default, headers: headers)
+                            encoding: encoding, headers: headers)
             .validate()
             .responseDecodable(of: ApiResponse<T>.self, decoder: configuredDecoder()) { response in
                 switch response.result {

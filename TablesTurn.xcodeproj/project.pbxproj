@@ -20,6 +20,7 @@
 		D346CB942D5A39D200F897BF /* AddEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D346CB932D5A39D200F897BF /* AddEventViewModel.swift */; };
 		D356D2162D5A51E60091DD7C /* UserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D356D2152D5A51E60091DD7C /* UserDetails.swift */; };
 		D356D2182D5A6F500091DD7C /* ProgressTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D356D2172D5A6F500091DD7C /* ProgressTrackerView.swift */; };
+		D368EE002D5F5B1C00DA4632 /* EventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D368EDFF2D5F5B1C00DA4632 /* EventDetailsView.swift */; };
 		D36959492D52130700483BDB /* ImageCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36959482D52130700483BDB /* ImageCarousel.swift */; };
 		D369594B2D52220900483BDB /* MainButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D369594A2D52220900483BDB /* MainButtonStyle.swift */; };
 		D36F20B32D5E92D000DE1FD3 /* PaginationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36F20B22D5E92D000DE1FD3 /* PaginationView.swift */; };
@@ -95,6 +96,7 @@
 		D346CB932D5A39D200F897BF /* AddEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewModel.swift; sourceTree = "<group>"; };
 		D356D2152D5A51E60091DD7C /* UserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetails.swift; sourceTree = "<group>"; };
 		D356D2172D5A6F500091DD7C /* ProgressTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTrackerView.swift; sourceTree = "<group>"; };
+		D368EDFF2D5F5B1C00DA4632 /* EventDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsView.swift; sourceTree = "<group>"; };
 		D36959482D52130700483BDB /* ImageCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCarousel.swift; sourceTree = "<group>"; };
 		D369594A2D52220900483BDB /* MainButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButtonStyle.swift; sourceTree = "<group>"; };
 		D36F20B22D5E92D000DE1FD3 /* PaginationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationView.swift; sourceTree = "<group>"; };
@@ -237,6 +239,46 @@
 			isa = PBXGroup;
 			children = (
 				D33DF8CC2D5BB44000ACF1D4 /* ImageRepresentation.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D368EDFA2D5F5AD100DA4632 /* EventDetails */ = {
+			isa = PBXGroup;
+			children = (
+				D368EDFE2D5F5AF800DA4632 /* Models */,
+				D368EDFD2D5F5AEF00DA4632 /* Views */,
+				D368EDFC2D5F5AE500DA4632 /* ViewModels */,
+				D368EDFB2D5F5AD900DA4632 /* Services */,
+			);
+			path = EventDetails;
+			sourceTree = "<group>";
+		};
+		D368EDFB2D5F5AD900DA4632 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D368EDFC2D5F5AE500DA4632 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D368EDFD2D5F5AEF00DA4632 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D368EDFF2D5F5B1C00DA4632 /* EventDetailsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D368EDFE2D5F5AF800DA4632 /* Models */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -479,6 +521,7 @@
 		D3C03BE92D51025E00E5251C /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				D368EDFA2D5F5AD100DA4632 /* EventDetails */,
 				D36F20B62D5EA26500DE1FD3 /* EventsCalendar */,
 				D33DF8C72D5BB2F500ACF1D4 /* ImagePicker */,
 				D3B20B252D58D08900A52937 /* Shared */,
@@ -778,6 +821,7 @@
 				D39401B22D5243B200DCFE21 /* SignupFormView.swift in Sources */,
 				D312BE1A2D5B7AA200C43023 /* AddEventDetails.swift in Sources */,
 				D33DF8D72D5BC1BE00ACF1D4 /* TimezoneDropdownView.swift in Sources */,
+				D368EE002D5F5B1C00DA4632 /* EventDetailsView.swift in Sources */,
 				D3B68C9C2D554CBD00BF6CD3 /* EmailVerificationResponse.swift in Sources */,
 				D3B68C9E2D5553CC00BF6CD3 /* LoginFormView.swift in Sources */,
 				D369594B2D52220900483BDB /* MainButtonStyle.swift in Sources */,

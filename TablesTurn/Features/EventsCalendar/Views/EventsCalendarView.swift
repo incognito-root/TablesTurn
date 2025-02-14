@@ -117,6 +117,9 @@ struct EventsCalendarView: View {
             }
             .navigationTitle("Calendar")
             .navigationBarTitleDisplayMode(.inline)
+            .onAppear{
+                viewModel.getEventsByMonth()
+            }
         }
     }
 }

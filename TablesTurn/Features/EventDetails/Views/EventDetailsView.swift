@@ -125,10 +125,23 @@ struct EventDetailsView: View {
                         .frame(height: 350)
                         .clipShape(RoundedRectangle(cornerRadius: radius))
                         
-                        VStack {
-                            Text("abc")
+                        VStack() {
+                            VStack(alignment: .leading) {
+                                HStack {
+                                    Text("event title")
+                                        .font(.system(size: 35))
+                                        .fontWeight(.medium)
+                                        .padding(.bottom, 15)
+                                        // .frame(maxWidth: 250, alignment: .leading)
+                                        // .lineLimit(2)
+                                        // .truncationMode(.tail)
+                                }
+                                
+                                Text("Description")
+                            }
+                            .padding(20)
                         }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                         .background(Color.primaryBackground)
                         .padding(.top, -radius)
                     }

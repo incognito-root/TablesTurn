@@ -99,19 +99,21 @@ struct HomeView: View {
                                             borderWidth: 2
                                         ))
                                     
-                                    Button("Calendar".uppercased()) {
-                                        UserManager.shared.logout()
+                                    NavigationLink(destination: EventsCalendarView()) {
+                                        ZStack {
+                                            Text("CALENDAR")
+                                                .font(.system(size: 13))
+                                                .foregroundColor(.white)
+                                        }
+                                        .frame(maxWidth: 80)
+                                        .padding(12)
+                                        .background(Color.clear)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 30)
+                                                .stroke(Color.white, lineWidth: 2)
+                                        )
+
                                     }
-                                    .buttonStyle(MainButtonStyle(
-                                        maxWidth: 80,
-                                        padding: 12,
-                                        fontSize: 13,
-                                        cornerRadius: 30,
-                                        backgroundColor: .clear,
-                                        foregroundColor: .white,
-                                        borderColor: .white,
-                                        borderWidth: 2
-                                    ))
                                 }
                                 
                                 HStack {

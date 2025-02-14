@@ -7,4 +7,5 @@ protocol SharedServiceProtocol {
                       pageSize: Int?) async throws -> GetAllEventsResponse
     func getUserDetails() async throws -> UserDetails
     func uploadEventImage(event: Event) async throws -> String
+    func getEventsInMonth(year: String, month: Int) async throws -> [Event]
 }

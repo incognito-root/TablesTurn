@@ -53,6 +53,13 @@ class SharedService: SharedServiceProtocol {
             fileName: "image_\(Date().timeIntervalSince1970).jpg"
         )
     }
+    
+    func getEventsInMonth(year: String, month: Int) async throws -> [Event] {
+        return try await NetworkManager.shared.request(
+            endpoint: APIEndpoints.getAllEvents + "/" + year + "/" + String(month),
+            method: .get
+        )
+    }
 }
 
 enum ImageError: Error {

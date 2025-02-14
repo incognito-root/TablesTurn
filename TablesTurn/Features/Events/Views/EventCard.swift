@@ -48,7 +48,7 @@ struct EventCard: View {
             .padding(17)
             
             VStack(alignment: .leading, spacing: 10) {
-                Text(event.title)
+                Text(event.title.capitalized)
                     .font(.system(size: 26))
                     .fontWeight(.medium)
                     .frame(maxWidth: 150, alignment: .leading)

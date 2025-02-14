@@ -21,6 +21,7 @@
 		D356D2162D5A51E60091DD7C /* UserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D356D2152D5A51E60091DD7C /* UserDetails.swift */; };
 		D356D2182D5A6F500091DD7C /* ProgressTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D356D2172D5A6F500091DD7C /* ProgressTrackerView.swift */; };
 		D368EE002D5F5B1C00DA4632 /* EventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D368EDFF2D5F5B1C00DA4632 /* EventDetailsView.swift */; };
+		D368EE022D5FD64900DA4632 /* AvatarStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D368EE012D5FD64900DA4632 /* AvatarStack.swift */; };
 		D36959492D52130700483BDB /* ImageCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36959482D52130700483BDB /* ImageCarousel.swift */; };
 		D369594B2D52220900483BDB /* MainButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D369594A2D52220900483BDB /* MainButtonStyle.swift */; };
 		D36F20B32D5E92D000DE1FD3 /* PaginationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36F20B22D5E92D000DE1FD3 /* PaginationView.swift */; };
@@ -97,6 +98,7 @@
 		D356D2152D5A51E60091DD7C /* UserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetails.swift; sourceTree = "<group>"; };
 		D356D2172D5A6F500091DD7C /* ProgressTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTrackerView.swift; sourceTree = "<group>"; };
 		D368EDFF2D5F5B1C00DA4632 /* EventDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsView.swift; sourceTree = "<group>"; };
+		D368EE012D5FD64900DA4632 /* AvatarStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarStack.swift; sourceTree = "<group>"; };
 		D36959482D52130700483BDB /* ImageCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCarousel.swift; sourceTree = "<group>"; };
 		D369594A2D52220900483BDB /* MainButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButtonStyle.swift; sourceTree = "<group>"; };
 		D36F20B22D5E92D000DE1FD3 /* PaginationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationView.swift; sourceTree = "<group>"; };
@@ -596,6 +598,7 @@
 				D356D2172D5A6F500091DD7C /* ProgressTrackerView.swift */,
 				D33DF8D62D5BC1BE00ACF1D4 /* TimezoneDropdownView.swift */,
 				D36F20B22D5E92D000DE1FD3 /* PaginationView.swift */,
+				D368EE012D5FD64900DA4632 /* AvatarStack.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -809,6 +812,7 @@
 				D3C68E892D5615EC000F3C0C /* EmailVerificationService.swift in Sources */,
 				D33DF8D12D5BB46000ACF1D4 /* ImagePickerView.swift in Sources */,
 				D3F4EAFB2D54F16000C71FDF /* UserSignupResponse.swift in Sources */,
+				D368EE022D5FD64900DA4632 /* AvatarStack.swift in Sources */,
 				D3C03BE82D51023400E5251C /* AppConfig.swift in Sources */,
 				D3B68C9A2D554BCD00BF6CD3 /* EmailVerificationDetails.swift in Sources */,
 				D3C03BBD2D50FF5700E5251C /* TablesTurnApp.swift in Sources */,

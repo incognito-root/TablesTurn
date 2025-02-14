@@ -86,9 +86,10 @@ struct EventDetailsView: View {
                                         HStack {
                                             Image(systemName: "calendar")
                                                 .foregroundStyle(.white)
-                                            Text("20 - 22 Oct")
+                                            Text("22 Oct")
                                                 .font(.system(size: 14))
                                                 .foregroundStyle(.white)
+                                                .fontWeight(.bold)
                                         }
                                     }
                                     .padding(.vertical, 8)
@@ -96,7 +97,7 @@ struct EventDetailsView: View {
                                     .background(Color.clear)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 30)
-                                            .stroke(Color.white, lineWidth: 1)
+                                            .stroke(Color.white, lineWidth: 2)
                                     )
                                     
                                     ZStack {
@@ -106,6 +107,7 @@ struct EventDetailsView: View {
                                             Text("Location")
                                                 .font(.system(size: 14))
                                                 .foregroundStyle(.white)
+                                                .fontWeight(.bold)
                                         }
                                     }
                                     .padding(.vertical, 8)
@@ -113,7 +115,7 @@ struct EventDetailsView: View {
                                     .background(Color.clear)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 30)
-                                            .stroke(Color.white, lineWidth: 1)
+                                            .stroke(Color.white, lineWidth: 2)
                                     )
                                 }
                             }
@@ -126,18 +128,81 @@ struct EventDetailsView: View {
                         .clipShape(RoundedRectangle(cornerRadius: radius))
                         
                         VStack() {
-                            VStack(alignment: .leading) {
+                            VStack(alignment: .leading, spacing: 30) {
                                 HStack {
-                                    Text("event title")
-                                        .font(.system(size: 35))
-                                        .fontWeight(.medium)
-                                        .padding(.bottom, 15)
-                                        // .frame(maxWidth: 250, alignment: .leading)
-                                        // .lineLimit(2)
-                                        // .truncationMode(.tail)
+                                    VStack(alignment: .leading) {
+                                        Text("event title".capitalized)
+                                            .font(.system(size: 35))
+                                            .fontWeight(.medium)
+                                             .frame(maxWidth: 250, alignment: .leading)
+                                             .lineLimit(2)
+                                             .truncationMode(.tail)
+                                        
+                                        Text("An Event By ABC".capitalized)
+                                            .fontWeight(.medium)
+                                             .frame(maxWidth: 250, alignment: .leading)
+                                             .foregroundStyle(Color.gray)
+                                             .lineLimit(2)
+                                             .truncationMode(.tail)
+                                    }
+                                    
+                                    Spacer()
+                                    
+                                    VStack(alignment: .trailing) {
+                                        if let url = URL(string: "https://images.pexels.com/photos/976866/pexels-photo-976866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2") {
+                                            AsyncImage(url: url) { phase in
+                                                switch phase {
+                                                case .empty:
+                                                    ProgressView()
+                                                        .frame(width: 100, height: 100)
+                                                case .success(let image):
+                                                    image
+                                                        .resizable()
+                                                        .scaledToFill()
+                                                        .frame(width: 70, height: 70)
+                                                        .clipShape(Circle())
+                                                case .failure:
+                                                    Image(systemName: "person.fill")
+                                                        .resizable()
+                                                        .scaledToFill()
+                                                        .frame(width: 100, height: 100)
+                                                        .clipShape(Circle())
+                                                        .overlay(
+                                                            Circle()
+                                                                .stroke(Color.white, lineWidth: 2)
+                                                        )
+                                                @unknown default:
+                                                    EmptyView()
+                                                }
+                                            }
+                                        } else {
+                                            Image(systemName: "person.fill")
+                                                .resizable()
+                                                .scaledToFill()
+                                                .frame(width: 40, height: 40)
+                                                .clipShape(Circle())
+                                                .overlay(
+                                                    Circle()
+                                                        .stroke(Color.white, lineWidth: 2)
+                                                )
+                                        }
+                                    }
                                 }
                                 
                                 Text("Description")
+                                
+                                AvatarStack()
+                                
+                                Text("RSVP Before 22 Oct")
+                                
+                                Button(action: {
+                                    print("abc")
+                                }) {
+                                    Text("RSVP".uppercased())
+                                }
+                                .buttonStyle(MainButtonStyle())
+                                .listRowBackground(Color.clear)
+                                .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 0, trailing: 5))
                             }
                             .padding(20)
                         }

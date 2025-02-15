@@ -75,7 +75,7 @@ struct EventCard: View {
             VStack(alignment: .trailing) {
                 Text(formattedDate)
                     .font(.system(size: 26, weight: .bold))
-                    .foregroundStyle(.black)
+                    .foregroundStyle(.white)
                     .multilineTextAlignment(.center)
                     .padding(14)
                     .background(Circle().fill(Color.accent))

@@ -30,7 +30,7 @@ struct HomeView: View {
                             Image("LogoImage")
                                 .resizable()
                                 .frame(width: 25, height: 25)
-                            Text("Tables Turn")
+                            Text("Turn")
                                 .font(.title2)
                         }
                         
@@ -70,9 +70,10 @@ struct HomeView: View {
                                     }
                                     .frame(maxWidth: .infinity, alignment: .trailing)
                                 } else {
-                                    Image("ProfileAvatar")
+                                    Image(systemName: "person.crop.circle")
                                         .resizable()
                                         .frame(width: 40, height: 40)
+                                        .foregroundStyle(Color.white)
                                         .frame(maxWidth: .infinity, alignment: .trailing)
                                 }
                                 
@@ -124,10 +125,10 @@ struct HomeView: View {
                                         keyboardType: .default,
                                         iconName: "magnifyingglass",
                                         backgroundColor: Color.inputField,
-                                        borderColor: .black,
-                                        iconColor: .black,
-                                        textColor: .black,
-                                        placeHolderColor: .black,
+                                        borderColor: .white,
+                                        iconColor: .white,
+                                        textColor: .white,
+                                        placeHolderColor: .white,
                                         validation: { _ in nil }
                                     )
                                     .frame(maxWidth: .infinity)
@@ -140,6 +141,8 @@ struct HomeView: View {
                                 NavigationLink(destination: AddEventView()) {
                                     Image(systemName: "plus")
                                         .font(.system(size: 20))
+                                        .foregroundStyle(Color.white)
+                                    
                                 }
                                 .buttonStyle(CircularButtonStyle(
                                     size: 50,
@@ -149,6 +152,7 @@ struct HomeView: View {
                                 Button(action: {}) {
                                     Image(systemName: "gear")
                                         .font(.system(size: 20))
+                                        .foregroundStyle(Color.white)
                                 }
                                 .buttonStyle(CircularButtonStyle(
                                     size: 50,

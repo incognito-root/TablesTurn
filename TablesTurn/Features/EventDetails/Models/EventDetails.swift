@@ -1,6 +1,6 @@
 import Foundation
 
-struct Event: Codable, Identifiable {
+struct EventDetails: Codable, Identifiable {
     let id: String
     let title: String
     let rsvpDeadline: Date?
@@ -12,6 +12,7 @@ struct Event: Codable, Identifiable {
     let dateTime: Date
     let createdAt: Date?
     let fkUserId: String
+    let userDetails: UserDetails
     
     enum CodingKeys: String, CodingKey {
         case id, title, location, image, description, status
@@ -20,5 +21,6 @@ struct Event: Codable, Identifiable {
         case dateTime = "date_time"
         case createdAt = "created_at"
         case fkUserId = "fk_user_id"
+        case userDetails = "users"
     }
 }

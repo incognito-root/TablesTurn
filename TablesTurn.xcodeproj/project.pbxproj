@@ -18,6 +18,9 @@
 		D346CB8A2D5A0FC500F897BF /* SharedServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D346CB892D5A0FC500F897BF /* SharedServiceProtocol.swift */; };
 		D346CB8C2D5A38E800F897BF /* AddEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D346CB8B2D5A38E800F897BF /* AddEventView.swift */; };
 		D346CB942D5A39D200F897BF /* AddEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D346CB932D5A39D200F897BF /* AddEventViewModel.swift */; };
+		D354093C2D61B2BC00941806 /* EventDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D354093B2D61B2BC00941806 /* EventDetailsViewModel.swift */; };
+		D354093E2D61B35600941806 /* EventDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D354093D2D61B35600941806 /* EventDetails.swift */; };
+		D35409402D61B4AB00941806 /* EventDetailsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D354093F2D61B4AB00941806 /* EventDetailsService.swift */; };
 		D356D2162D5A51E60091DD7C /* UserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D356D2152D5A51E60091DD7C /* UserDetails.swift */; };
 		D356D2182D5A6F500091DD7C /* ProgressTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D356D2172D5A6F500091DD7C /* ProgressTrackerView.swift */; };
 		D368EE002D5F5B1C00DA4632 /* EventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D368EDFF2D5F5B1C00DA4632 /* EventDetailsView.swift */; };
@@ -95,6 +98,9 @@
 		D346CB892D5A0FC500F897BF /* SharedServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedServiceProtocol.swift; sourceTree = "<group>"; };
 		D346CB8B2D5A38E800F897BF /* AddEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventView.swift; sourceTree = "<group>"; };
 		D346CB932D5A39D200F897BF /* AddEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewModel.swift; sourceTree = "<group>"; };
+		D354093B2D61B2BC00941806 /* EventDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsViewModel.swift; sourceTree = "<group>"; };
+		D354093D2D61B35600941806 /* EventDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetails.swift; sourceTree = "<group>"; };
+		D354093F2D61B4AB00941806 /* EventDetailsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsService.swift; sourceTree = "<group>"; };
 		D356D2152D5A51E60091DD7C /* UserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetails.swift; sourceTree = "<group>"; };
 		D356D2172D5A6F500091DD7C /* ProgressTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTrackerView.swift; sourceTree = "<group>"; };
 		D368EDFF2D5F5B1C00DA4632 /* EventDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsView.swift; sourceTree = "<group>"; };
@@ -259,6 +265,7 @@
 		D368EDFB2D5F5AD900DA4632 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D354093F2D61B4AB00941806 /* EventDetailsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -266,6 +273,7 @@
 		D368EDFC2D5F5AE500DA4632 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				D354093B2D61B2BC00941806 /* EventDetailsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -281,6 +289,7 @@
 		D368EDFE2D5F5AF800DA4632 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D354093D2D61B35600941806 /* EventDetails.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -805,6 +814,7 @@
 				D346CB8A2D5A0FC500F897BF /* SharedServiceProtocol.swift in Sources */,
 				D3C68E872D561040000F3C0C /* EmailVerificationViewModel.swift in Sources */,
 				D38BDE2D2D56AF3300206D28 /* EventCard.swift in Sources */,
+				D35409402D61B4AB00941806 /* EventDetailsService.swift in Sources */,
 				D39401B42D524BF500DCFE21 /* CustomTextField.swift in Sources */,
 				D3F4EB032D54F70200C71FDF /* UserLoginResponse.swift in Sources */,
 				D356D2182D5A6F500091DD7C /* ProgressTrackerView.swift in Sources */,
@@ -814,9 +824,11 @@
 				D3F4EAFB2D54F16000C71FDF /* UserSignupResponse.swift in Sources */,
 				D368EE022D5FD64900DA4632 /* AvatarStack.swift in Sources */,
 				D3C03BE82D51023400E5251C /* AppConfig.swift in Sources */,
+				D354093C2D61B2BC00941806 /* EventDetailsViewModel.swift in Sources */,
 				D3B68C9A2D554BCD00BF6CD3 /* EmailVerificationDetails.swift in Sources */,
 				D3C03BBD2D50FF5700E5251C /* TablesTurnApp.swift in Sources */,
 				D36F20B32D5E92D000DE1FD3 /* PaginationView.swift in Sources */,
+				D354093E2D61B35600941806 /* EventDetails.swift in Sources */,
 				D3F4EAFD2D54F45000C71FDF /* LoginViewModel.swift in Sources */,
 				D36F20C02D5EB44700DE1FD3 /* EventsCalendarViewModel.swift in Sources */,
 				D3255D5F2D51C0E7007E0125 /* GettingStartedView.swift in Sources */,

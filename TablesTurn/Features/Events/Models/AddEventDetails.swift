@@ -2,7 +2,6 @@ import Foundation
 
 struct AddEventDetails: Codable {
     let title: String
-    let timezone: String
     let rsvpDeadline: String?
     let location: String
     let image: String?
@@ -11,7 +10,6 @@ struct AddEventDetails: Codable {
 
     enum CodingKeys: String, CodingKey {
         case title
-        case timezone
         case rsvpDeadline = "rsvp_deadline"
         case location
         case image

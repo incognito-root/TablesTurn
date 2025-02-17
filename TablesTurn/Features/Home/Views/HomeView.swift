@@ -30,7 +30,7 @@ struct HomeView: View {
                             Image("LogoImage")
                                 .resizable()
                                 .frame(width: 25, height: 25)
-                            Text("Turn")
+                            Text("Turns")
                                 .font(.title2)
                         }
                         
@@ -194,7 +194,10 @@ struct HomeView: View {
                                     .frame(height: 230)
                             } else {
                                 ForEach(viewModel.events) { event in
-                                    EventCard(event: event)
+                                    NavigationLink(destination: EventDetailsView(id: event.id)) {
+                                            EventCard(event: event)
+                                        }
+                                        .buttonStyle(.plain)
                                         .padding(.bottom, 20)
                                 }
                             }

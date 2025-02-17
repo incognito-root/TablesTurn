@@ -13,7 +13,6 @@ class EventService {
     func createEvent(eventDetails: AddEventDetails) async throws -> Event {
         let parameters: [String: Any] = [
             "title": eventDetails.title,
-            "timezone": eventDetails.timezone,
             "rsvp_deadline": eventDetails.rsvpDeadline ?? "",
             "image": "",
             "description": eventDetails.description,

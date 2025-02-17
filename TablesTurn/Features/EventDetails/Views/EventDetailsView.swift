@@ -1,16 +1,132 @@
 import SwiftUI
 
+struct ProfileImageView: View {
+    let imageURL: URL?
+    
+    var body: some View {
+        if let url = imageURL {
+            AsyncImage(url: url) { phase in
+                switch phase {
+                case .empty:
+                    ProgressView()
+                        .frame(width: 70, height: 70)
+                case .success(let image):
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 70, height: 70)
+                        .clipShape(Circle())
+                case .failure:
+                    Image(systemName: "person.fill")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 70, height: 70)
+                        .clipShape(Circle())
+                @unknown default:
+                    EmptyView()
+                }
+            }
+        } else {
+            Image(systemName: "person.fill")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 70, height: 70)
+                .clipShape(Circle())
+        }
+    }
+}
+
+struct EventTopImageView: View {
+    let imageURL: String?
+    
+    var body: some View {
+        AsyncImage(url: URL(string: imageURL ?? "https://images.pexels.com/photos/50675/banquet-wedding-society-deco-50675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")) { phase in
+            if let image = phase.image {
+                image
+                    .resizable()
+                    .frame(height: 350)
+            } else if phase.error != nil {
+                Color.red
+            } else {
+                Color.gray
+            }
+        }
+    }
+}
+
+struct EventBioView: View {
+    let title: String?
+    let hostName: String?
+    let image: String?
+    
+    var body: some View {
+        HStack {
+               VStack(alignment: .leading) {
+                   Text(title ?? "Title")
+                       .font(.system(size: 35))
+                       .fontWeight(.medium)
+                       .frame(maxWidth: 250, alignment: .leading)
+                       .lineLimit(2)
+                       .truncationMode(.tail)
+       
+                   Text("An event by " + (hostName ?? "hostname"))
+                       .fontWeight(.medium)
+                       .frame(maxWidth: 250, alignment: .leading)
+                       .foregroundStyle(Color.gray)
+                       .lineLimit(2)
+                       .truncationMode(.tail)
+               }
+       
+               Spacer()
+       
+               VStack(alignment: .trailing) {
+                   ProfileImageView(imageURL: URL(string: image ?? ""))
+               }
+           }
+    }
+}
+
+struct EvenAttendanceView: View {
+    let rsvpCount: String = "0"
+    
+    var body: some View {
+        HStack {
+            Text(rsvpCount + " people attending")
+                .font(.headline)
+                .foregroundStyle(Color.white)
+            
+            Spacer()
+            
+            AvatarStack()
+        }
+    }
+}
+
 struct EventDetailsView: View {
     let radius: CGFloat = 50
     
-    @StateObject private var viewModel = AddEventsCalendarViewModel()
+    @ObservedObject var viewModel: EventDetailsViewModel
     
-    init() {
+    init(id: String) {
+        self.viewModel = EventDetailsViewModel(eventId: id)
+        
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(.white)]
         UINavigationBar.appearance().titleTextAttributes = [
             .foregroundColor: UIColor(.accentColor),
             .font: UIFont.systemFont(ofSize: 24, weight: .semibold)
         ]
+    }
+    
+    var formattedEventDate: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM"
+        return dateFormatter.string(from: viewModel.eventDetails?.dateTime ?? Date())
+    }
+    
+    var formattedEventRsvp: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM"
+        return dateFormatter.string(from: viewModel.eventDetails?.rsvpDeadline ?? Date())
     }
     
     var body: some View {
@@ -32,17 +148,7 @@ struct EventDetailsView: View {
                     
                     VStack {
                         ZStack {
-                            AsyncImage(url: URL(string: "https://images.pexels.com/photos/50675/banquet-wedding-society-deco-50675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" ?? "")) { phase in
-                                if let image = phase.image {
-                                    image
-                                        .resizable()
-                                        .frame(height: 350)
-                                } else if phase.error != nil {
-                                    Color.red
-                                } else {
-                                    Color.gray
-                                }
-                            }
+                            EventTopImageView(imageURL: viewModel.eventDetails?.image)
                             
                             Color.black.opacity(0.60)
                             
@@ -86,7 +192,7 @@ struct EventDetailsView: View {
                                         HStack {
                                             Image(systemName: "calendar")
                                                 .foregroundStyle(.white)
-                                            Text("22 Oct")
+                                            Text(formattedEventDate)
                                                 .font(.system(size: 14))
                                                 .foregroundStyle(.white)
                                                 .fontWeight(.bold)
@@ -104,7 +210,7 @@ struct EventDetailsView: View {
                                         HStack {
                                             Image(systemName: "mappin.circle")
                                                 .foregroundStyle(.white)
-                                            Text("Location")
+                                            Text(viewModel.eventDetails?.location ?? "Location")
                                                 .font(.system(size: 14))
                                                 .foregroundStyle(.white)
                                                 .fontWeight(.bold)
@@ -129,78 +235,34 @@ struct EventDetailsView: View {
                         
                         VStack() {
                             VStack(alignment: .leading, spacing: 30) {
+                                EventBioView(
+                                    title: viewModel.eventDetails?.title,
+                                    hostName: viewModel.eventDetails?.userDetails.firstName,
+                                    image: viewModel.eventDetails?.userDetails.profileImage
+                                )
+                            
+                                Text("Description")
+                            
                                 HStack {
-                                    VStack(alignment: .leading) {
-                                        Text("event title".capitalized)
-                                            .font(.system(size: 35))
-                                            .fontWeight(.medium)
-                                             .frame(maxWidth: 250, alignment: .leading)
-                                             .lineLimit(2)
-                                             .truncationMode(.tail)
-                                        
-                                        Text("An Event By ABC".capitalized)
-                                            .fontWeight(.medium)
-                                             .frame(maxWidth: 250, alignment: .leading)
-                                             .foregroundStyle(Color.gray)
-                                             .lineLimit(2)
-                                             .truncationMode(.tail)
-                                    }
+                                    Text(String(viewModel.eventDetails?.rsvpCount ?? 0) + " People Attending")
                                     
                                     Spacer()
                                     
-                                    VStack(alignment: .trailing) {
-                                        if let url = URL(string: "https://images.pexels.com/photos/976866/pexels-photo-976866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2") {
-                                            AsyncImage(url: url) { phase in
-                                                switch phase {
-                                                case .empty:
-                                                    ProgressView()
-                                                        .frame(width: 100, height: 100)
-                                                case .success(let image):
-                                                    image
-                                                        .resizable()
-                                                        .scaledToFill()
-                                                        .frame(width: 70, height: 70)
-                                                        .clipShape(Circle())
-                                                case .failure:
-                                                    Image(systemName: "person.fill")
-                                                        .resizable()
-                                                        .scaledToFill()
-                                                        .frame(width: 100, height: 100)
-                                                        .clipShape(Circle())
-                                                        .overlay(
-                                                            Circle()
-                                                                .stroke(Color.white, lineWidth: 2)
-                                                        )
-                                                @unknown default:
-                                                    EmptyView()
-                                                }
-                                            }
-                                        } else {
-                                            Image(systemName: "person.fill")
-                                                .resizable()
-                                                .scaledToFill()
-                                                .frame(width: 40, height: 40)
-                                                .clipShape(Circle())
-                                                .overlay(
-                                                    Circle()
-                                                        .stroke(Color.white, lineWidth: 2)
-                                                )
-                                        }
-                                    }
+                                    AvatarStack()
                                 }
                                 
-                                Text("Description")
-                                
-                                AvatarStack()
-                                
-                                Text("RSVP Before 22 Oct")
-                                
+                                if viewModel.eventDetails?.rsvpDeadline != nil {
+                                    Text("RSVP Before " + formattedEventRsvp)
+                                }
+                            
                                 Button(action: {
                                     print("abc")
                                 }) {
                                     Text("RSVP".uppercased())
                                 }
-                                .buttonStyle(MainButtonStyle())
+                                .buttonStyle(MainButtonStyle(
+                                    foregroundColor: .white
+                                ))
                                 .listRowBackground(Color.clear)
                                 .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 0, trailing: 5))
                             }
@@ -222,12 +284,14 @@ struct EventDetailsView: View {
             .navigationTitle("Event Details")
             .navigationBarTitleDisplayMode(.inline)
             .onAppear {
-                viewModel.getEventsByMonth()
+                Task {
+                    await viewModel.getEventDetails()
+                }
             }
         }
     }
 }
 
 #Preview {
-    EventDetailsView()
+    EventDetailsView(id: "1")
 }

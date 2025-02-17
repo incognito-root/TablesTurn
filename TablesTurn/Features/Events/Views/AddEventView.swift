@@ -186,13 +186,6 @@ struct AddEventView: View {
                                         .listRowBackground(Color.clear)
                                         .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 25, trailing: 5))
 
-                                        VStack(alignment: .leading, spacing: 0) {
-                                            TimezoneDropdownView(viewModel: viewModel)
-                                        }
-                                        .listRowBackground(Color.clear)
-                                        .listRowInsets(EdgeInsets(top: 5, leading: 10, bottom: 25, trailing: 10))
-                                        .listRowSeparator(.hidden)
-
                                         VStack(alignment: .leading) {
                                             DatePicker(
                                                 "RSVP Deadline",

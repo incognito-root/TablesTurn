@@ -18,7 +18,7 @@ class NetworkManager {
     static let shared = NetworkManager()
     private init() {}
     
-    private let baseURL = "http://localhost:3001/api/"
+    private let baseURL = "https://tablesturn.co/api/"
     // https://tablesturn.co/api/
     
     private let session: Session = {

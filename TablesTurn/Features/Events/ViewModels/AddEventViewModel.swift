@@ -5,7 +5,6 @@ import Combine
 class AddEventViewModel: ObservableObject {
     // Input fields
     @Published var title: String = ""
-    @Published var timezone: String = "UTC-12"
     @Published var location: String = ""
     @Published var image: String = ""
     @Published var description: String = ""
@@ -93,15 +92,8 @@ class AddEventViewModel: ObservableObject {
                 return
             }
         } else if currentStep == 1 {
-            let trimmedTimezone = timezone.trimmingCharacters(in: .whitespacesAndNewlines)
             let trimmedLocation = location.trimmingCharacters(in: .whitespacesAndNewlines)
             let trimmedDescription = description.trimmingCharacters(in: .whitespacesAndNewlines)
-            
-            guard !trimmedTimezone.isEmpty else {
-                alertMessage = "Timezone is required."
-                showAlert = true
-                return
-            }
             
             guard !trimmedLocation.isEmpty else {
                 alertMessage = "Location is required."
@@ -126,7 +118,6 @@ class AddEventViewModel: ObservableObject {
         // Create event payload
         let eventData = AddEventDetails(
             title: self.title,
-            timezone: self.timezone,
             rsvpDeadline: self.iso8601RsvpDateString ?? "",
             location: self.location,
             image: self.image,
@@ -157,7 +148,6 @@ class AddEventViewModel: ObservableObject {
     private func validateFields() -> Bool {
         guard let _ = iso8601DateString,
               !title.isEmpty,
-              !timezone.isEmpty,
               !location.isEmpty,
               !description.isEmpty
         else {

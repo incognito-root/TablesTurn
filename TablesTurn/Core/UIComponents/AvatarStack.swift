@@ -10,12 +10,6 @@ struct AvatarStack: View {
     
     var body: some View {
         HStack(alignment: .center) {
-            Text("10k+ people attending")
-                .font(.headline)
-                .foregroundStyle(Color.white)
-            
-            Spacer()
-            
             HStack(spacing: -10) {
                 ForEach(imageUrls, id: \.self) { urlString in
                     if let url = URL(string: urlString) {

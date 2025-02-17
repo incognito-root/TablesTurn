@@ -18,7 +18,7 @@ struct GettingStartedView: View {
                     VStack(alignment: .leading, spacing: 40) {
                         HStack {
                             Image("LogoImage")
-                            Text("Tables Turn")
+                            Text("Turns")
                                 .font(.title)
                         }
                         
@@ -39,7 +39,7 @@ struct GettingStartedView: View {
                                     .padding(12)
                                     .padding(.bottom, 0)
                                     .font(.system(size: 25))
-                                    .foregroundStyle(.black)
+                                    .foregroundStyle(.white)
                                     .background(
                                         RoundedRectangle(cornerRadius: 50)
                                             .fill(Color.accentColor)

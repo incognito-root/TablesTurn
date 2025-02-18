@@ -1,6 +1,6 @@
 import Foundation
 
-struct RsvpStatus: Codable, Identifiable {
+struct RsvpStatus: Codable, Identifiable, Hashable {
     let id: String
     let title: String
     let createdAt: Date

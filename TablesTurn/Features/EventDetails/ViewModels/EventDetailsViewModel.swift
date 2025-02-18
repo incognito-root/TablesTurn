@@ -6,6 +6,11 @@ class EventDetailsViewModel: ObservableObject {
     @Published var eventDetails: EventDetails? = nil
     @Published var recentRsvpImages: [String]? = []
     @Published var eventId: String = ""
+    @Published var rsvpStatuses: [RsvpStatus]? = nil
+    @Published var attendees: Int = 1
+    @Published var selectedRsvpStatus: RsvpStatus? = nil
+    
+    @Published var showRsvpModal: Bool = false
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     @Published var isLoading = false
@@ -47,6 +52,19 @@ class EventDetailsViewModel: ObservableObject {
         
         do {
             recentRsvpImages = try await eventDetailsService.getRecentRsvpImages(eventId: eventId)
+        } catch let error as APIError {
+            handleAPIError(error: error)
+        } catch {
+            handleGenericError(error: error)
+        }
+    }
+    
+    func getRsvpStatuses() async {
+        isLoading = true
+        defer { isLoading = false }
+        
+        do {
+            rsvpStatuses = try await eventDetailsService.getRsvpStatuses()
         } catch let error as APIError {
             handleAPIError(error: error)
         } catch {

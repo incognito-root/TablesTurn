@@ -103,6 +103,84 @@ struct EventAttendanceView: View {
     }
 }
 
+struct RSVPModalView: View {
+    var onDismiss: (() -> Void)?
+    @StateObject private var viewModel: EventDetailsViewModel
+    
+    init(viewModel: EventDetailsViewModel, onDismiss: (() -> Void)? = nil) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+        self.onDismiss = onDismiss
+    }
+    
+    var body: some View {
+        ZStack {
+            Color.white.opacity(0.4)
+                .ignoresSafeArea()
+                .onTapGesture {
+                    onDismiss?()
+                }
+            
+            VStack(spacing: 20) {
+                Text("Confirm RSVP")
+                    .font(.headline)
+                    .padding(.bottom, 20)
+                
+                HStack {
+                    Text("Attendees")
+                        .padding(.leading, 5)
+                        .foregroundStyle(Color.gray)
+                    
+                    Spacer()
+                    
+                    CustomDropdownView(
+                        title: "Attendees",
+                        options: [1, 2, 3, 4],
+                        selection: $viewModel.attendees,
+                        displayText: { "\($0)" }
+                    )
+                }
+                .frame(maxWidth: .infinity)
+                
+                HStack {
+                    Text("Status")
+                        .padding(.leading, 5)
+                        .foregroundStyle(Color.gray)
+                    
+                    Spacer()
+                    
+                    CustomDropdownView(
+                        title: "Rsvp Status",
+                        options: viewModel.rsvpStatuses ?? [],
+                        selection: $viewModel.selectedRsvpStatus,
+                        displayText: { $0?.title ?? "" }
+                    )
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.bottom, 20)
+                
+                Button(action: {
+                    viewModel.showRsvpModal = true
+                }) {
+                    Text("Confirm".uppercased())
+                }
+                .buttonStyle(MainButtonStyle(
+                    padding: 9,
+                    fontSize: 20,
+                    foregroundColor: .white
+                ))
+                .listRowBackground(Color.clear)
+                .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 0, trailing: 5))
+            }
+            .padding()
+            .background(Color.primaryBackground)
+            .cornerRadius(30)
+            .padding(.horizontal, 40)
+            .transition(.scale)
+            .frame(maxWidth: .infinity)
+        }
+    }
+}
+
 struct EventDetailsView: View {
     let radius: CGFloat = 50
     
@@ -256,7 +334,7 @@ struct EventDetailsView: View {
                                 }
                             
                                 Button(action: {
-                                    print("abc")
+                                    viewModel.showRsvpModal = true
                                 }) {
                                     Text("RSVP".uppercased())
                                 }
@@ -274,6 +352,14 @@ struct EventDetailsView: View {
                     }
                 }
                 .padding(.top, 20)
+                
+                if viewModel.showRsvpModal {
+                    RSVPModalView(viewModel: self.viewModel) {
+                        withAnimation {
+                            viewModel.showRsvpModal = false
+                        }
+                    }
+                }
             }
             .foregroundStyle(.primaryText)
             .alert(isPresented: $viewModel.showAlert) {
@@ -287,6 +373,10 @@ struct EventDetailsView: View {
                 Task {
                     await viewModel.getEventDetails()
                     await viewModel.getRecentRsvpsImages()
+                }
+                
+                Task {
+                    await viewModel.getRsvpStatuses()
                 }
             }
         }

@@ -86,8 +86,9 @@ struct EventBioView: View {
     }
 }
 
-struct EvenAttendanceView: View {
-    let rsvpCount: String = "0"
+struct EventAttendanceView: View {
+    let rsvpCount: String
+    let imageValues: [String]
     
     var body: some View {
         HStack {
@@ -97,7 +98,7 @@ struct EvenAttendanceView: View {
             
             Spacer()
             
-            AvatarStack()
+            AvatarStack(imageUrls: imageValues)
         }
     }
 }
@@ -244,11 +245,10 @@ struct EventDetailsView: View {
                                 Text("Description")
                             
                                 HStack {
-                                    Text(String(viewModel.eventDetails?.rsvpCount ?? 0) + " People Attending")
-                                    
-                                    Spacer()
-                                    
-                                    AvatarStack()
+                                    EventAttendanceView(
+                                        rsvpCount: String(viewModel.eventDetails?.rsvpCount ?? 0),
+                                        imageValues: (viewModel.recentRsvpImages ?? [])
+                                    )
                                 }
                                 
                                 if viewModel.eventDetails?.rsvpDeadline != nil {
@@ -286,6 +286,7 @@ struct EventDetailsView: View {
             .onAppear {
                 Task {
                     await viewModel.getEventDetails()
+                    await viewModel.getRecentRsvpsImages()
                 }
             }
         }

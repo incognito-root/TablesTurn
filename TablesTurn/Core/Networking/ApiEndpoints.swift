@@ -20,4 +20,9 @@ struct APIEndpoints {
     // upload APIs
     static private let uploadPrefix = "images/"
     static let uploadEventImage = uploadPrefix + "events/"
+    
+    // RSVP APIs
+    static private let rsvpPrefix = "rsvp/"
+    static let recentRsvpImages = rsvpPrefix + "recent/images/"
+    static let getRsvpStatus = rsvpPrefix + "statuses"
 }

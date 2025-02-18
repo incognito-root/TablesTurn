@@ -8,4 +8,5 @@ protocol SharedServiceProtocol {
     func getUserDetails() async throws -> UserDetails
     func uploadEventImage(event: Event) async throws -> String
     func getEventsInMonth(year: String, month: Int) async throws -> [Event]
+    func getEventRsvpStatuses() async throws -> [RsvpStatus]
 }

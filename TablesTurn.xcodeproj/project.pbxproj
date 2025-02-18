@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		D312BE182D5B7A5E00C43023 /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D312BE172D5B7A5E00C43023 /* EventService.swift */; };
 		D312BE1A2D5B7AA200C43023 /* AddEventDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D312BE192D5B7AA200C43023 /* AddEventDetails.swift */; };
+		D31EB1402D638116000D8F57 /* RsvpStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31EB13F2D638116000D8F57 /* RsvpStatus.swift */; };
+		D31EB1422D6381D3000D8F57 /* EventRsvp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31EB1412D6381D3000D8F57 /* EventRsvp.swift */; };
+		D31EB1442D6469A3000D8F57 /* EventsCalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31EB1432D6469A3000D8F57 /* EventsCalendarService.swift */; };
 		D3255D5F2D51C0E7007E0125 /* GettingStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3255D5E2D51C0E7007E0125 /* GettingStartedView.swift */; };
 		D33DF8CD2D5BB44000ACF1D4 /* ImageRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33DF8CC2D5BB44000ACF1D4 /* ImageRepresentation.swift */; };
 		D33DF8D12D5BB46000ACF1D4 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33DF8D02D5BB46000ACF1D4 /* ImagePickerView.swift */; };
@@ -89,6 +92,9 @@
 /* Begin PBXFileReference section */
 		D312BE172D5B7A5E00C43023 /* EventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
 		D312BE192D5B7AA200C43023 /* AddEventDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventDetails.swift; sourceTree = "<group>"; };
+		D31EB13F2D638116000D8F57 /* RsvpStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RsvpStatus.swift; sourceTree = "<group>"; };
+		D31EB1412D6381D3000D8F57 /* EventRsvp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRsvp.swift; sourceTree = "<group>"; };
+		D31EB1432D6469A3000D8F57 /* EventsCalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCalendarService.swift; sourceTree = "<group>"; };
 		D3255D5E2D51C0E7007E0125 /* GettingStartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartedView.swift; sourceTree = "<group>"; };
 		D33DF8CC2D5BB44000ACF1D4 /* ImageRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepresentation.swift; sourceTree = "<group>"; };
 		D33DF8D02D5BB46000ACF1D4 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
@@ -308,6 +314,7 @@
 		D36F20B72D5EA27300DE1FD3 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D31EB1432D6469A3000D8F57 /* EventsCalendarService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -457,6 +464,8 @@
 				D346CB872D5A0D9900F897BF /* Event.swift */,
 				D356D2152D5A51E60091DD7C /* UserDetails.swift */,
 				D36F20B42D5E955C00DE1FD3 /* GetAllEventsResponse.swift */,
+				D31EB13F2D638116000D8F57 /* RsvpStatus.swift */,
+				D31EB1412D6381D3000D8F57 /* EventRsvp.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -806,6 +815,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D31EB1422D6381D3000D8F57 /* EventRsvp.swift in Sources */,
 				D396248E2D56366200A3E310 /* HomeView.swift in Sources */,
 				D346CB882D5A0D9900F897BF /* Event.swift in Sources */,
 				D346CB8C2D5A38E800F897BF /* AddEventView.swift in Sources */,
@@ -835,7 +845,9 @@
 				D36959492D52130700483BDB /* ImageCarousel.swift in Sources */,
 				D39624922D564D6300A3E310 /* CircularButtonStyle.swift in Sources */,
 				D39401B22D5243B200DCFE21 /* SignupFormView.swift in Sources */,
+				D31EB1442D6469A3000D8F57 /* EventsCalendarService.swift in Sources */,
 				D312BE1A2D5B7AA200C43023 /* AddEventDetails.swift in Sources */,
+				D31EB1402D638116000D8F57 /* RsvpStatus.swift in Sources */,
 				D33DF8D72D5BC1BE00ACF1D4 /* TimezoneDropdownView.swift in Sources */,
 				D368EE002D5F5B1C00DA4632 /* EventDetailsView.swift in Sources */,
 				D3B68C9C2D554CBD00BF6CD3 /* EmailVerificationResponse.swift in Sources */,

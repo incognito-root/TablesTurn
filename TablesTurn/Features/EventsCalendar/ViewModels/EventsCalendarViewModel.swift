@@ -11,7 +11,7 @@ class AddEventsCalendarViewModel: ObservableObject {
     let months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN",
                   "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
 
-    private let sharedService: SharedServiceProtocol = SharedService.shared
+    private let eventsCalendarService = EventsCalendarService()
     
     init() {
         self.selectedMonthIndex = Calendar.current.component(.month, from: Date()) - 1
@@ -24,7 +24,7 @@ class AddEventsCalendarViewModel: ObservableObject {
         
         Task { @MainActor in
             do {
-                let response = try await SharedService.shared.getEventsInMonth(year: "2025", month: selectedMonthIndex)
+                let response = try await eventsCalendarService.getEventsInMonth(year: "2025", month: selectedMonthIndex)
                 
                 events = response
                 

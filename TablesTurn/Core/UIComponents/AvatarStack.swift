@@ -2,11 +2,7 @@ import SwiftUI
 
 struct AvatarStack: View {
     // Example image URLs (replace these with your own)
-    let imageUrls: [String] = [
-        "https://images.pexels.com/photos/50675/banquet-wedding-society-deco-50675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        "https://images.pexels.com/photos/50675/banquet-wedding-society-deco-50675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        "https://images.pexels.com/photos/50675/banquet-wedding-society-deco-50675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-    ]
+    let imageUrls: [String]
     
     var body: some View {
         HStack(alignment: .center) {
@@ -56,12 +52,5 @@ struct AvatarStack: View {
                 }
             }
         }
-    }
-}
-
-struct AvatarStackView_Previews: PreviewProvider {
-    static var previews: some View {
-        AvatarStack()
-            .previewLayout(.sizeThatFits)
     }
 }

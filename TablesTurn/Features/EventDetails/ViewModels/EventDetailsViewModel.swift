@@ -4,6 +4,7 @@ import Combine
 @MainActor
 class EventDetailsViewModel: ObservableObject {
     @Published var eventDetails: EventDetails? = nil
+    @Published var recentRsvpImages: [String]? = []
     @Published var eventId: String = ""
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
@@ -33,6 +34,19 @@ class EventDetailsViewModel: ObservableObject {
         
         do {
             eventDetails = try await eventDetailsService.getEventDetails(eventId: eventId)
+        } catch let error as APIError {
+            handleAPIError(error: error)
+        } catch {
+            handleGenericError(error: error)
+        }
+    }
+    
+    func getRecentRsvpsImages() async {
+        isLoading = true
+        defer { isLoading = false }
+        
+        do {
+            recentRsvpImages = try await eventDetailsService.getRecentRsvpImages(eventId: eventId)
         } catch let error as APIError {
             handleAPIError(error: error)
         } catch {

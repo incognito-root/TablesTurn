@@ -51,8 +51,8 @@ struct HomeView: View {
                             
                             VStack(spacing: 10) {
                                 Menu {
-                                    NavigationLink("Tickets", destination: TicketsView())
                                     NavigationLink("Profile", destination: UserProfileView())
+                                    NavigationLink("My Tickets", destination: TicketsView())
                                     NavigationLink("Redeem Ticket", destination: RedeemTicketView())
                                 } label: {
                                     if viewModel.userDetails?.profileImage != nil {

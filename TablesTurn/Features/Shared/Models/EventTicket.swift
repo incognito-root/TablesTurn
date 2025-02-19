@@ -1,6 +1,6 @@
 import Foundation
 
-struct EventTicket: Codable, Identifiable {
+struct EventTicket: Codable, Identifiable, Hashable {
     let eventId: String
     let status: Bool
     let createdAt: Date

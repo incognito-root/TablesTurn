@@ -5,6 +5,7 @@ import Combine
 class TicketsViewModel: ObservableObject {
     @Published var ticketId: String? = nil
     @Published var redeemedTicket: EventTicket? = nil
+    @Published var userTickets: [EventRsvp]? = []
     
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
@@ -19,6 +20,20 @@ class TicketsViewModel: ObservableObject {
         do {
             redeemedTicket = try await ticketService.redeemTicket(ticketId: self.ticketId ?? "")
 
+        } catch let error as APIError {
+            handleAPIError(error: error)
+        } catch {
+            handleGenericError(error: error)
+        }
+    }
+    
+    func getTickets() async {
+        isLoading = true
+        defer { isLoading = false }
+        
+        do {
+            
+            self.userTickets = try await ticketService.getUserRsvps()
         } catch let error as APIError {
             handleAPIError(error: error)
         } catch {

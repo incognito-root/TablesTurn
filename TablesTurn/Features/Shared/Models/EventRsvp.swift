@@ -13,6 +13,7 @@ struct EventRsvp: Codable, Identifiable {
     let attendees: Int
     let user: User
     let rsvpStatus: RsvpStatus
+    let tickets: [EventTicket]?
 
     enum CodingKeys: String, CodingKey {
         case id, title, status, attendees
@@ -24,5 +25,6 @@ struct EventRsvp: Codable, Identifiable {
         case fkUserId = "fk_user_id"
         case rsvpStatus = "rsvp_statuses"
         case user = "users"
+        case tickets
     }
 }

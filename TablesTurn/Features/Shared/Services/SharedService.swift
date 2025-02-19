@@ -67,6 +67,13 @@ class SharedService: SharedServiceProtocol {
             method: .get
         )
     }
+    
+    func getUserRsvps() async throws -> [EventRsvp] {
+        return try await NetworkManager.shared.request(
+            endpoint: APIEndpoints.getUserRsvps,
+            method: .get
+        )
+    }
 }
 
 enum ImageError: Error {

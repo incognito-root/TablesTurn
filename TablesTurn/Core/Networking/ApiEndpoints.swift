@@ -27,4 +27,9 @@ struct APIEndpoints {
     static let recentRsvpImages = rsvpPrefix + "recent/images/"
     static let RsvpToEvent = rsvpPrefix + "/"
     static let getRsvpStatus = rsvpPrefix + "statuses"
+    static let getUserRsvps = rsvpPrefix + "user"
+    
+    // ticket APIs
+    static private let ticketsPrefix = "tickets/"
+    static let redeemTicket = ticketsPrefix
 }

@@ -18,6 +18,13 @@
 		D32B5E3F2D65D19700EA8FB3 /* TicketsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B5E3E2D65D19700EA8FB3 /* TicketsView.swift */; };
 		D32B5E412D65FC0F00EA8FB3 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B5E402D65FC0F00EA8FB3 /* UserProfileViewModel.swift */; };
 		D32B5E432D66076D00EA8FB3 /* UserProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B5E422D66076D00EA8FB3 /* UserProfileService.swift */; };
+		D32B5E452D6618FF00EA8FB3 /* EventTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B5E442D6618FF00EA8FB3 /* EventTicket.swift */; };
+		D32B5E472D661C7100EA8FB3 /* TicketsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B5E462D661C7100EA8FB3 /* TicketsViewModel.swift */; };
+		D32B5E492D661D9600EA8FB3 /* RedeemTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B5E482D661D9600EA8FB3 /* RedeemTicketView.swift */; };
+		D32B5E4C2D661FF400EA8FB3 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = D32B5E4B2D661FF400EA8FB3 /* CodeScanner */; };
+		D32B5E4F2D66218000EA8FB3 /* QRScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B5E4E2D66218000EA8FB3 /* QRScannerView.swift */; };
+		D32B5E512D66233F00EA8FB3 /* QrData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B5E502D66233F00EA8FB3 /* QrData.swift */; };
+		D32B5E532D662C6000EA8FB3 /* TicketsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B5E522D662C6000EA8FB3 /* TicketsService.swift */; };
 		D33DF8CD2D5BB44000ACF1D4 /* ImageRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33DF8CC2D5BB44000ACF1D4 /* ImageRepresentation.swift */; };
 		D33DF8D12D5BB46000ACF1D4 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33DF8D02D5BB46000ACF1D4 /* ImagePickerView.swift */; };
 		D33DF8D52D5BB47A00ACF1D4 /* ImagePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33DF8D42D5BB47A00ACF1D4 /* ImagePickerViewModel.swift */; };
@@ -106,6 +113,13 @@
 		D32B5E3E2D65D19700EA8FB3 /* TicketsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsView.swift; sourceTree = "<group>"; };
 		D32B5E402D65FC0F00EA8FB3 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		D32B5E422D66076D00EA8FB3 /* UserProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileService.swift; sourceTree = "<group>"; };
+		D32B5E442D6618FF00EA8FB3 /* EventTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTicket.swift; sourceTree = "<group>"; };
+		D32B5E462D661C7100EA8FB3 /* TicketsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsViewModel.swift; sourceTree = "<group>"; };
+		D32B5E482D661D9600EA8FB3 /* RedeemTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemTicketView.swift; sourceTree = "<group>"; };
+		D32B5E4D2D66212700EA8FB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D32B5E4E2D66218000EA8FB3 /* QRScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerView.swift; sourceTree = "<group>"; };
+		D32B5E502D66233F00EA8FB3 /* QrData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrData.swift; sourceTree = "<group>"; };
+		D32B5E522D662C6000EA8FB3 /* TicketsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsService.swift; sourceTree = "<group>"; };
 		D33DF8CC2D5BB44000ACF1D4 /* ImageRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepresentation.swift; sourceTree = "<group>"; };
 		D33DF8D02D5BB46000ACF1D4 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		D33DF8D42D5BB47A00ACF1D4 /* ImagePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerViewModel.swift; sourceTree = "<group>"; };
@@ -173,6 +187,7 @@
 			files = (
 				D3C03BFA2D51077400E5251C /* Kingfisher in Frameworks */,
 				D3C03BF72D5106D000E5251C /* Alamofire in Frameworks */,
+				D32B5E4C2D661FF400EA8FB3 /* CodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +304,7 @@
 		D32B5E382D65D16900EA8FB3 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D32B5E522D662C6000EA8FB3 /* TicketsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -296,6 +312,7 @@
 		D32B5E392D65D16E00EA8FB3 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				D32B5E462D661C7100EA8FB3 /* TicketsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -304,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				D32B5E3E2D65D19700EA8FB3 /* TicketsView.swift */,
+				D32B5E482D661D9600EA8FB3 /* RedeemTicketView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -559,6 +577,8 @@
 				D36F20B42D5E955C00DE1FD3 /* GetAllEventsResponse.swift */,
 				D31EB13F2D638116000D8F57 /* RsvpStatus.swift */,
 				D31EB1412D6381D3000D8F57 /* EventRsvp.swift */,
+				D32B5E442D6618FF00EA8FB3 /* EventTicket.swift */,
+				D32B5E502D66233F00EA8FB3 /* QrData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -586,6 +606,7 @@
 		D3C03BBB2D50FF5700E5251C /* TablesTurn */ = {
 			isa = PBXGroup;
 			children = (
+				D32B5E4D2D66212700EA8FB3 /* Info.plist */,
 				D3C03BE62D5101F800E5251C /* App */,
 				D3C03BEA2D51026C00E5251C /* Core */,
 				D3C03BE92D51025E00E5251C /* Features */,
@@ -712,6 +733,7 @@
 				D33DF8D62D5BC1BE00ACF1D4 /* CustomDropdownView.swift */,
 				D36F20B22D5E92D000DE1FD3 /* PaginationView.swift */,
 				D368EE012D5FD64900DA4632 /* AvatarStack.swift */,
+				D32B5E4E2D66218000EA8FB3 /* QRScannerView.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -791,6 +813,7 @@
 			packageProductDependencies = (
 				D3C03BF62D5106D000E5251C /* Alamofire */,
 				D3C03BF92D51077400E5251C /* Kingfisher */,
+				D32B5E4B2D661FF400EA8FB3 /* CodeScanner */,
 			);
 			productName = TablesTurn;
 			productReference = D3C03BB92D50FF5700E5251C /* TablesTurn.app */;
@@ -867,6 +890,7 @@
 			packageReferences = (
 				D3C03BF52D5106D000E5251C /* XCRemoteSwiftPackageReference "Alamofire" */,
 				D3C03BF82D51077400E5251C /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				D32B5E4A2D661FF400EA8FB3 /* XCRemoteSwiftPackageReference "CodeScanner" */,
 			);
 			productRefGroup = D3C03BBA2D50FF5700E5251C /* Products */;
 			projectDirPath = "";
@@ -912,11 +936,14 @@
 			files = (
 				D31EB1422D6381D3000D8F57 /* EventRsvp.swift in Sources */,
 				D32B5E312D65C0CD00EA8FB3 /* RsvpDetails.swift in Sources */,
+				D32B5E492D661D9600EA8FB3 /* RedeemTicketView.swift in Sources */,
 				D396248E2D56366200A3E310 /* HomeView.swift in Sources */,
 				D346CB882D5A0D9900F897BF /* Event.swift in Sources */,
 				D346CB8C2D5A38E800F897BF /* AddEventView.swift in Sources */,
 				D3F4EAFF2D54F60800C71FDF /* LoginService.swift in Sources */,
 				D3F4EB012D54F64B00C71FDF /* UserLoginDetails.swift in Sources */,
+				D32B5E512D66233F00EA8FB3 /* QrData.swift in Sources */,
+				D32B5E532D662C6000EA8FB3 /* TicketsService.swift in Sources */,
 				D346CB8A2D5A0FC500F897BF /* SharedServiceProtocol.swift in Sources */,
 				D3C68E872D561040000F3C0C /* EmailVerificationViewModel.swift in Sources */,
 				D38BDE2D2D56AF3300206D28 /* EventCard.swift in Sources */,
@@ -943,9 +970,11 @@
 				D3255D5F2D51C0E7007E0125 /* GettingStartedView.swift in Sources */,
 				D36959492D52130700483BDB /* ImageCarousel.swift in Sources */,
 				D39624922D564D6300A3E310 /* CircularButtonStyle.swift in Sources */,
+				D32B5E4F2D66218000EA8FB3 /* QRScannerView.swift in Sources */,
 				D32B5E3F2D65D19700EA8FB3 /* TicketsView.swift in Sources */,
 				D39401B22D5243B200DCFE21 /* SignupFormView.swift in Sources */,
 				D31EB1442D6469A3000D8F57 /* EventsCalendarService.swift in Sources */,
+				D32B5E472D661C7100EA8FB3 /* TicketsViewModel.swift in Sources */,
 				D312BE1A2D5B7AA200C43023 /* AddEventDetails.swift in Sources */,
 				D31EB1402D638116000D8F57 /* RsvpStatus.swift in Sources */,
 				D33DF8D72D5BC1BE00ACF1D4 /* CustomDropdownView.swift in Sources */,
@@ -958,6 +987,7 @@
 				D356D2162D5A51E60091DD7C /* UserDetails.swift in Sources */,
 				D3F4EAF32D54BC2A00C71FDF /* SignupViewModel.swift in Sources */,
 				D3C68E8B2D561D42000F3C0C /* UserManager.swift in Sources */,
+				D32B5E452D6618FF00EA8FB3 /* EventTicket.swift in Sources */,
 				D3B20B292D58D0D900A52937 /* SharedService.swift in Sources */,
 				D33DF8CD2D5BB44000ACF1D4 /* ImageRepresentation.swift in Sources */,
 				D3F4EB052D55410600C71FDF /* EmailVerificationView.swift in Sources */,
@@ -1136,6 +1166,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"TablesTurn/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TablesTurn/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1164,6 +1195,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"TablesTurn/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TablesTurn/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1296,6 +1328,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		D32B5E4A2D661FF400EA8FB3 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.2;
+			};
+		};
 		D3C03BF52D5106D000E5251C /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -1315,6 +1355,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		D32B5E4B2D661FF400EA8FB3 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D32B5E4A2D661FF400EA8FB3 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
 		D3C03BF62D5106D000E5251C /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D3C03BF52D5106D000E5251C /* XCRemoteSwiftPackageReference "Alamofire" */;

@@ -1,9 +1,9 @@
 import SwiftUI
 
-struct TicketsView: View {
+struct RedeemTicketView: View {
     let radius: CGFloat = 50
     
-    @StateObject var viewModel = UserProfileViewModel()
+    @StateObject var viewModel = TicketsViewModel()
     
     init() {
         UINavigationBar.appearance().tintColor = .white
@@ -30,32 +30,43 @@ struct TicketsView: View {
                         .cornerRadius(radius)
                         .padding(.bottom, -radius)
                     
-                    VStack() {
+                    VStack(spacing: 20) {
                         HStack {
-                            Text("My Tickets")
+                            Text("Redeem a Ticket or Check Details by Scanning the QR Code")
                                 .font(.system(size: 35))
-                            
-                            Spacer()
                         }
                         .frame(maxWidth: .infinity)
-                        .padding(.horizontal, 30)
+                        .padding(.bottom, 20)
+                        
+                        QRScannerView(
+                            viewModel: self.viewModel,
+                            redeeming: true,
+                            buttonText: "redeem ticket"
+                        )
+                        
+                        QRScannerView(
+                            viewModel: self.viewModel,
+                            redeeming: false,
+                            buttonText: "ticket details"
+                        )
                     }
                     .padding(.top, 30)
+                    .padding(.horizontal, 20)
                 }
                 .padding(.top, 20)
             }
-            .foregroundStyle(.primaryText)
-            .navigationTitle("Tickets")
-            .navigationBarTitleDisplayMode(.inline)
-        }
-        .onAppear {
-            Task {
-                await viewModel.getUserDetails()
+            .alert(isPresented: $viewModel.showAlert) {
+                Alert(title: Text("Error"),
+                      message: Text(viewModel.alertMessage),
+                      dismissButton: .default(Text("OK")))
             }
+            .foregroundStyle(.primaryText)
+            .navigationTitle("Redeem Ticket")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
 
 #Preview {
-    TicketsView()
+    RedeemTicketView()
 }

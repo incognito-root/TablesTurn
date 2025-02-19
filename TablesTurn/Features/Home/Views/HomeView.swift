@@ -53,6 +53,7 @@ struct HomeView: View {
                                 Menu {
                                     NavigationLink("Tickets", destination: TicketsView())
                                     NavigationLink("Profile", destination: UserProfileView())
+                                    NavigationLink("Redeem Ticket", destination: RedeemTicketView())
                                 } label: {
                                     if viewModel.userDetails?.profileImage != nil {
                                         AsyncImage(url: URL(string: viewModel.userDetails?.profileImage ?? "")) { phase in

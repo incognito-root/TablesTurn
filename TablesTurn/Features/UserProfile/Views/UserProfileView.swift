@@ -6,9 +6,8 @@ struct UserProfileView: View {
     @StateObject var viewModel = UserProfileViewModel()
     
     init() {
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(.white)]
         UINavigationBar.appearance().titleTextAttributes = [
-            .foregroundColor: UIColor(.accentColor),
+            .foregroundColor: UIColor(.white),
             .font: UIFont.systemFont(ofSize: 24, weight: .semibold)
         ]
     }
@@ -136,6 +135,11 @@ struct UserProfileView: View {
                 .padding(.top, 20)
             }
             .foregroundStyle(.primaryText)
+            .alert(isPresented: $viewModel.showAlert) {
+                Alert(title: Text("Error"),
+                      message: Text(viewModel.alertMessage),
+                      dismissButton: .default(Text("OK")))
+            }
             .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

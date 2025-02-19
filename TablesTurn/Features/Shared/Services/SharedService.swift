@@ -39,9 +39,9 @@ class SharedService: SharedServiceProtocol {
         )
     }
     
-    func uploadEventImage(event: Event) async throws -> String {
+    func uploadEventImage(event: Event) async throws -> SimpleEventDetails {
         guard let uiImage = ImagePickerViewModel.underlyingImage,
-              let imageData = uiImage.jpegData(compressionQuality: 0.8) else {
+              let imageData = uiImage.jpegData(compressionQuality: 0.3) else {
             throw ImageError.invalidImage
         }
         

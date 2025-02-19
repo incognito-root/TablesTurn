@@ -27,7 +27,7 @@ class EventService {
         )
     }
 
-    func uploadEventImage(event: Event) async throws -> String {
+    func uploadEventImage(event: Event) async throws -> SimpleEventDetails {
         try await sharedService.uploadEventImage(event: event)
     }
 }

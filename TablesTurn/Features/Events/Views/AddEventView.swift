@@ -133,7 +133,7 @@ struct AddEventView: View {
                                         .frame(maxWidth: .infinity)
                                         .listRowBackground(Color.clear)
                                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-
+                                        
                                         VStack(alignment: .leading, spacing: 0) {
                                             Text("Event Description")
                                                 .font(.caption)
@@ -159,7 +159,7 @@ struct AddEventView: View {
                                         }
                                         .listRowBackground(Color.clear)
                                         .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 15, trailing: 5))
-
+                                        
                                         VStack(alignment: .leading, spacing: 0) {
                                             Text("Event Location")
                                                 .font(.caption)
@@ -185,7 +185,7 @@ struct AddEventView: View {
                                         }
                                         .listRowBackground(Color.clear)
                                         .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 25, trailing: 5))
-
+                                        
                                         VStack(alignment: .leading) {
                                             DatePicker(
                                                 "RSVP Deadline",
@@ -228,7 +228,7 @@ struct AddEventView: View {
                                             }
                                             .frame(width: 340, height: 200)
                                         }
-
+                                        
                                         VStack(alignment: .leading, spacing: 20) {
                                             VStack(alignment: .leading, spacing: 3) {
                                                 Text("Title")
@@ -272,9 +272,15 @@ struct AddEventView: View {
                                                         await viewModel.addEvent()
                                                     }
                                                 }) {
-                                                    Text("submit".uppercased())
+                                                    if viewModel.isLoading {
+                                                        ProgressView() // Show loader
+                                                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                                                    } else {
+                                                        Text("submit".uppercased())
+                                                    }
                                                 }
                                                 .buttonStyle(MainButtonStyle())
+                                                .disabled(viewModel.isLoading) // Disable button when loading
                                                 .listRowBackground(Color.clear)
                                             }
                                         }
@@ -290,6 +296,7 @@ struct AddEventView: View {
                 }
                 .padding(.top, 20)
             }
+            
             .foregroundStyle(.primaryText)
             .alert(isPresented: $viewModel.showAlert) {
                 Alert(title: Text("Error"),
@@ -298,6 +305,7 @@ struct AddEventView: View {
             }
             .navigationTitle("Craft Event")
             .navigationBarTitleDisplayMode(.inline)
+            
         }
         
     }

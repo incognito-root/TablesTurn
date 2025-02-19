@@ -17,11 +17,27 @@ class AddEventViewModel: ObservableObject {
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     @Published var editing: Bool = false
+    @Published var isLoading: Bool = false
     
     private let eventService = EventService()
     let imagePickerViewModel = ImagePickerViewModel()
     
     // MARK: - Business Logic
+    
+    func reset() {
+        title = ""
+        location = ""
+        image = ""
+        description = ""
+        date = Date()
+        time = Date()
+        rsvpDeadlineDate = Date()
+        currentStep = 0
+        showAlert = false
+        alertMessage = ""
+        editing = false
+        isLoading = false
+    }
     
     var minDate: Date {
         Calendar.current.date(byAdding: .day, value: 0, to: Date())!
@@ -112,8 +128,17 @@ class AddEventViewModel: ObservableObject {
     }
     
     func addEvent() async {
+        await MainActor.run {
+            isLoading = true
+        }
+        
         // Validation checks
-        guard validateFields() else { return }
+        guard validateFields() else {
+            await MainActor.run {
+                isLoading = false
+            }
+            return
+        }
         
         // Create event payload
         let eventData = AddEventDetails(
@@ -129,19 +154,37 @@ class AddEventViewModel: ObservableObject {
             let event = try await eventService.createEvent(eventDetails: eventData)
             await uploadImage(eventData: event)
         } catch let error as APIError {
-            handleAPIError(error: error)
+            await MainActor.run {
+                handleAPIError(error: error)
+                isLoading = false
+            }
         } catch {
-            handleGenericError(error: error)
+            await MainActor.run {
+                handleGenericError(error: error)
+                isLoading = false
+            }
         }
     }
     
     func uploadImage(eventData: Event) async {
         do {
-            let result: String = try await eventService.uploadEventImage(event: eventData)
+            let result: SimpleEventDetails = try await eventService.uploadEventImage(event: eventData)
+            
+            await MainActor.run {
+                isLoading = false
+                alertMessage = "Event Added Successfully"
+                showAlert = true
+            }
         } catch let error as APIError {
-            handleAPIError(error: error)
+            await MainActor.run {
+                handleAPIError(error: error)
+                isLoading = false
+            }
         } catch {
-            handleGenericError(error: error)
+            await MainActor.run {
+                handleGenericError(error: error)
+                isLoading = false
+            }
         }
     }
     

@@ -210,7 +210,10 @@ struct HomeView: View {
                         VStack(spacing: 20) {
                             if viewModel.isLoading {
                                 ProgressView()
+                                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                                     .frame(height: 230)
+                                    .background(Color.clear)
+                                    .padding(.vertical, 20)
                             } else if viewModel.events.isEmpty {
                                 Text("No events found")
                                     .frame(height: 230)

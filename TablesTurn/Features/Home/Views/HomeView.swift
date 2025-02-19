@@ -59,14 +59,21 @@ struct HomeView: View {
                             
                             VStack(spacing: 10) {
                                 Menu {
-                                    NavigationLink("Profile", destination: UserProfileView())
-                                    NavigationLink("My Tickets", destination: TicketsView())
-                                    NavigationLink("Redeem Ticket", destination: RedeemTicketView())
+                                    NavigationLink(destination: UserProfileView()) {
+                                        Label("Profile", systemImage: "person.crop.circle")
+                                    }
+                                    NavigationLink(destination: TicketsView()) {
+                                        Label("My Tickets", systemImage: "ticket.fill")
+                                    }
+                                    NavigationLink(destination: RedeemTicketView()) {
+                                        Label("Redeem Ticket", systemImage: "qrcode.viewfinder")
+                                    }
                                     Button {
                                         UserManager.shared.logout()
                                     } label: {
                                         Label("Logout", systemImage: "arrowshape.turn.up.left")
                                     }
+                                    
                                 } label: {
                                     if viewModel.userDetails?.profileImage != nil {
                                         AsyncImage(url: URL(string: viewModel.userDetails?.profileImage ?? "")) { phase in
@@ -198,11 +205,6 @@ struct HomeView: View {
                             }
                             
                             Spacer()
-                            
-                            PaginationView(currentPage: $viewModel.currentPage, totalPages: viewModel.totalPages)
-                                .onChange(of: viewModel.currentPage) { _, _ in
-                                    viewModel.getAllEvents()
-                                }
                         }
                         
                         VStack(spacing: 20) {
@@ -219,6 +221,11 @@ struct HomeView: View {
                                     }
                                     .buttonStyle(.plain)
                                     .padding(.bottom, 20)
+                                    .onAppear {
+                                        if event.id == viewModel.events.last?.id {
+                                            viewModel.loadMoreEvents()
+                                        }
+                                    }
                                 }
                             }
                         }

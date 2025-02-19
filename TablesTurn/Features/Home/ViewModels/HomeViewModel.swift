@@ -8,9 +8,7 @@ class HomeViewModel: ObservableObject {
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     @Published var isLoading = false
-    @Published var currentPage = 1
-    @Published var totalPages = 1
-    let pageSize = 5
+    @Published var canLoadMore = true // To track if more data can be loaded
     
     @Published var searchKey = "" {
         didSet {
@@ -20,8 +18,10 @@ class HomeViewModel: ObservableObject {
         }
     }
     
+    private var currentPage = 1 // Track current page internally
+    private let pageSize = 5
+    
     private var cancellables = Set<AnyCancellable>()
-
     private let homeService = HomeService()
     
     init() {
@@ -33,14 +33,22 @@ class HomeViewModel: ObservableObject {
             .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
             .removeDuplicates()
             .sink { [weak self] _ in
-                self?.currentPage = 1
-                self?.getAllEvents()
+                self?.resetAndFetchEvents()
             }
             .store(in: &cancellables)
     }
     
+    // Reset events and fetch the first page
+    func resetAndFetchEvents() {
+        currentPage = 1
+        events = []
+        canLoadMore = true
+        getAllEvents()
+    }
+    
+    // Fetch initial or additional events
     func getAllEvents() {
-        guard !isLoading else { return }
+        guard !isLoading, canLoadMore else { return }
         
         isLoading = true
         
@@ -53,14 +61,29 @@ class HomeViewModel: ObservableObject {
                     pageSize: self.pageSize
                 )
                 
-                events = response.data
-                totalPages = response.pagination.totalPages
+                if currentPage == 1 {
+                    events = response.data
+                } else {
+                    events.append(contentsOf: response.data)
+                }
+                
+                // Check if there are more pages to load
+                if response.data.count < pageSize {
+                    canLoadMore = false
+                } else {
+                    currentPage += 1
+                }
             } catch {
                 alertMessage = error.localizedDescription
                 showAlert = true
             }
             isLoading = false
         }
+    }
+    
+    // Load more events for infinite scroll
+    func loadMoreEvents() {
+        getAllEvents()
     }
     
     func getUserDetails() async {

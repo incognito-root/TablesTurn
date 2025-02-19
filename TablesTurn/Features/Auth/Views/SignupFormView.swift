@@ -21,14 +21,18 @@ struct SignupFormView: View {
                     
                     VStack(alignment: .leading, spacing: 0) {
                         if viewModel.currentStep == 1 {
-                            (
-                                Text("Enter Your Email\n")
-                                + Text("To Get Started")
-                                    .foregroundStyle(.accent)
-                            )
-                            .font(.system(size: 43))
-                            .fontWeight(.medium)
-                            .padding(EdgeInsets(top: 20, leading: 25, bottom: 0, trailing: 25))
+                            Text("Enter Your Email\nTo Get Started")
+                                .font(.system(size: 43))
+                                .fontWeight(.medium)
+                                .padding(EdgeInsets(top: 20, leading: 25, bottom: 0, trailing: 25))
+                            NavigationLink(destination: LoginFormView()) {
+                                Text("CLICK HERE TO LOGIN")
+                                    .padding(.top, 15)
+                                    .padding(.leading, 25)
+                                    .font(.system(size: 15))
+                                    .foregroundStyle(.gray)
+                                    .fontWeight(.bold)
+                            }
                             
                             Form {
                                 Section {
@@ -57,7 +61,9 @@ struct SignupFormView: View {
                                     }) {
                                         Text("Next".uppercased())
                                     }
-                                    .buttonStyle(MainButtonStyle())
+                                    .buttonStyle(MainButtonStyle(
+                                        foregroundColor: .white
+                                    ))
                                     .listRowBackground(Color.clear)
                                     .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 0, trailing: 5))
                                 }

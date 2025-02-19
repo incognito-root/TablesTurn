@@ -7,25 +7,37 @@ struct QRScannerView: View {
     @State private var isShowingScanner = false
     @State private var scannedCode: String?
     @State private var errorMessage: String?
+    @State private var navigateToTicketDetails = false // State for navigation
+    
     var redeeming: Bool?
     var buttonText: String?
     
     var body: some View {
-        VStack {
-            Button(buttonText?.capitalized ?? "") {
-                isShowingScanner = true
+        NavigationStack {
+            VStack {
+                Button(buttonText?.capitalized ?? "") {
+                    isShowingScanner = true
+                }
+                .buttonStyle(MainButtonStyle(
+                    fontSize: 18
+                ))
+                
+                // NavigationLink to TicketDetailsView
+                NavigationLink(
+                    destination: TicketDetailsView(vm: viewModel),
+                    isActive: $navigateToTicketDetails
+                ) {
+                    EmptyView() // Invisible navigation link
+                }
             }
-            .buttonStyle(MainButtonStyle(
-                fontSize: 18
-            ))
-        }
-        .sheet(isPresented: $isShowingScanner) {
-            scannerSheet
-        }
-        .alert("Error", isPresented: .constant(errorMessage != nil)) {
-            Button("OK", role: .cancel) { errorMessage = nil }
-        } message: {
-            Text(errorMessage ?? "")
+            .sheet(isPresented: $isShowingScanner) {
+                scannerSheet
+            }
+            .alert("Error", isPresented: .constant(errorMessage != nil)) {
+                Button("OK", role: .cancel) { errorMessage = nil }
+            } message: {
+                Text(errorMessage ?? "")
+            }
         }
     }
     
@@ -53,6 +65,12 @@ struct QRScannerView: View {
                         Task {
                             if redeeming == true {
                                 await viewModel.redeemTicket()
+                            } else {
+                                await viewModel.getTicketDetails()
+                                // Navigate to TicketDetailsView after fetching details
+                                DispatchQueue.main.async {
+                                    navigateToTicketDetails = true
+                                }
                             }
                         }
                     } else {

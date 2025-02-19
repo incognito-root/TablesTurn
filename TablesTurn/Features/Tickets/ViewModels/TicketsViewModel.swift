@@ -6,6 +6,7 @@ class TicketsViewModel: ObservableObject {
     @Published var ticketId: String? = nil
     @Published var redeemedTicket: EventTicket? = nil
     @Published var userTickets: [EventRsvp]? = []
+    @Published var ticketDetails: TicketDetails? = nil
     
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
@@ -19,6 +20,20 @@ class TicketsViewModel: ObservableObject {
         
         do {
             redeemedTicket = try await ticketService.redeemTicket(ticketId: self.ticketId ?? "")
+
+        } catch let error as APIError {
+            handleAPIError(error: error)
+        } catch {
+            handleGenericError(error: error)
+        }
+    }
+
+    func getTicketDetails() async {
+        isLoading = true
+        defer { isLoading = false }
+        
+        do {
+            ticketDetails = try await ticketService.getTicketDetails(ticketId: self.ticketId ?? "")
 
         } catch let error as APIError {
             handleAPIError(error: error)

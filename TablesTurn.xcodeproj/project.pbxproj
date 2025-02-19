@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D30BBFAE2D66571F00C17599 /* TicketDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30BBFAD2D66571F00C17599 /* TicketDetails.swift */; };
+		D30BBFB02D665CE500C17599 /* TicketDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30BBFAF2D665CE500C17599 /* TicketDetailsView.swift */; };
 		D312BE182D5B7A5E00C43023 /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D312BE172D5B7A5E00C43023 /* EventService.swift */; };
 		D312BE1A2D5B7AA200C43023 /* AddEventDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D312BE192D5B7AA200C43023 /* AddEventDetails.swift */; };
 		D31EB1402D638116000D8F57 /* RsvpStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31EB13F2D638116000D8F57 /* RsvpStatus.swift */; };
@@ -102,6 +104,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D30BBFAD2D66571F00C17599 /* TicketDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketDetails.swift; sourceTree = "<group>"; };
+		D30BBFAF2D665CE500C17599 /* TicketDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketDetailsView.swift; sourceTree = "<group>"; };
 		D312BE172D5B7A5E00C43023 /* EventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
 		D312BE192D5B7AA200C43023 /* AddEventDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventDetails.swift; sourceTree = "<group>"; };
 		D31EB13F2D638116000D8F57 /* RsvpStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RsvpStatus.swift; sourceTree = "<group>"; };
@@ -322,6 +326,7 @@
 			children = (
 				D32B5E3E2D65D19700EA8FB3 /* TicketsView.swift */,
 				D32B5E482D661D9600EA8FB3 /* RedeemTicketView.swift */,
+				D30BBFAF2D665CE500C17599 /* TicketDetailsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -329,6 +334,7 @@
 		D32B5E3B2D65D17A00EA8FB3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D30BBFAD2D66571F00C17599 /* TicketDetails.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -954,6 +960,8 @@
 				D356D2182D5A6F500091DD7C /* ProgressTrackerView.swift in Sources */,
 				D33DF8D52D5BB47A00ACF1D4 /* ImagePickerViewModel.swift in Sources */,
 				D3C68E892D5615EC000F3C0C /* EmailVerificationService.swift in Sources */,
+				D30BBFB02D665CE500C17599 /* TicketDetailsView.swift in Sources */,
+				D30BBFAE2D66571F00C17599 /* TicketDetails.swift in Sources */,
 				D33DF8D12D5BB46000ACF1D4 /* ImagePickerView.swift in Sources */,
 				D32B5E412D65FC0F00EA8FB3 /* UserProfileViewModel.swift in Sources */,
 				D3F4EAFB2D54F16000C71FDF /* UserSignupResponse.swift in Sources */,

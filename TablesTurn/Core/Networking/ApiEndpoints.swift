@@ -32,4 +32,5 @@ struct APIEndpoints {
     // ticket APIs
     static private let ticketsPrefix = "tickets/"
     static let redeemTicket = ticketsPrefix
+    static let getTicketDetails = ticketsPrefix
 }

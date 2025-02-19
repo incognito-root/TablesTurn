@@ -14,6 +14,14 @@ struct HomeView: View {
         return (dayFormatter.string(from: date), dateFormatter.string(from: date))
     }
     
+    init() {
+        UINavigationBar.appearance().tintColor = .white
+        UINavigationBar.appearance().titleTextAttributes = [
+            .foregroundColor: UIColor(.white),
+            .font: UIFont.systemFont(ofSize: 24, weight: .semibold)
+        ]
+    }
+    
     var body: some View {
         NavigationStack {
             ZStack(alignment: .leading) {
@@ -54,6 +62,11 @@ struct HomeView: View {
                                     NavigationLink("Profile", destination: UserProfileView())
                                     NavigationLink("My Tickets", destination: TicketsView())
                                     NavigationLink("Redeem Ticket", destination: RedeemTicketView())
+                                    Button {
+                                        UserManager.shared.logout()
+                                    } label: {
+                                        Label("Logout", systemImage: "arrowshape.turn.up.left")
+                                    }
                                 } label: {
                                     if viewModel.userDetails?.profileImage != nil {
                                         AsyncImage(url: URL(string: viewModel.userDetails?.profileImage ?? "")) { phase in

@@ -8,9 +8,9 @@ struct AddEventView: View {
     @State private var date = Date()
     
     init() {
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(.white)]
+        UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().titleTextAttributes = [
-            .foregroundColor: UIColor(.accentColor),
+            .foregroundColor: UIColor(.white),
             .font: UIFont.systemFont(ofSize: 24, weight: .semibold)
         ]
     }

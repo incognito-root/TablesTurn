@@ -29,7 +29,7 @@ struct LoginFormView: View {
                         .padding(EdgeInsets(top: 30, leading: 25, bottom: 10, trailing: 25))
                         
                         NavigationLink(destination: SignupFormView()) {
-                            Text("CREATE A NEW ACCOUNT")
+                            Text("CLICK HERE TO CREATE A NEW ACCOUNT")
                                 .padding(.leading, 27)
                                 .font(.system(size: 15))
                                 .foregroundStyle(.gray)

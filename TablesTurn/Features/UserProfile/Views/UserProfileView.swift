@@ -6,10 +6,18 @@ struct UserProfileView: View {
     @StateObject var viewModel = UserProfileViewModel()
     
     init() {
-        UINavigationBar.appearance().titleTextAttributes = [
-            .foregroundColor: UIColor(.white),
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithTransparentBackground()
+        appearance.backgroundColor = UIColor(Color.clear) // Set your desired background color
+        appearance.titleTextAttributes = [
+            .foregroundColor: UIColor.white,
             .font: UIFont.systemFont(ofSize: 24, weight: .semibold)
         ]
+        
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().compactAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        UINavigationBar.appearance().tintColor = .white
     }
     
     var body: some View {

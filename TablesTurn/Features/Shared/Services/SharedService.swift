@@ -45,12 +45,17 @@ class SharedService: SharedServiceProtocol {
             throw ImageError.invalidImage
         }
         
+        let headers: HTTPHeaders = [
+            "Content-Type": "multipart/form-data"
+        ]
+        
         return try await NetworkManager.shared.upload(
             endpoint: APIEndpoints.uploadEventImage + event.id,
             method: .post,
             imageData: imageData,
             imageFieldName: "file",
-            fileName: "image_\(Date().timeIntervalSince1970).jpg"
+            fileName: "image_\(Date().timeIntervalSince1970).jpg",
+            headers: headers
         )
     }
     

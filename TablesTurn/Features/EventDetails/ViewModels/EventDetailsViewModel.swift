@@ -65,6 +65,29 @@ class EventDetailsViewModel: ObservableObject {
         
         do {
             rsvpStatuses = try await eventDetailsService.getRsvpStatuses()
+            
+            self.selectedRsvpStatus = rsvpStatuses?[0] ?? nil
+        } catch let error as APIError {
+            handleAPIError(error: error)
+        } catch {
+            handleGenericError(error: error)
+        }
+    }
+    
+    func rsvpToEvent() async {
+        isLoading = true
+        defer { isLoading = false }
+        
+        let rsvpStatusId: Int = Int(selectedRsvpStatus?.rsvpId ?? "0") ?? 0
+        
+        do {
+            let rsvpDetails = RsvpDetails(
+                rsvpStatusId: rsvpStatusId,
+                attendees: self.attendees
+            )
+            
+            let res = try await eventDetailsService.rsvpToEvent(rsvp: rsvpDetails, eventId: self.eventId)
+
         } catch let error as APIError {
             handleAPIError(error: error)
         } catch {

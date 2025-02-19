@@ -27,4 +27,17 @@ class EventDetailsService {
     func getRsvpStatuses() async throws -> [RsvpStatus] {
         try await sharedService.getEventRsvpStatuses()
     }
+    
+    func rsvpToEvent(rsvp: RsvpDetails, eventId: String) async throws -> String {
+        let parameters: [String: Any] = [
+            "rsvpStatusId": rsvp.rsvpStatusId,
+            "attendees": rsvp.attendees
+        ]
+        
+        return try await NetworkManager.shared.request(
+            endpoint: APIEndpoints.RsvpToEvent + eventId,
+            method: .post,
+            parameters: parameters
+        )
+    }
 }

@@ -160,6 +160,9 @@ struct RSVPModalView: View {
                 
                 Button(action: {
                     viewModel.showRsvpModal = true
+                    Task {
+                        await viewModel.rsvpToEvent()
+                    }
                 }) {
                     Text("Confirm".uppercased())
                 }

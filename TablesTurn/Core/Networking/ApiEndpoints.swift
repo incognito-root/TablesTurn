@@ -16,6 +16,7 @@ struct APIEndpoints {
     // user APIs
     static private let usersPrefix = "users/"
     static let getUserDetails = usersPrefix + "details"
+    static let updateUserDetails = usersPrefix + "details"
     
     // upload APIs
     static private let uploadPrefix = "images/"

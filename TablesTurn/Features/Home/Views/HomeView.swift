@@ -50,32 +50,38 @@ struct HomeView: View {
                             Spacer()
                             
                             VStack(spacing: 10) {
-                                if viewModel.userDetails?.profileImage != nil {
-                                    AsyncImage(url: URL(string: viewModel.userDetails?.profileImage ?? "")) { phase in
-                                        if let image = phase.image {
-                                            image
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fill)
-                                                .frame(width: 40, height: 40, alignment: .center)
-                                                .clipShape(Circle())
-                                        } else if phase.error != nil {
-                                            Color.red
-                                                .frame(width: 40, height: 40)
-                                                .clipShape(Circle())
-                                        } else {
-                                            Color.gray
-                                                .frame(width: 40, height: 40)
-                                                .clipShape(Circle())
+                                Menu {
+                                    NavigationLink("Tickets", destination: TicketsView())
+                                    NavigationLink("Profile", destination: UserProfileView())
+                                } label: {
+                                    if viewModel.userDetails?.profileImage != nil {
+                                        AsyncImage(url: URL(string: viewModel.userDetails?.profileImage ?? "")) { phase in
+                                            if let image = phase.image {
+                                                image
+                                                    .resizable()
+                                                    .aspectRatio(contentMode: .fill)
+                                                    .frame(width: 40, height: 40, alignment: .center)
+                                                    .clipShape(Circle())
+                                            } else if phase.error != nil {
+                                                Color.red
+                                                    .frame(width: 40, height: 40)
+                                                    .clipShape(Circle())
+                                            } else {
+                                                Color.gray
+                                                    .frame(width: 40, height: 40)
+                                                    .clipShape(Circle())
+                                            }
                                         }
-                                    }
-                                    .frame(maxWidth: .infinity, alignment: .trailing)
-                                } else {
-                                    Image(systemName: "person.crop.circle")
-                                        .resizable()
-                                        .frame(width: 40, height: 40)
-                                        .foregroundStyle(Color.white)
                                         .frame(maxWidth: .infinity, alignment: .trailing)
+                                    } else {
+                                        Image(systemName: "person.crop.circle")
+                                            .resizable()
+                                            .frame(width: 40, height: 40)
+                                            .foregroundStyle(Color.white)
+                                            .frame(maxWidth: .infinity, alignment: .trailing)
+                                    }
                                 }
+                                .menuStyle(BorderlessButtonMenuStyle()) // Remove the default menu styling
                                 
                                 HStack(spacing: 3) {
                                     Image(systemName: "location.fill")
@@ -113,7 +119,7 @@ struct HomeView: View {
                                             RoundedRectangle(cornerRadius: 30)
                                                 .stroke(Color.white, lineWidth: 2)
                                         )
-
+                                        
                                     }
                                 }
                                 
@@ -195,10 +201,10 @@ struct HomeView: View {
                             } else {
                                 ForEach(viewModel.events) { event in
                                     NavigationLink(destination: EventDetailsView(id: event.id)) {
-                                            EventCard(event: event)
-                                        }
-                                        .buttonStyle(.plain)
-                                        .padding(.bottom, 20)
+                                        EventCard(event: event)
+                                    }
+                                    .buttonStyle(.plain)
+                                    .padding(.bottom, 20)
                                 }
                             }
                         }

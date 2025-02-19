@@ -1,17 +1,17 @@
 import Foundation
 
 struct UserDetails: Codable {
-    let id: String
-    let firstName: String
-    let lastName: String
-    let email: String
-    let createdAt: Date
-    let status: Bool
-    let instagramUsername: String?
-    let isEmailVerified: Bool
-    let twitterUsername: String?
-    let profileImage: String?
-    let linkedinUsername: String?
+    var id: String
+    var firstName: String
+    var lastName: String
+    var email: String
+    var createdAt: Date
+    var status: Bool
+    var instagramUsername: String?
+    var isEmailVerified: Bool
+    var twitterUsername: String?
+    var profileImage: String?
+    var linkedinUsername: String?
 
     enum CodingKeys: String, CodingKey {
         case id

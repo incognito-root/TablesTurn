@@ -23,8 +23,6 @@ class HomeViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
 
     private let homeService = HomeService()
-    private let sharedService: SharedServiceProtocol = SharedService.shared
-    
     
     init() {
         setupSearchPublisher()
@@ -70,7 +68,7 @@ class HomeViewModel: ObservableObject {
         defer { isLoading = false }
         
         do {
-            userDetails = try await sharedService.getUserDetails()
+            userDetails = try await homeService.getUserDetails()
         } catch let error as APIError {
             handleAPIError(error: error)
         } catch {

@@ -39,6 +39,7 @@ struct CustomTextField: View {
     var placeHolderColor: Color? = nil
     var borderEdges: [Edge]? = nil
     var borderWidth: CGFloat? = nil
+    var isEditable: Bool = true
     
     var validation: ((String) -> String?)? = nil
     
@@ -55,31 +56,37 @@ struct CustomTextField: View {
                         .foregroundStyle(iconColor ?? .gray)
                 }
                 
-                if isSecure {
-                    SecureField("", text: $text, prompt: Text(placeholder).foregroundStyle(placeHolderColor ?? .gray))
-                        .keyboardType(keyboardType)
-                        .foregroundStyle(textColor ?? .white)
-                        .onChange(of: text) { newValue, _ in
-                            handleChange(newValue)
-                        }
-                } else {
-                    TextField("", text: $text, prompt: Text(placeholder).foregroundStyle(placeHolderColor ?? .gray))
-                        .keyboardType(keyboardType)
-                        .foregroundStyle(textColor ?? .white)
-                        .onChange(of: text) { newValue, _ in
-                            handleChange(newValue)
-                        }
-                }
-                
-                if !text.isEmpty {
-                    Button(action: {
-                        text = ""
-                        errorMessage = nil
-                        showError = false
-                    }) {
-                        Image(systemName: "multiply.circle.fill")
-                            .foregroundStyle(iconColor ?? .gray)
+                if isEditable {
+                    if isSecure {
+                        SecureField("", text: $text, prompt: Text(placeholder).foregroundStyle(placeHolderColor ?? .gray))
+                            .keyboardType(keyboardType)
+                            .foregroundStyle(textColor ?? .white)
+                            .onChange(of: text) { newValue, _ in
+                                handleChange(newValue)
+                            }
+                    } else {
+                        TextField("", text: $text, prompt: Text(placeholder).foregroundStyle(placeHolderColor ?? .gray))
+                            .keyboardType(keyboardType)
+                            .foregroundStyle(textColor ?? .white)
+                            .onChange(of: text) { newValue, _ in
+                                handleChange(newValue)
+                            }
                     }
+                    
+                    if !text.isEmpty {
+                        Button(action: {
+                            text = ""
+                            errorMessage = nil
+                            showError = false
+                        }) {
+                            Image(systemName: "multiply.circle.fill")
+                                .foregroundStyle(iconColor ?? .gray)
+                        }
+                    }
+                } else {
+                    Text(text.isEmpty ? placeholder : text)
+                        .foregroundStyle(textColor ?? .white)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
             }
             .padding(paddingValue)

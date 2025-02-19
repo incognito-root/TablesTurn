@@ -17,4 +17,8 @@ class HomeService {
                                              page: page,
                                              pageSize: pageSize)
     }
+    
+    func getUserDetails() async throws -> UserDetails {
+        try await sharedService.getUserDetails()
+    }
 }

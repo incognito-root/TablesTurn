@@ -14,6 +14,10 @@
 		D31EB1442D6469A3000D8F57 /* EventsCalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31EB1432D6469A3000D8F57 /* EventsCalendarService.swift */; };
 		D3255D5F2D51C0E7007E0125 /* GettingStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3255D5E2D51C0E7007E0125 /* GettingStartedView.swift */; };
 		D32B5E312D65C0CD00EA8FB3 /* RsvpDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B5E302D65C0CD00EA8FB3 /* RsvpDetails.swift */; };
+		D32B5E3D2D65D18C00EA8FB3 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B5E3C2D65D18C00EA8FB3 /* UserProfileView.swift */; };
+		D32B5E3F2D65D19700EA8FB3 /* TicketsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B5E3E2D65D19700EA8FB3 /* TicketsView.swift */; };
+		D32B5E412D65FC0F00EA8FB3 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B5E402D65FC0F00EA8FB3 /* UserProfileViewModel.swift */; };
+		D32B5E432D66076D00EA8FB3 /* UserProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B5E422D66076D00EA8FB3 /* UserProfileService.swift */; };
 		D33DF8CD2D5BB44000ACF1D4 /* ImageRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33DF8CC2D5BB44000ACF1D4 /* ImageRepresentation.swift */; };
 		D33DF8D12D5BB46000ACF1D4 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33DF8D02D5BB46000ACF1D4 /* ImagePickerView.swift */; };
 		D33DF8D52D5BB47A00ACF1D4 /* ImagePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33DF8D42D5BB47A00ACF1D4 /* ImagePickerViewModel.swift */; };
@@ -98,6 +102,10 @@
 		D31EB1432D6469A3000D8F57 /* EventsCalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCalendarService.swift; sourceTree = "<group>"; };
 		D3255D5E2D51C0E7007E0125 /* GettingStartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartedView.swift; sourceTree = "<group>"; };
 		D32B5E302D65C0CD00EA8FB3 /* RsvpDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RsvpDetails.swift; sourceTree = "<group>"; };
+		D32B5E3C2D65D18C00EA8FB3 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
+		D32B5E3E2D65D19700EA8FB3 /* TicketsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsView.swift; sourceTree = "<group>"; };
+		D32B5E402D65FC0F00EA8FB3 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
+		D32B5E422D66076D00EA8FB3 /* UserProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileService.swift; sourceTree = "<group>"; };
 		D33DF8CC2D5BB44000ACF1D4 /* ImageRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepresentation.swift; sourceTree = "<group>"; };
 		D33DF8D02D5BB46000ACF1D4 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		D33DF8D42D5BB47A00ACF1D4 /* ImagePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerViewModel.swift; sourceTree = "<group>"; };
@@ -219,6 +227,88 @@
 			sourceTree = "<group>";
 		};
 		D3255D5D2D51BD59007E0125 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D32B5E322D65D12700EA8FB3 /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				D32B5E372D65D15F00EA8FB3 /* Models */,
+				D32B5E362D65D15400EA8FB3 /* Views */,
+				D32B5E352D65D14700EA8FB3 /* ViewModels */,
+				D32B5E342D65D14000EA8FB3 /* Services */,
+			);
+			path = UserProfile;
+			sourceTree = "<group>";
+		};
+		D32B5E332D65D13100EA8FB3 /* Tickets */ = {
+			isa = PBXGroup;
+			children = (
+				D32B5E3B2D65D17A00EA8FB3 /* Models */,
+				D32B5E3A2D65D17400EA8FB3 /* Views */,
+				D32B5E392D65D16E00EA8FB3 /* ViewModels */,
+				D32B5E382D65D16900EA8FB3 /* Services */,
+			);
+			path = Tickets;
+			sourceTree = "<group>";
+		};
+		D32B5E342D65D14000EA8FB3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D32B5E422D66076D00EA8FB3 /* UserProfileService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D32B5E352D65D14700EA8FB3 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D32B5E402D65FC0F00EA8FB3 /* UserProfileViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D32B5E362D65D15400EA8FB3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D32B5E3C2D65D18C00EA8FB3 /* UserProfileView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D32B5E372D65D15F00EA8FB3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D32B5E382D65D16900EA8FB3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D32B5E392D65D16E00EA8FB3 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D32B5E3A2D65D17400EA8FB3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D32B5E3E2D65D19700EA8FB3 /* TicketsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D32B5E3B2D65D17A00EA8FB3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -544,6 +634,8 @@
 		D3C03BE92D51025E00E5251C /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				D32B5E332D65D13100EA8FB3 /* Tickets */,
+				D32B5E322D65D12700EA8FB3 /* UserProfile */,
 				D368EDFA2D5F5AD100DA4632 /* EventDetails */,
 				D36F20B62D5EA26500DE1FD3 /* EventsCalendar */,
 				D33DF8C72D5BB2F500ACF1D4 /* ImagePicker */,
@@ -828,6 +920,7 @@
 				D346CB8A2D5A0FC500F897BF /* SharedServiceProtocol.swift in Sources */,
 				D3C68E872D561040000F3C0C /* EmailVerificationViewModel.swift in Sources */,
 				D38BDE2D2D56AF3300206D28 /* EventCard.swift in Sources */,
+				D32B5E432D66076D00EA8FB3 /* UserProfileService.swift in Sources */,
 				D35409402D61B4AB00941806 /* EventDetailsService.swift in Sources */,
 				D39401B42D524BF500DCFE21 /* CustomTextField.swift in Sources */,
 				D3F4EB032D54F70200C71FDF /* UserLoginResponse.swift in Sources */,
@@ -835,6 +928,7 @@
 				D33DF8D52D5BB47A00ACF1D4 /* ImagePickerViewModel.swift in Sources */,
 				D3C68E892D5615EC000F3C0C /* EmailVerificationService.swift in Sources */,
 				D33DF8D12D5BB46000ACF1D4 /* ImagePickerView.swift in Sources */,
+				D32B5E412D65FC0F00EA8FB3 /* UserProfileViewModel.swift in Sources */,
 				D3F4EAFB2D54F16000C71FDF /* UserSignupResponse.swift in Sources */,
 				D368EE022D5FD64900DA4632 /* AvatarStack.swift in Sources */,
 				D3C03BE82D51023400E5251C /* AppConfig.swift in Sources */,
@@ -843,11 +937,13 @@
 				D3C03BBD2D50FF5700E5251C /* TablesTurnApp.swift in Sources */,
 				D36F20B32D5E92D000DE1FD3 /* PaginationView.swift in Sources */,
 				D354093E2D61B35600941806 /* EventDetails.swift in Sources */,
+				D32B5E3D2D65D18C00EA8FB3 /* UserProfileView.swift in Sources */,
 				D3F4EAFD2D54F45000C71FDF /* LoginViewModel.swift in Sources */,
 				D36F20C02D5EB44700DE1FD3 /* EventsCalendarViewModel.swift in Sources */,
 				D3255D5F2D51C0E7007E0125 /* GettingStartedView.swift in Sources */,
 				D36959492D52130700483BDB /* ImageCarousel.swift in Sources */,
 				D39624922D564D6300A3E310 /* CircularButtonStyle.swift in Sources */,
+				D32B5E3F2D65D19700EA8FB3 /* TicketsView.swift in Sources */,
 				D39401B22D5243B200DCFE21 /* SignupFormView.swift in Sources */,
 				D31EB1442D6469A3000D8F57 /* EventsCalendarService.swift in Sources */,
 				D312BE1A2D5B7AA200C43023 /* AddEventDetails.swift in Sources */,

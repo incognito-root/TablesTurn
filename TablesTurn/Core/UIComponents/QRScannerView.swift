@@ -44,7 +44,7 @@ struct QRScannerView: View {
     private var scannerSheet: some View {
         CodeScannerView(
             codeTypes: [.qr],
-            simulatedData: #"{"ticketId":"1"}"#,  // Remove in production
+            simulatedData: #"{"ticketId":"2"}"#,  // Remove in production
             completion: handleScanResult
         )
         .ignoresSafeArea()

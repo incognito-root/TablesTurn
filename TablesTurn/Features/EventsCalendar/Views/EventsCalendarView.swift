@@ -91,10 +91,14 @@ struct EventsCalendarView: View {
                             VStack(spacing: 20) {
                                 if viewModel.isLoading {
                                     ProgressView()
-                                        .frame(height: 230)
+                                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                                 } else if viewModel.events.isEmpty {
                                     Text("No events found")
                                         .frame(height: 230)
+                                        .frame(maxWidth: .infinity)
+                                        .font(.system(size: 30))
+                                        .foregroundStyle(Color.gray)
                                 } else {
                                     ForEach(viewModel.events) { event in
                                         EventCard(event: event)

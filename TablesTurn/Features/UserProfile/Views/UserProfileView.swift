@@ -30,7 +30,7 @@ struct UserProfileView: View {
                 )
                 .ignoresSafeArea()
                 
-                if viewModel.isLoading { // Show progress while loading
+                if viewModel.isLoading {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle(tint: .white))
                         .frame(maxWidth: .infinity, maxHeight: .infinity)

@@ -9,12 +9,18 @@ class LoginViewModel: ObservableObject {
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     @Published var isEmailNotVerified: Bool = false
+    @Published var isLoading = false
     
     private let service = LoginService()
     
     func login() {
+        isLoading = true
+        
         Task {
-            guard validateFields() else { return }
+            guard validateFields() else {
+                isLoading = false
+                return
+            }
             
             let userDetails = UserLoginDetails(
                 email: email,
@@ -26,8 +32,10 @@ class LoginViewModel: ObservableObject {
                 let user = try await service.login(userDetails: userDetails)
                 await handleSuccess(user: user)
             } catch let error as APIError {
+                isLoading = false
                 handleAPIError(error: error)
             } catch {
+                isLoading = false
                 showAlert(message: error.localizedDescription)
             }
         }
@@ -36,6 +44,7 @@ class LoginViewModel: ObservableObject {
     private func validateFields() -> Bool {
         guard !email.isEmpty, !password.isEmpty else {
             showAlert(message: "All fields are required.")
+            isLoading = false
             return false
         }
         return true
@@ -45,6 +54,7 @@ class LoginViewModel: ObservableObject {
         let userToSave = User(id: user.id)
         UserManager.shared.currentUser = userToSave
         UserManager.shared.saveUser(userToSave)
+        isLoading = false
     }
     
     private func handleAPIError(error: APIError) {

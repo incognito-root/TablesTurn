@@ -84,10 +84,16 @@ struct LoginFormView: View {
                                 Button(action: {
                                     viewModel.login()
                                 }) {
-                                    Text("Submit".uppercased())
+                                    if viewModel.isLoading {
+                                        ProgressView()
+                                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                                    } else {
+                                        Text("Submit".uppercased())
+                                    }
                                 }
                                 .buttonStyle(MainButtonStyle())
                                 .listRowBackground(Color.clear)
+                                .disabled(viewModel.isLoading)
                                 .listRowInsets(EdgeInsets(top: 15, leading: 5, bottom: 0, trailing: 5))
                             }
                         }

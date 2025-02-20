@@ -171,13 +171,20 @@ struct SignupFormView: View {
                                     )
                                     .listRowBackground(Color.clear)
                                     .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 20, trailing: 5))
+
                                     Button(action: {
                                         viewModel.signUp()
                                     }) {
-                                        Text("Sign Up".uppercased())
+                                        if viewModel.isLoading {
+                                            ProgressView()
+                                                .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                                        } else {
+                                            Text("Sign Up".uppercased())
+                                        }
                                     }
                                     .buttonStyle(MainButtonStyle())
                                     .listRowBackground(Color.clear)
+                                    .disabled(viewModel.isLoading)
                                     .listRowInsets(EdgeInsets(top: 20, leading: 5, bottom: 50, trailing: 5))
                                 }
                             }

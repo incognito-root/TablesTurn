@@ -217,6 +217,9 @@ struct HomeView: View {
                             } else if viewModel.events.isEmpty {
                                 Text("No events found")
                                     .frame(height: 230)
+                                    .frame(maxWidth: .infinity)
+                                    .font(.system(size: 30))
+                                    .foregroundStyle(Color.white)
                             } else {
                                 ForEach(viewModel.events) { event in
                                     NavigationLink(destination: EventDetailsView(id: event.id)) {

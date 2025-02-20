@@ -17,6 +17,7 @@ class SignupViewModel: ObservableObject {
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     @Published var signedUp: Bool = false
+    @Published var isLoading = false
     
     private let service = SignupService()
     private let loginViewModel = LoginViewModel()
@@ -24,6 +25,7 @@ class SignupViewModel: ObservableObject {
     func validateEmail() {
         guard !email.isEmpty, email.contains("@") else {
             showAlert(message: "Please enter a valid email.")
+            isLoading = false
             return
         }
         
@@ -34,8 +36,13 @@ class SignupViewModel: ObservableObject {
     }
     
     func signUp() {
+        isLoading = true
+        
         Task {
-            guard validateFields() else { return }
+            guard validateFields() else {
+                isLoading = false
+                return
+            }
             
             let userDetails = UserSignupDetails(
                 firstName: firstName,
@@ -50,9 +57,13 @@ class SignupViewModel: ObservableObject {
             do {
                 _ = try await service.signUp(userDetails: userDetails)
                 signedUp = true
+                
+                isLoading = false
             } catch let error as APIError {
+                isLoading = false
                 handleAPIError(error: error)
             } catch {
+                isLoading = false
                 showAlert(message: error.localizedDescription)
             }
         }
@@ -95,7 +106,6 @@ class SignupViewModel: ObservableObject {
     }
 }
 
-// Helper extension
 extension String {
     var nilIfEmpty: String? {
         self.isEmpty ? nil : self

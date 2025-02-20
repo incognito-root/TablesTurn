@@ -273,14 +273,14 @@ struct AddEventView: View {
                                                     }
                                                 }) {
                                                     if viewModel.isLoading {
-                                                        ProgressView() // Show loader
+                                                        ProgressView()
                                                             .progressViewStyle(CircularProgressViewStyle(tint: .white))
                                                     } else {
                                                         Text("submit".uppercased())
                                                     }
                                                 }
                                                 .buttonStyle(MainButtonStyle())
-                                                .disabled(viewModel.isLoading) // Disable button when loading
+                                                .disabled(viewModel.isLoading)
                                                 .listRowBackground(Color.clear)
                                             }
                                         }

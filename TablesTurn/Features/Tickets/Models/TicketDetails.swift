@@ -5,8 +5,8 @@ struct TicketDetails: Codable, Identifiable {
     let redeemed: Bool
     let redeemedAt: Date
     let qrImage: String
-    let users: UserDetailsLess
-    let events: EventDetailsLess
+    let users: UserDetailsPartial
+    let events: EventDetailsPartial
     
     var id: String {
         return ticketId
@@ -20,7 +20,7 @@ struct TicketDetails: Codable, Identifiable {
     }
 }
 
-struct UserDetailsLess: Codable {
+struct UserDetailsPartial: Codable {
     var id: String
     var firstName: String
     var lastName: String
@@ -38,7 +38,7 @@ struct UserDetailsLess: Codable {
     }
 }
 
-struct EventDetailsLess: Codable, Identifiable {
+struct EventDetailsPartial: Codable, Identifiable {
     let id: String
     let title: String
     let rsvpDeadline: Date?

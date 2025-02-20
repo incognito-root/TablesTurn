@@ -46,7 +46,6 @@ class HomeViewModel: ObservableObject {
         getAllEvents()
     }
     
-    // Fetch initial or additional events
     func getAllEvents() {
         guard !isLoading, canLoadMore else { return }
         
@@ -61,13 +60,17 @@ class HomeViewModel: ObservableObject {
                     pageSize: self.pageSize
                 )
                 
+                let newEvents = response.data
+                
                 if currentPage == 1 {
-                    events = response.data
+                    events = newEvents
                 } else {
-                    events.append(contentsOf: response.data)
+                    events.append(contentsOf: newEvents)
                 }
                 
-                // Check if there are more pages to load
+                // Remove duplicates based on event ID
+                events = Array(Set(events))
+                
                 if response.data.count < pageSize {
                     canLoadMore = false
                 } else {

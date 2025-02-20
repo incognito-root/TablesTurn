@@ -168,7 +168,7 @@ class AddEventViewModel: ObservableObject {
     
     func uploadImage(eventData: Event) async {
         do {
-            let result: SimpleEventDetails = try await eventService.uploadEventImage(event: eventData)
+            _ = try await eventService.uploadEventImage(event: eventData)
             
             await MainActor.run {
                 isLoading = false

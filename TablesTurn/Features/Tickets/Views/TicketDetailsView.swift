@@ -10,7 +10,7 @@ struct TicketDetailsView: View {
         
         let appearance = UINavigationBarAppearance()
         appearance.configureWithTransparentBackground()
-        appearance.backgroundColor = UIColor(Color.clear) // Set your desired background color
+        appearance.backgroundColor = UIColor(Color.clear)
         appearance.titleTextAttributes = [
             .foregroundColor: UIColor.white,
             .font: UIFont.systemFont(ofSize: 24, weight: .semibold)
@@ -64,7 +64,7 @@ struct TicketDetailsView: View {
                                 .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 20, trailing: 5))
                             }
                             
-                            Section("Ticket Information") {
+                            Section(header: Text("Ticket Information").font(.headline).fontWeight(.bold)) {
                                 HStack {
                                     Text("Ticket ID")
                                     Spacer()
@@ -94,7 +94,7 @@ struct TicketDetailsView: View {
                             .listRowBackground(Color.clear)
                             .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 20, trailing: 5))
                             
-                            Section("User Information") {
+                            Section(header: Text("User Information").font(.headline).fontWeight(.bold)) {
                                 HStack {
                                     Text("First Name")
                                     Spacer()
@@ -126,7 +126,7 @@ struct TicketDetailsView: View {
                             .listRowBackground(Color.clear)
                             .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 20, trailing: 5))
                             
-                            Section("Event Information") {
+                            Section(header: Text("Event Information").font(.headline).fontWeight(.bold)) {
                                 HStack {
                                     Text("Event Title")
                                     Spacer()

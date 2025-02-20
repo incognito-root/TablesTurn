@@ -1,6 +1,6 @@
 import Foundation
 
-struct Event: Codable, Identifiable {
+struct Event: Codable, Identifiable, Hashable {
     let id: String
     let title: String
     let rsvpDeadline: Date?
@@ -12,6 +12,14 @@ struct Event: Codable, Identifiable {
     let dateTime: Date
     let createdAt: Date?
     let fkUserId: String
+    
+    static func == (lhs: Event, rhs: Event) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
     
     enum CodingKeys: String, CodingKey {
         case id, title, location, image, description, status

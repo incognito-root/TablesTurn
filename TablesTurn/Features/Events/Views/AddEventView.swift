@@ -2,6 +2,7 @@ import SwiftUI
 
 struct AddEventView: View {
     let radius: CGFloat = 50
+    @Environment(\.dismiss) var dismiss
     
     @StateObject private var viewModel = AddEventViewModel()
     
@@ -295,6 +296,13 @@ struct AddEventView: View {
                     .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
                 }
                 .padding(.top, 20)
+                
+                if viewModel.showSuccessModal {
+                    SuccessModalView {
+                        viewModel.showSuccessModal = false
+                        dismiss()
+                    }
+                }
             }
             
             .foregroundStyle(.primaryText)

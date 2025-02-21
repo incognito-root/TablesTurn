@@ -74,6 +74,7 @@
 		D3C68E892D5615EC000F3C0C /* EmailVerificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C68E882D5615EC000F3C0C /* EmailVerificationService.swift */; };
 		D3C68E8B2D561D42000F3C0C /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C68E8A2D561D42000F3C0C /* UserManager.swift */; };
 		D3C68E8D2D5621C3000F3C0C /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C68E8C2D5621C3000F3C0C /* RootView.swift */; };
+		D3CA194B2D68E60B00474300 /* SuccessModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CA194A2D68E60B00474300 /* SuccessModalView.swift */; };
 		D3F4EAF12D54BA9600C71FDF /* UserSignupDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F4EAF02D54BA9600C71FDF /* UserSignupDetails.swift */; };
 		D3F4EAF32D54BC2A00C71FDF /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F4EAF22D54BC2A00C71FDF /* SignupViewModel.swift */; };
 		D3F4EAF52D54BF5400C71FDF /* SignupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F4EAF42D54BF5400C71FDF /* SignupService.swift */; };
@@ -172,6 +173,7 @@
 		D3C68E882D5615EC000F3C0C /* EmailVerificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationService.swift; sourceTree = "<group>"; };
 		D3C68E8A2D561D42000F3C0C /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		D3C68E8C2D5621C3000F3C0C /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		D3CA194A2D68E60B00474300 /* SuccessModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessModalView.swift; sourceTree = "<group>"; };
 		D3F4EAF02D54BA9600C71FDF /* UserSignupDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSignupDetails.swift; sourceTree = "<group>"; };
 		D3F4EAF22D54BC2A00C71FDF /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		D3F4EAF42D54BF5400C71FDF /* SignupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupService.swift; sourceTree = "<group>"; };
@@ -740,6 +742,7 @@
 				D36F20B22D5E92D000DE1FD3 /* PaginationView.swift */,
 				D368EE012D5FD64900DA4632 /* AvatarStack.swift */,
 				D32B5E4E2D66218000EA8FB3 /* QRScannerView.swift */,
+				D3CA194A2D68E60B00474300 /* SuccessModalView.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -982,6 +985,7 @@
 				D32B5E3F2D65D19700EA8FB3 /* TicketsView.swift in Sources */,
 				D39401B22D5243B200DCFE21 /* SignupFormView.swift in Sources */,
 				D31EB1442D6469A3000D8F57 /* EventsCalendarService.swift in Sources */,
+				D3CA194B2D68E60B00474300 /* SuccessModalView.swift in Sources */,
 				D32B5E472D661C7100EA8FB3 /* TicketsViewModel.swift in Sources */,
 				D312BE1A2D5B7AA200C43023 /* AddEventDetails.swift in Sources */,
 				D31EB1402D638116000D8F57 /* RsvpStatus.swift in Sources */,

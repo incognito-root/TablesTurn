@@ -18,6 +18,7 @@ class AddEventViewModel: ObservableObject {
     @Published var alertMessage: String = ""
     @Published var editing: Bool = false
     @Published var isLoading: Bool = false
+    @Published var showSuccessModal = false
     
     private let eventService = EventService()
     let imagePickerViewModel = ImagePickerViewModel()
@@ -172,8 +173,7 @@ class AddEventViewModel: ObservableObject {
             
             await MainActor.run {
                 isLoading = false
-                alertMessage = "Event Added Successfully"
-                showAlert = true
+                showSuccessModal = true
             }
         } catch let error as APIError {
             await MainActor.run {

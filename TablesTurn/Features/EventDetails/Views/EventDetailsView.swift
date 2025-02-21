@@ -38,21 +38,30 @@ struct ProfileImageView: View {
 
 struct EventTopImageView: View {
     let imageURL: String?
-    
+    let eventTitle: String
+
     var body: some View {
-        AsyncImage(url: URL(string: imageURL ?? "https://images.pexels.com/photos/50675/banquet-wedding-society-deco-50675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")) { phase in
-            if let image = phase.image {
-                image
-                    .resizable()
-                    .frame(height: 350)
-            } else if phase.error != nil {
-                Color.red
-            } else {
-                Color.gray
+        if let imageURL = imageURL, !imageURL.isEmpty, let url = URL(string: imageURL) {
+            AsyncImage(url: url) { phase in
+                if let image = phase.image {
+                    image
+                        .resizable()
+                        .frame(height: 350)
+                } else if phase.error != nil {
+                    Color.red
+                } else {
+                    Color.gray
+                }
             }
+        } else {
+            Text(eventTitle)
+                .font(.title)
+                .frame(maxWidth: .infinity, minHeight: 350)
+                .background(Color.gray.opacity(0.3))
         }
     }
 }
+
 
 struct EventBioView: View {
     let title: String?
@@ -230,7 +239,10 @@ struct EventDetailsView: View {
                     
                     VStack {
                         ZStack {
-                            EventTopImageView(imageURL: viewModel.eventDetails?.image)
+                            EventTopImageView(
+                                imageURL: viewModel.eventDetails?.image,
+                                eventTitle: viewModel.eventDetails?.title ?? ""
+                            )
                             
                             Color.black.opacity(0.60)
                             

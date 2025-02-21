@@ -2,6 +2,14 @@ import SwiftUI
 
 struct EventCard: View {
     let event: Event
+    let showTicketData: Bool?
+    let showEditButton: Bool?
+    
+    init(showTicketData: Bool = true, showEditButton: Bool = false, event: Event) {
+        self.showTicketData = showTicketData
+        self.showEditButton = showEditButton
+        self.event = event
+    }
     
     var formattedDate: String {
         let dateFormatter = DateFormatter()
@@ -26,26 +34,51 @@ struct EventCard: View {
             
             Color.black.opacity(0.60)
             
-            VStack {
-                HStack {
-                    Image(systemName: "ticket")
-                        .foregroundStyle(.white)
-                    Text("Tickets Available")
+            if showTicketData == true {
+                VStack {
+                    HStack {
+                        Image(systemName: "ticket")
+                            .foregroundStyle(.white)
+                        Text("Tickets Available")
+                            .font(.system(size: 14))
+                    }
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                .padding(20)
+            }
+            
+            if showTicketData == true {
+                VStack(alignment: .trailing) {
+                    Text("80%")
+                        .font(.system(size: 26))
+                        .fontWeight(.bold)
+                    Text("Tickets Booked")
                         .font(.system(size: 14))
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                .padding(17)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-            .padding(20)
             
-            VStack(alignment: .trailing) {
-                Text("80%")
-                    .font(.system(size: 26))
-                    .fontWeight(.bold)
-                Text("Tickets Booked")
-                    .font(.system(size: 14))
+            if showTicketData == false && showEditButton == true && Date() < event.dateTime {
+                VStack(alignment: .trailing) {
+                    NavigationLink {
+                        EditEventView(eventId: event.id)
+                    } label: {
+                        Image(systemName: "pencil")
+                            .font(.system(size: 20))
+                            .fontWeight(.bold)
+                    }
+                    .buttonStyle(CircularButtonStyle(
+                        size: 35,
+                        backgroundColor: .clear,
+                        foregroundColor: .white,
+                        borderColor: .white,
+                        borderWidth: 1
+                    ))
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                .padding(17)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-            .padding(17)
             
             VStack(alignment: .leading, spacing: 10) {
                 Text(event.title.capitalized)

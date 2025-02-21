@@ -48,7 +48,7 @@ struct UserEventsView: View {
                                 } else {
                                     ForEach(viewModel.userEvents) { event in
                                         NavigationLink(destination: EventDetailsView(id: event.id)) {
-                                            EventCard(event: event)
+                                            EventCard(showTicketData: false, showEditButton: true, event: event)
                                         }
                                         .buttonStyle(.plain)
                                         .padding(.bottom, 20)

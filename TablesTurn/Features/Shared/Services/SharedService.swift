@@ -59,6 +59,26 @@ class SharedService: SharedServiceProtocol {
         )
     }
     
+    func uploadUserProfileImage(user: UserDetails) async throws -> UserDetails {
+        guard let uiImage = ImagePickerViewModel.underlyingImage,
+              let imageData = uiImage.jpegData(compressionQuality: 0.3) else {
+            throw ImageError.invalidImage
+        }
+        
+        let headers: HTTPHeaders = [
+            "Content-Type": "multipart/form-data"
+        ]
+        
+        return try await NetworkManager.shared.upload(
+            endpoint: APIEndpoints.uploadUserProfileImage,
+            method: .put,
+            imageData: imageData,
+            imageFieldName: "file",
+            fileName: "image_\(Date().timeIntervalSince1970).jpg",
+            headers: headers
+        )
+    }
+    
     func getEventsInMonth(year: String, month: Int) async throws -> [Event] {
         return try await NetworkManager.shared.request(
             endpoint: APIEndpoints.getAllEvents + "/" + year + "/" + String(month),

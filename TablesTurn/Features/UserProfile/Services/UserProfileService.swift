@@ -28,4 +28,8 @@ class UserProfileService {
             parameters: parameters
         )
     }
+    
+    func uploadUserProfileImage(userDetails: UserDetails) async throws -> UserDetails {
+        try await sharedService.uploadUserProfileImage(user: userDetails)
+    }
 }

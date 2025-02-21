@@ -23,6 +23,7 @@ class UserProfileViewModel: ObservableObject {
     @Published var isLoading = false
     
     private let userProfileService = UserProfileService()
+    let imagePickerViewModel = ImagePickerViewModel()
     
     func getUserDetails() async {
         isLoading = true
@@ -43,11 +44,45 @@ class UserProfileViewModel: ObservableObject {
         
         do {
             userDetails = try await userProfileService.updateDetails(userDetails: self.userDetails)
+            
+            if ImagePickerViewModel.underlyingImage != nil {
+                await uploadImage()
+            }
+
+            await MainActor.run {
+                isLoading = false
+            }
         } catch let error as APIError {
             handleAPIError(error: error)
         } catch {
             handleGenericError(error: error)
         }
+    }
+    
+    func uploadImage() async {
+        do {
+            _ = try await userProfileService.uploadUserProfileImage(userDetails: userDetails)
+            
+            await getUserDetails()
+            
+            await MainActor.run {
+                isLoading = false
+            }
+        } catch let error as APIError {
+            await MainActor.run {
+                handleAPIError(error: error)
+                isLoading = false
+            }
+        } catch {
+            await MainActor.run {
+                handleGenericError(error: error)
+                isLoading = false
+            }
+        }
+    }
+    
+    func resetImage() {
+        ImagePickerViewModel.underlyingImage = nil
     }
     
     private func handleAPIError(error: APIError) {

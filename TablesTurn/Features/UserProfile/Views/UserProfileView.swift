@@ -47,20 +47,31 @@ struct UserProfileView: View {
                                 Section {
                                     HStack {
                                         Spacer()
-                                        AsyncImage(url: URL(string: viewModel.userDetails.profileImage ?? "")) { phase in
-                                            if let image = phase.image {
-                                                image
-                                                    .resizable()
-                                                    .aspectRatio(contentMode: .fill)
-                                                    .frame(width: 100, height: 100)
-                                                    .clipShape(Circle())
-                                            } else {
-                                                Image(systemName: "person.circle.fill")
-                                                    .resizable()
-                                                    .frame(width: 100, height: 100)
-                                                    .foregroundColor(.gray)
+                                        
+                                        if viewModel.isEditing == false {
+                                            AsyncImage(url: URL(string: viewModel.userDetails.profileImage ?? "")) { phase in
+                                                if let image = phase.image {
+                                                    image
+                                                        .resizable()
+                                                        .aspectRatio(contentMode: .fill)
+                                                        .frame(width: 100, height: 100)
+                                                        .clipShape(Circle())
+                                                } else {
+                                                    Image(systemName: "person.circle.fill")
+                                                        .resizable()
+                                                        .frame(width: 100, height: 100)
+                                                        .foregroundColor(.gray)
+                                                }
                                             }
+                                        } else {
+                                            VStack(alignment: .leading) {
+                                                ImagePickerView(viewModel: viewModel.imagePickerViewModel)
+                                            }
+                                            .frame(maxWidth: .infinity)
+                                            .listRowBackground(Color.clear)
+                                            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                                         }
+                                        
                                         Spacer()
                                     }
                                     .listRowBackground(Color.clear)
@@ -173,6 +184,8 @@ struct UserProfileView: View {
             }
         }
         .onAppear {
+            viewModel.resetImage()
+            
             Task {
                 await viewModel.getUserDetails()
             }

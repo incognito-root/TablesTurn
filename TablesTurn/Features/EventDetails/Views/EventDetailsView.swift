@@ -172,14 +172,19 @@ struct RSVPModalView: View {
                     Task {
                         await viewModel.rsvpToEvent()
                     }
-                }) {
+                }) {if viewModel.isLoading {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                } else {
                     Text("Confirm".uppercased())
+                }
                 }
                 .buttonStyle(MainButtonStyle(
                     padding: 9,
                     fontSize: 20,
                     foregroundColor: .white
                 ))
+                .disabled(viewModel.isLoading)
                 .listRowBackground(Color.clear)
                 .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 0, trailing: 5))
             }
@@ -195,6 +200,7 @@ struct RSVPModalView: View {
 
 struct EventDetailsView: View {
     let radius: CGFloat = 50
+    @Environment(\.dismiss) var dismiss
     
     @ObservedObject var viewModel: EventDetailsViewModel
     
@@ -373,6 +379,13 @@ struct EventDetailsView: View {
                         withAnimation {
                             viewModel.showRsvpModal = false
                         }
+                    }
+                }
+                
+                if viewModel.showSuccessModal {
+                    SuccessModalView(textToShow: "RSVP'd To Event Successfully. An email containing QR code is sent on your email") {
+                        viewModel.showSuccessModal = false
+                        dismiss()
                     }
                 }
             }

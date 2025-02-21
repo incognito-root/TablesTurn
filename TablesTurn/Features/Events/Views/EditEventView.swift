@@ -31,19 +31,19 @@ struct EditEventView: View {
                 )
                 .ignoresSafeArea()
                 
-                if viewModel.isLoading {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                } else {
-                    ZStack(alignment: .topLeading) {
-                        Color.primaryBackground
-                            .ignoresSafeArea()
-                            .padding(.bottom, radius)
-                            .cornerRadius(radius)
-                            .padding(.bottom, -radius)
-                        
-                        VStack(spacing: 0) {
+                ZStack(alignment: .topLeading) {
+                    Color.primaryBackground
+                        .ignoresSafeArea()
+                        .padding(.bottom, radius)
+                        .cornerRadius(radius)
+                        .padding(.bottom, -radius)
+                    
+                    VStack(spacing: 0) {
+                        if viewModel.isLoading {
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        } else {
                             Form {
                                 Section {
                                     HStack {
@@ -99,11 +99,11 @@ struct EditEventView: View {
                                         }
                                     )
                                 }
-                                header: {
-                                    Text("Event Information")
-                                        .foregroundColor(.white)
-                                }
-                                .listRowBackground(Color.clear)
+                            header: {
+                                Text("Event Information")
+                                    .foregroundColor(.white)
+                            }
+                            .listRowBackground(Color.clear)
                                 
                                 Section() {
                                     HStack {
@@ -124,11 +124,11 @@ struct EditEventView: View {
                                         
                                     }
                                 }
-                                header: {
-                                    Text("Event Information")
-                                        .foregroundColor(.white)
-                                }
-                                .listRowBackground(Color.clear)
+                            header: {
+                                Text("Event Information")
+                                    .foregroundColor(.white)
+                            }
+                            .listRowBackground(Color.clear)
                                 
                                 Section() {
                                     HStack {
@@ -139,17 +139,17 @@ struct EditEventView: View {
                                             .foregroundStyle(Color.white)
                                     }
                                 }
-                                header: {
-                                    Text("Event Information")
-                                        .foregroundColor(.white)
-                                }
-                                .listRowBackground(Color.clear)
-                                }
-                                .scrollContentBackground(.hidden)
+                            header: {
+                                Text("Event Information")
+                                    .foregroundColor(.white)
+                            }
+                            .listRowBackground(Color.clear)
+                            }
+                            .scrollContentBackground(.hidden)
                         }
                     }
-                    .padding(.top, 20)
                 }
+                .padding(.top, 20)
             }
             .alert(isPresented: $viewModel.showAlert) {
                 Alert(title: Text("Error"),

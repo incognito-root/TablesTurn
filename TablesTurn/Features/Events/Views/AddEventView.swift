@@ -298,7 +298,7 @@ struct AddEventView: View {
                 .padding(.top, 20)
                 
                 if viewModel.showSuccessModal {
-                    SuccessModalView {
+                    SuccessModalView(textToShow: "Event Added Successfully!") {
                         viewModel.showSuccessModal = false
                         dismiss()
                     }

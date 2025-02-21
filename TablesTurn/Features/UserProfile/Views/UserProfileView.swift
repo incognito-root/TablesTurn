@@ -30,20 +30,19 @@ struct UserProfileView: View {
                 )
                 .ignoresSafeArea()
                 
-                if viewModel.isLoading {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                } else {
+                ZStack(alignment: .topLeading) {
+                    Color.primaryBackground
+                        .ignoresSafeArea()
+                        .padding(.bottom, radius)
+                        .cornerRadius(radius)
+                        .padding(.bottom, -radius)
                     
-                    ZStack(alignment: .topLeading) {
-                        Color.primaryBackground
-                            .ignoresSafeArea()
-                            .padding(.bottom, radius)
-                            .cornerRadius(radius)
-                            .padding(.bottom, -radius)
-                        
-                        VStack(spacing: 0) {
+                    VStack(spacing: 0) {
+                        if viewModel.isLoading {
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        } else {
                             Form {
                                 Section {
                                     HStack {
@@ -146,8 +145,8 @@ struct UserProfileView: View {
                             .background(Color.clear)
                         }
                     }
-                    .padding(.top, 20)
                 }
+                .padding(.top, 20)
             }
             .foregroundStyle(.primaryText)
             .alert(isPresented: $viewModel.showAlert) {

@@ -14,6 +14,7 @@ class EventDetailsViewModel: ObservableObject {
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     @Published var isLoading = false
+    @Published var showSuccessModal = false
 
     private let eventDetailsService = EventDetailsService()
     
@@ -86,8 +87,13 @@ class EventDetailsViewModel: ObservableObject {
                 attendees: self.attendees
             )
             
-            let res = try await eventDetailsService.rsvpToEvent(rsvp: rsvpDetails, eventId: self.eventId)
+            try await eventDetailsService.rsvpToEvent(rsvp: rsvpDetails, eventId: self.eventId)
 
+            await MainActor.run {
+                isLoading = false
+                showRsvpModal = false
+                showSuccessModal = true
+            }
         } catch let error as APIError {
             handleAPIError(error: error)
         } catch {

@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct SuccessModalView: View {
+    let textToShow: String?
     var onOK: () -> Void
     
     var body: some View {
@@ -9,7 +10,7 @@ struct SuccessModalView: View {
                 .ignoresSafeArea()
             
             VStack(spacing: 20) {
-                Text("Event Added Successfully!")
+                Text(textToShow ?? "")
                     .font(.headline)
                     .foregroundColor(.primaryText)
                 

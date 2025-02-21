@@ -8,7 +8,7 @@ struct TicketsView: View {
     init() {
         UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().titleTextAttributes = [
-            .foregroundColor: UIColor(.white),
+            .foregroundColor: UIColor.white,
             .font: UIFont.systemFont(ofSize: 24, weight: .semibold)
         ]
     }

@@ -75,6 +75,12 @@
 		D3C68E8B2D561D42000F3C0C /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C68E8A2D561D42000F3C0C /* UserManager.swift */; };
 		D3C68E8D2D5621C3000F3C0C /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C68E8C2D5621C3000F3C0C /* RootView.swift */; };
 		D3CA194B2D68E60B00474300 /* SuccessModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CA194A2D68E60B00474300 /* SuccessModalView.swift */; };
+		D3CA194D2D68ECAA00474300 /* UserEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CA194C2D68ECAA00474300 /* UserEventsView.swift */; };
+		D3CA19542D68ED5400474300 /* UserEventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CA19532D68ED5400474300 /* UserEventsViewModel.swift */; };
+		D3CA19562D68F51400474300 /* UserEventsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CA19552D68F51400474300 /* UserEventsService.swift */; };
+		D3CA19582D68FA2D00474300 /* TodaysEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CA19572D68FA2D00474300 /* TodaysEventsView.swift */; };
+		D3CA195A2D68FAC500474300 /* TodaysEventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CA19592D68FAC500474300 /* TodaysEventsViewModel.swift */; };
+		D3CA195C2D68FAF800474300 /* TodaysEventsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CA195B2D68FAF800474300 /* TodaysEventsService.swift */; };
 		D3F4EAF12D54BA9600C71FDF /* UserSignupDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F4EAF02D54BA9600C71FDF /* UserSignupDetails.swift */; };
 		D3F4EAF32D54BC2A00C71FDF /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F4EAF22D54BC2A00C71FDF /* SignupViewModel.swift */; };
 		D3F4EAF52D54BF5400C71FDF /* SignupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F4EAF42D54BF5400C71FDF /* SignupService.swift */; };
@@ -174,6 +180,12 @@
 		D3C68E8A2D561D42000F3C0C /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		D3C68E8C2D5621C3000F3C0C /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		D3CA194A2D68E60B00474300 /* SuccessModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessModalView.swift; sourceTree = "<group>"; };
+		D3CA194C2D68ECAA00474300 /* UserEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEventsView.swift; sourceTree = "<group>"; };
+		D3CA19532D68ED5400474300 /* UserEventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEventsViewModel.swift; sourceTree = "<group>"; };
+		D3CA19552D68F51400474300 /* UserEventsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEventsService.swift; sourceTree = "<group>"; };
+		D3CA19572D68FA2D00474300 /* TodaysEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaysEventsView.swift; sourceTree = "<group>"; };
+		D3CA19592D68FAC500474300 /* TodaysEventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaysEventsViewModel.swift; sourceTree = "<group>"; };
+		D3CA195B2D68FAF800474300 /* TodaysEventsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaysEventsService.swift; sourceTree = "<group>"; };
 		D3F4EAF02D54BA9600C71FDF /* UserSignupDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSignupDetails.swift; sourceTree = "<group>"; };
 		D3F4EAF22D54BC2A00C71FDF /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		D3F4EAF42D54BF5400C71FDF /* SignupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupService.swift; sourceTree = "<group>"; };
@@ -475,6 +487,7 @@
 		D38BDE282D56AF0700206D28 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D3CA195B2D68FAF800474300 /* TodaysEventsService.swift */,
 				D312BE172D5B7A5E00C43023 /* EventService.swift */,
 			);
 			path = Services;
@@ -484,6 +497,7 @@
 			isa = PBXGroup;
 			children = (
 				D346CB932D5A39D200F897BF /* AddEventViewModel.swift */,
+				D3CA19592D68FAC500474300 /* TodaysEventsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -493,6 +507,7 @@
 			children = (
 				D38BDE2C2D56AF3300206D28 /* EventCard.swift */,
 				D346CB8B2D5A38E800F897BF /* AddEventView.swift */,
+				D3CA19572D68FA2D00474300 /* TodaysEventsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -663,6 +678,7 @@
 		D3C03BE92D51025E00E5251C /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				D3CA194E2D68ECFF00474300 /* UserEvents */,
 				D32B5E332D65D13100EA8FB3 /* Tickets */,
 				D32B5E322D65D12700EA8FB3 /* UserProfile */,
 				D368EDFA2D5F5AD100DA4632 /* EventDetails */,
@@ -797,6 +813,48 @@
 			sourceTree = "<group>";
 		};
 		D3C68E922D5623DF000F3C0C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D3CA194E2D68ECFF00474300 /* UserEvents */ = {
+			isa = PBXGroup;
+			children = (
+				D3CA19522D68ED1600474300 /* Models */,
+				D3CA19512D68ED1100474300 /* Views */,
+				D3CA19502D68ED0B00474300 /* ViewModels */,
+				D3CA194F2D68ED0600474300 /* Services */,
+			);
+			path = UserEvents;
+			sourceTree = "<group>";
+		};
+		D3CA194F2D68ED0600474300 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D3CA19552D68F51400474300 /* UserEventsService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D3CA19502D68ED0B00474300 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D3CA19532D68ED5400474300 /* UserEventsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D3CA19512D68ED1100474300 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D3CA194C2D68ECAA00474300 /* UserEventsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D3CA19522D68ED1600474300 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -944,8 +1002,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D31EB1422D6381D3000D8F57 /* EventRsvp.swift in Sources */,
+				D3CA19582D68FA2D00474300 /* TodaysEventsView.swift in Sources */,
 				D32B5E312D65C0CD00EA8FB3 /* RsvpDetails.swift in Sources */,
 				D32B5E492D661D9600EA8FB3 /* RedeemTicketView.swift in Sources */,
+				D3CA195A2D68FAC500474300 /* TodaysEventsViewModel.swift in Sources */,
 				D396248E2D56366200A3E310 /* HomeView.swift in Sources */,
 				D346CB882D5A0D9900F897BF /* Event.swift in Sources */,
 				D346CB8C2D5A38E800F897BF /* AddEventView.swift in Sources */,
@@ -967,10 +1027,13 @@
 				D30BBFAE2D66571F00C17599 /* TicketDetails.swift in Sources */,
 				D33DF8D12D5BB46000ACF1D4 /* ImagePickerView.swift in Sources */,
 				D32B5E412D65FC0F00EA8FB3 /* UserProfileViewModel.swift in Sources */,
+				D3CA195C2D68FAF800474300 /* TodaysEventsService.swift in Sources */,
 				D3F4EAFB2D54F16000C71FDF /* UserSignupResponse.swift in Sources */,
+				D3CA19562D68F51400474300 /* UserEventsService.swift in Sources */,
 				D368EE022D5FD64900DA4632 /* AvatarStack.swift in Sources */,
 				D3C03BE82D51023400E5251C /* AppConfig.swift in Sources */,
 				D354093C2D61B2BC00941806 /* EventDetailsViewModel.swift in Sources */,
+				D3CA19542D68ED5400474300 /* UserEventsViewModel.swift in Sources */,
 				D3B68C9A2D554BCD00BF6CD3 /* EmailVerificationDetails.swift in Sources */,
 				D3C03BBD2D50FF5700E5251C /* TablesTurnApp.swift in Sources */,
 				D36F20B32D5E92D000DE1FD3 /* PaginationView.swift in Sources */,
@@ -978,6 +1041,7 @@
 				D32B5E3D2D65D18C00EA8FB3 /* UserProfileView.swift in Sources */,
 				D3F4EAFD2D54F45000C71FDF /* LoginViewModel.swift in Sources */,
 				D36F20C02D5EB44700DE1FD3 /* EventsCalendarViewModel.swift in Sources */,
+				D3CA194D2D68ECAA00474300 /* UserEventsView.swift in Sources */,
 				D3255D5F2D51C0E7007E0125 /* GettingStartedView.swift in Sources */,
 				D36959492D52130700483BDB /* ImageCarousel.swift in Sources */,
 				D39624922D564D6300A3E310 /* CircularButtonStyle.swift in Sources */,

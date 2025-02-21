@@ -17,7 +17,7 @@ struct HomeView: View {
     init() {
         UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().titleTextAttributes = [
-            .foregroundColor: UIColor(.white),
+            .foregroundColor: UIColor.white,
             .font: UIFont.systemFont(ofSize: 24, weight: .semibold)
         ]
     }
@@ -61,6 +61,9 @@ struct HomeView: View {
                                 Menu {
                                     NavigationLink(destination: UserProfileView()) {
                                         Label("Profile", systemImage: "person.crop.circle")
+                                    }
+                                    NavigationLink(destination: UserEventsView()) {
+                                        Label("Hosted Events", systemImage: "party.popper")
                                     }
                                     NavigationLink(destination: TicketsView()) {
                                         Label("My Tickets", systemImage: "ticket.fill")
@@ -115,17 +118,19 @@ struct HomeView: View {
                         HStack {
                             VStack(alignment: .leading, spacing: 15) {
                                 HStack {
-                                    Button("Today".uppercased()) {}
-                                        .buttonStyle(MainButtonStyle(
-                                            maxWidth: 80,
-                                            padding: 12,
-                                            fontSize: 13,
-                                            cornerRadius: 30,
-                                            backgroundColor: .black,
-                                            foregroundColor: .white,
-                                            borderColor: .black,
-                                            borderWidth: 2
-                                        ))
+                                    NavigationLink(destination: TodaysEventsView()) {
+                                        Text("TODAY")
+                                            .font(.system(size: 13))
+                                            .foregroundColor(.white)
+                                            .padding(12)
+                                            .frame(width: 100)
+                                            .background(Color.black)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 30)
+                                                    .stroke(Color.black, lineWidth: 2)
+                                            )
+                                            .clipShape(RoundedRectangle(cornerRadius: 30))
+                                    }
                                     
                                     NavigationLink(destination: EventsCalendarView()) {
                                         ZStack {

@@ -201,9 +201,9 @@ struct EventDetailsView: View {
     init(id: String) {
         self.viewModel = EventDetailsViewModel(eventId: id)
         
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(.white)]
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         UINavigationBar.appearance().titleTextAttributes = [
-            .foregroundColor: UIColor(.accentColor),
+            .foregroundColor: UIColor.white,
             .font: UIFont.systemFont(ofSize: 24, weight: .semibold)
         ]
     }

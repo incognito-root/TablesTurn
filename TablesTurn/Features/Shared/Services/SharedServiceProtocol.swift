@@ -10,4 +10,5 @@ protocol SharedServiceProtocol {
     func getEventsInMonth(year: String, month: Int) async throws -> [Event]
     func getEventRsvpStatuses() async throws -> [RsvpStatus]
     func getUserRsvps() async throws -> [EventRsvp]
+    func getTodaysEvents() async throws -> [Event]
 }

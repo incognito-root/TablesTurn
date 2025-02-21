@@ -79,6 +79,13 @@ class SharedService: SharedServiceProtocol {
             method: .get
         )
     }
+    
+    func getTodaysEvents() async throws -> [Event] {
+        return try await NetworkManager.shared.request(
+            endpoint: APIEndpoints.getTodaysEvents,
+            method: .get
+        )
+    }
 }
 
 enum ImageError: Error {

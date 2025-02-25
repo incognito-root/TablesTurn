@@ -181,10 +181,11 @@ struct HomeView: View {
                                     foregroundColor: .black
                                 ))
                                 
-                                Button(action: {}) {
+                                NavigationLink(destination: AccountSettingsView()) {
                                     Image(systemName: "gear")
                                         .font(.system(size: 20))
                                         .foregroundStyle(Color.white)
+                                    
                                 }
                                 .buttonStyle(CircularButtonStyle(
                                     size: 50,

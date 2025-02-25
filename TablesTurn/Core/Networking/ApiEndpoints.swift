@@ -6,6 +6,7 @@ struct APIEndpoints {
     static let signup = authPrefix + "register"
     static let login = authPrefix + "login"
     static let emailVerification = authPrefix + "otp/verify"
+    static let changePassword = authPrefix + "password/reset"
 
     // events APIs
     static private let eventsPrefix = "events/"

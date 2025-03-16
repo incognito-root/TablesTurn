@@ -116,7 +116,7 @@ struct EventCard: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
             .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 13))
         }
-        .frame(height: 230)
+        .frame(maxWidth: .infinity)
         .clipShape(RoundedRectangle(cornerRadius: 35))
     }
 }

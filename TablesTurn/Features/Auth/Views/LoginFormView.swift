@@ -20,9 +20,7 @@ struct LoginFormView: View {
                     
                     VStack(alignment: .leading, spacing: 0) {
                         (
-                            Text("Welcome Back!\n")
-                            + Text("Login To Continue")
-                                .foregroundStyle(.accent)
+                            Text("Welcome Back!\nLogin To Continue")
                         )
                         .font(.system(size: 43))
                         .fontWeight(.medium)

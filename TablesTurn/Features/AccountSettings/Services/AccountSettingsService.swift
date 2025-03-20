@@ -15,4 +15,11 @@ class AccountSettingsService {
             parameters: parameters
         )
     }
+    
+    func deleteAccount() async throws -> String {
+        return try await NetworkManager.shared.request(
+            endpoint: APIEndpoints.deleteAccount,
+            method: .delete
+        )
+    }
 }

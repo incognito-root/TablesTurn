@@ -84,7 +84,7 @@ struct AccountSettingsView: View {
                                     )
                                     .listRowBackground(Color.clear)
                                     .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 20, trailing: 5))
-
+                                    
                                     Button(action: {
                                         Task {
                                             await viewModel.changePassword(
@@ -105,10 +105,21 @@ struct AccountSettingsView: View {
                                     .disabled(viewModel.isLoading)
                                     .listRowInsets(EdgeInsets(top: 20, leading: 5, bottom: 50, trailing: 5))
                                 }
+                                
+                                Section {
+                                    Button("Delete Account Permanently") {
+                                        viewModel.showDeleteConfirmationModal = true
+                                    }
+                                    .foregroundColor(.red)
+                                } header: {
+                                    Text("Delete Account")
+                                        .foregroundColor(.primaryText)
+                                }
+                                .listRowBackground(Color.clear)
+                                .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 20, trailing: 5))
                             }
                             .scrollContentBackground(.hidden)
                             .background(Color.clear)
-                             
                         }
                     }
                     .padding(.top, 20)
@@ -121,6 +132,21 @@ struct AccountSettingsView: View {
                         dismiss()
                     }
                 }
+                
+                if viewModel.showDeleteConfirmationModal {
+                    ConfirmationModalView(
+                        message: "Are you sure you want to delete your account?\n\nPlease note that this will also remove all the events you're hosting, and this action cannot be undone.",
+                        isDeleting: viewModel.isDeleting,
+                        onCancel: {
+                            viewModel.showDeleteConfirmationModal = false
+                        },
+                        onConfirm: {
+                            Task {
+                                await viewModel.deleteAccount()
+                            }
+                        }
+                    )
+                }
             }
             .foregroundStyle(.primaryText)
             .alert(isPresented: $viewModel.showAlert) {
@@ -130,6 +156,11 @@ struct AccountSettingsView: View {
             }
             .navigationTitle("Account Settings")
             .navigationBarTitleDisplayMode(.inline)
+        }
+        .onChange(of: viewModel.deleteSuccess) {
+            if viewModel.deleteSuccess {
+                dismiss()
+            }
         }
         .onAppear {
             // Reset form on appearance
@@ -141,6 +172,48 @@ struct AccountSettingsView: View {
     
     private func validateForm() {
         isPasswordValid = !currentPassword.isEmpty && newPassword.count >= 8
+    }
+}
+
+struct ConfirmationModalView: View {
+    let message: String
+    var isDeleting: Bool
+    var onCancel: () -> Void
+    var onConfirm: () -> Void
+    
+    var body: some View {
+        ZStack {
+            Color.black.opacity(0.4)
+                .ignoresSafeArea()
+            
+            VStack(spacing: 20) {
+                Text(message)
+                    .font(.headline)
+                    .foregroundColor(.primaryText)
+                    .multilineTextAlignment(.center)
+                    .padding(.bottom, 10)
+                
+                if isDeleting {
+                    ProgressView()
+                } else {
+                    HStack(spacing: 20) {
+                        Button("Cancel") {
+                            onCancel()
+                        }
+                        .buttonStyle(MainButtonStyle(backgroundColor: .gray))
+                        
+                        Button("Delete") {
+                            onConfirm()
+                        }
+                        .buttonStyle(MainButtonStyle(backgroundColor: .red))
+                    }
+                }
+            }
+            .padding()
+            .background(Color.primaryBackground)
+            .cornerRadius(20)
+            .padding(.horizontal, 40)
+        }
     }
 }
 

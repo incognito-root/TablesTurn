@@ -11,6 +11,9 @@ class AccountSettingsViewModel: ObservableObject {
     @Published var alertMessage: String = ""
     @Published var isLoading = false
     @Published var showSuccessModal = false
+    @Published var showDeleteConfirmationModal = false
+    @Published var isDeleting = false
+    @Published var deleteSuccess = false
     
     private let accountSettingsService = AccountSettingsService()
     
@@ -33,6 +36,27 @@ class AccountSettingsViewModel: ObservableObject {
                 isLoading = false
             }
         }
+    }
+    
+    func deleteAccount() async {
+            isDeleting = true
+            defer { isDeleting = false }
+            
+            do {
+                _ = try await accountSettingsService.deleteAccount()
+                deleteSuccess = true
+                UserManager.shared.logout()
+            } catch let error as APIError {
+                await MainActor.run {
+                    handleAPIError(error: error)
+                    isLoading = false
+                }
+            } catch {
+                await MainActor.run {
+                    handleGenericError(error: error)
+                    isLoading = false
+                }
+            }
     }
     
     private func handleAPIError(error: APIError) {
